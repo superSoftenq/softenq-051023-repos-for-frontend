@@ -4,11 +4,14 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  
   const [count, setCount] = useState(0)
-  let response = fetch('/api/fr')
+  let response = fetch('http://localhost:3000/api/fr')
   .then(response => response.text());
   console.log(response);
+  fetch("index.html", {
+    method: "POST",
+    body: response
+  });
   return (
     <>
       <div>
