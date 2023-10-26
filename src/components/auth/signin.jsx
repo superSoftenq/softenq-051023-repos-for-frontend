@@ -51,9 +51,10 @@ function SignIn() {
                 });
         }} id = "signin" method = "POST">
             <input className = "form-field" name='username' type="text" placeholder='username'/>
-            <input className = "form-field" name='password' type="text" placeholder='password'/>
+            <input className = "form-field" name='password' type="password" placeholder='password'/>
             <input type="submit" value = "Login"/>
         </form>
+        
       </div>
     <div  id="all">
     </div>

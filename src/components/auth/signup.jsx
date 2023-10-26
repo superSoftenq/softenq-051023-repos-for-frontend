@@ -35,14 +35,18 @@ export default class SignUp extends Component{
                         message.innerHTML = data.message;
                     });
             }} id = "signup">
-                <input className = "form-field" name='username' type="text" placeholder='username' pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,64}$"/>
-                <input className = "form-field" name='email' type="text" placeholder='email' pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" />
-                <input className = "form-field" name='password' type="text" placeholder='password' pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"/>
+                <input className = "form-field" name='username' type="text" placeholder='username' pattern="^[a-zA-Z][a-zA-Z0-9-_\]{3,64}$"/>
+                <input className = "form-field" name='email' type="text" placeholder='email' pattern="^\S+@\S+$" />
+                <input className = "form-field" name='password' type="password" placeholder='password' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"/>
                 <input type="submit" value = "Sign Up"/>
             </form>
+            
         </div>
         
         <div id="message"></div>
+        <form className = "stylesignin" action="/signin">
+            <input type="submit" value = "Go to Login page"/>
+        </form>
         </>
     }
 }
