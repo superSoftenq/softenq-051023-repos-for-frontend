@@ -1,10 +1,13 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react"
-
+import './userProfile.css'
 
 function UserProfile() {
     const [user, setUser] = useState([])
 
+
+
+    
     const params = useParams();
     const id = params.userId
     const getUserData = () => {
@@ -19,12 +22,22 @@ function UserProfile() {
     useEffect(() => {
         getUserData()
     }, [])
+
+    x
+
     return (
-        <>
-            <div><h1>username:</h1>{user.username}</div>
-            <div><h1>email:</h1>{user.email}</div>
-        </>
-        
+        <div className="head"> 
+           
+
+
+
+        <p className="zagolovok">вы запросили информацию о пользователе, вот его данные:</p>
+        <p className = "infoAboutUser">id: {user.id}</p>
+        <p className = "infoAboutUser">username: {user.username}</p>
+        <p className = "infoAboutUser">email: {user.email}</p>
+        </div>
     )
   }
+  
+  
   export default UserProfile
