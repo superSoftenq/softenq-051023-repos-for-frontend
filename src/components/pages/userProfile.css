@@ -23,3 +23,7 @@ body {
     min-width: 320px;
     min-height: 100vh;
 }
+.photo{
+    height: 100%;
+    width: 100%;
+}
