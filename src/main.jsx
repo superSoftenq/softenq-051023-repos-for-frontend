@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './index.css'
 import SignIn from './components/auth/signin.jsx'
 import SignUp from './components/auth/signup.jsx'
-import LoginSucceed from './components/auth/login_succeed.jsx';
+import LoginSucceed from './components/auth/loginSucceed.jsx';
 import UserProfile from './components/pages/userProfile.jsx'
 import FileUploadForm from './components/includes/fileUploadForm.jsx';
 

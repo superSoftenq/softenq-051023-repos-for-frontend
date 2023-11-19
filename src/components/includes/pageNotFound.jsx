@@ -1,8 +1,6 @@
 function FileUploadForm(props) {
     return (
-        <div className="head"> 
-         <p className="zagolovok">Страница не найдена</p>
-        </div>
+         <p className="not_found">Страница не найдена</p>
     )
 }
 

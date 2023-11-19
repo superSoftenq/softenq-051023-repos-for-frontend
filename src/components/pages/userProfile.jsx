@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react"
 import FileUploadForm from '../includes/fileUploadForm.jsx';
 import PageNotFound from '../includes/pageNotFound.jsx'
 import './userProfile.css'
-
+import Logout from "../includes/logout.jsx";
+import * as Cookie from "../includes/cookie.js"
+import { verifyUser } from "../includes/verifyUser.js";
 function UserProfile(props) {
     
     const renderScreen = () => (
@@ -11,6 +13,8 @@ function UserProfile(props) {
     );
     const [user, setUser] = useState([])
     const [statusCode, setStatusCode] = useState([])
+    const [isAuthorized, setAuthorized] = useState([])
+
     const googleLink = "https://drive.google.com/u/0/uc?id=";
     const urlRight = "&export=download"
     const params = useParams();
@@ -19,19 +23,23 @@ function UserProfile(props) {
     const link = googleLink + user.profilePicture + urlRight
     console.log(link)
     const id = params.userId
-    let userPage = <div className="head"> 
-    <p className="zagolovok">вы запросили информацию о пользователе, вот его данные:</p>
-    <p className = "infoAboutUser">id: {user.id}</p>
-    <p className = "infoAboutUser">username: {user.username}</p>
-    <p className = "infoAboutUser">email: {user.email}</p>
-    <div >
-        {user.profilePicture !== undefined && renderScreen()}
+    let token = Cookie.getCookie("token")
+    let logout = <Logout></Logout>
+    let userPage = 
+    <div className="head"> 
+        <p className="title">Вы запросили информацию о пользователе, вот его данные:</p>
+        <div >
+            {user.profilePicture !== undefined && renderScreen()}
+        </div>
+        <p className = "infoAboutUser">id: {user.id}</p>
+        <p className = "infoAboutUser">username: {user.username}</p>
+        <p className = "infoAboutUser">email: {user.email}</p>
+        
     </div>
-    <FileUploadForm
+    let form = <FileUploadForm
     urlLeft = {'/api/user/'} 
     urlRight = {'/avatar'}
     userId = {user.id}/>
-    </div>
      let pageNotFound = <PageNotFound></PageNotFound>
     const getUserData = async () => {
         let response =  await fetch("/api/user/" + id)
@@ -45,6 +53,12 @@ function UserProfile(props) {
         .then((data) => {
             setUser(data)
         });
+        response = await verifyUser(token)
+        if(response == user.id) {
+            userPage = logout + userPage + form
+        }   else {
+            
+        }
     }
     useEffect(() => {
         getUserData()
