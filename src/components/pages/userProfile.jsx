@@ -26,7 +26,9 @@ function UserProfile(props) {
         return <FileUploadForm
             urlLeft = {'/api/user/'} 
             urlRight = {'/avatar'}
-            userId = {user.id}/>
+            userId = {user.id}
+            refreshPage = {true}
+            />
     }
     const [user, setUser] = useState([])
     const [statusCode, setStatusCode] = useState([])

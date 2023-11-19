@@ -16,6 +16,9 @@ function FileUploadForm(props) {
         } else {
             result.innerHTML = "Error occured" 
         }
+        if(props.refreshPage){
+            window.location.assign(window.location.href);
+        }
         }} action = "#">
             <input type="file" multiple name = "files" required />
             <input type="submit" value="upload files"/>
