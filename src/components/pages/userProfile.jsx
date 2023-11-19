@@ -42,8 +42,8 @@ function UserProfile(props) {
     let userPage = 
     <div className="head"> 
         <div>
-        { isAuthorized === true && renderLogout()}
-        { isAuthorized === -1 && renderLogin()}
+        { isAuthorized !== -1  && renderLogout()}
+        { isAuthorized == -1 && renderLogin()}
         </div>
         <p className="title">Вы запросили информацию о пользователе, вот его данные:</p>
         <div >
