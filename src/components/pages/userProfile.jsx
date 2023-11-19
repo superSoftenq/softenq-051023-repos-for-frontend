@@ -6,11 +6,28 @@ import './userProfile.css'
 import Logout from "../includes/logout.jsx";
 import * as Cookie from "../includes/cookie.js"
 import { verifyUser } from "../includes/verifyUser.js";
+import Login from "../includes/login.jsx";
 function UserProfile(props) {
     
     const renderScreen = () => (
         <img src = {link}  alt="" className = "photo"/>
     );
+    const renderLogout = () => {
+       return <Logout
+        buttonText = "Log out"
+       />
+    };
+    const renderLogin = () => {
+        return <Login
+            buttonText = "Sign in"
+        />
+     };
+    const renderForm = () => {
+        return <FileUploadForm
+            urlLeft = {'/api/user/'} 
+            urlRight = {'/avatar'}
+            userId = {user.id}/>
+    }
     const [user, setUser] = useState([])
     const [statusCode, setStatusCode] = useState([])
     const [isAuthorized, setAuthorized] = useState([])
@@ -19,14 +36,15 @@ function UserProfile(props) {
     const urlRight = "&export=download"
     const params = useParams();
     // const link = async () => fetch(`/api/user/${user.id}/avatar`)
-    console.log(user.profilePicture)
     const link = googleLink + user.profilePicture + urlRight
-    console.log(link)
     const id = params.userId
     let token = Cookie.getCookie("token")
-    let logout = <Logout></Logout>
     let userPage = 
     <div className="head"> 
+        <div>
+        { isAuthorized === true && renderLogout()}
+        { isAuthorized === -1 && renderLogin()}
+        </div>
         <p className="title">Вы запросили информацию о пользователе, вот его данные:</p>
         <div >
             {user.profilePicture !== undefined && renderScreen()}
@@ -34,31 +52,36 @@ function UserProfile(props) {
         <p className = "infoAboutUser">id: {user.id}</p>
         <p className = "infoAboutUser">username: {user.username}</p>
         <p className = "infoAboutUser">email: {user.email}</p>
-        
+        <div>
+            {isAuthorized == true && renderForm()}
+        </div>
     </div>
-    let form = <FileUploadForm
-    urlLeft = {'/api/user/'} 
-    urlRight = {'/avatar'}
-    userId = {user.id}/>
-     let pageNotFound = <PageNotFound></PageNotFound>
+    let pageNotFound = <PageNotFound></PageNotFound>
     const getUserData = async () => {
         let response =  await fetch("/api/user/" + id)
         .then((response) => {
-            console.log(response.status)
             setStatusCode(response.status)
             if (response.status == 200) {
             }
             return  response.json();
         })
-        .then((data) => {
+        .then(async(data) => {
+            let rs = await verifyUser(token)
+            console.log(data.id == rs)
+            console.log(rs)
             setUser(data)
-        });
-        response = await verifyUser(token)
-        if(response == user.id) {
-            userPage = logout + userPage + form
-        }   else {
+            if (rs == -1) {
+                setAuthorized(-1)
+            } else if (rs != data.id) {
+                setAuthorized(false)
+            } else {
+                setAuthorized(true)
+            }
             
-        }
+            
+            
+        });
+        
     }
     useEffect(() => {
         getUserData()

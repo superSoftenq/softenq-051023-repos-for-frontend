@@ -4,7 +4,8 @@ function Logout(props) {
     return (
          <div><button className="logout_btn" onClick={async(event) => {
             Cookie.deleteCookie("token")
-          }}>Log out</button></div>
+            window.location.assign(window.location.href);
+          }}>{props.buttonText}</button></div>
     )
 }
 
