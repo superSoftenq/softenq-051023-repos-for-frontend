@@ -4,9 +4,11 @@ import {
     Route,
     Navigate,
   } from "react-router-dom";
-
+import * as Cookie from "../includes/cookie"
 let count = 0;
 const max_count = 3;
+const cookieNameToken = "token"
+const daysToExpire = 1
 function SignIn() {
   return (
     <>
@@ -36,6 +38,8 @@ function SignIn() {
                 })
                 .then((data) => {
                     if(data.accessToken != null){
+                        
+                        Cookie.setCookie(cookieNameToken, data.accessToken, daysToExpire)
                         window.location.assign('/login_succeed');
                     }
                     else {
