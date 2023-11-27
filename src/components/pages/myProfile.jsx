@@ -1,14 +1,15 @@
+import UserProfile from "./userProfile.jsx";
+import * as Cookie from "../includes/cookie.js"
+import { verifyUser } from "../includes/verifyUser.js";
+import SignIn from "../auth/signin.jsx";
 import { NavLink, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react"
 import FileUploadForm from '../includes/fileUploadForm.jsx';
 import PageNotFound from '../includes/pageNotFound.jsx'
 import './userProfile.css'
 import Logout from "../includes/logout.jsx";
-import * as Cookie from "../includes/cookie.js"
-import { verifyUser } from "../includes/verifyUser.js";
 import Login from "../includes/login.jsx";
-function UserProfile(props) {
-    
+function MyProfile(props){
     const renderScreen = () => (
         <img src = {link}  alt="" className = "photo"/>
     );
@@ -24,20 +25,31 @@ function UserProfile(props) {
      };
     const renderAvatarForm = () => {
         return <FileUploadForm
+            title = {<p>Загрузить аватар</p>}
             urlLeft = {'/api/user/'} 
             urlRight = {'/avatar'}
             userId = {user.id}
+            formClassName = {'avatar_form'}
             refreshPage = {true}
             />
     }
     const renderRegularForm = () => {
         return <FileUploadForm
+            title = {<p>Загрузить фотографии</p>}
             urlLeft = {'/api/user/'} 
             urlRight = {'/photos'}
             userId = {user.id}
-            refreshPage = {true}
+            formClassName = {'regular_form'}
+            refreshPage = {false}
             />
     }
+    const [id, setId] = useState([])
+    let token = Cookie.getCookie("token")  
+    const getId = async () => {
+        let _id =  await verifyUser(token)
+        setId(_id)
+    }
+    console.log(id)
     const [user, setUser] = useState([])
     const [statusCode, setStatusCode] = useState([])
     const [isAuthorized, setAuthorized] = useState([])
@@ -47,15 +59,13 @@ function UserProfile(props) {
     const params = useParams();
     // const link = async () => fetch(`/api/user/${user.id}/avatar`)
     const link = googleLink + user.profilePicture + urlRight
-    const id = params.userId
-    let token = Cookie.getCookie("token")
     let userPage = 
     <div className="head"> 
         <div>
         { isAuthorized !== -1  && renderLogout()}
         { isAuthorized == -1 && renderLogin()}
         </div>
-        <p className="title">Вы запросили информацию о пользователе, вот его данные:</p>
+        <p className="title">Вы зашли на свою страницу, ваши данные:</p>
         <div >
             {user.profilePicture !== undefined && renderScreen()}
         </div>
@@ -63,17 +73,22 @@ function UserProfile(props) {
         <p className = "infoAboutUser">username: {user.username}</p>
         <p className = "infoAboutUser">email: {user.email}</p>
         <div>
-            <p>Загрузить аватар</p>
+            
             {isAuthorized == true && renderAvatarForm()}
         </div>
         <div>
-            <p>Загрузить фотографи</p>
+            
             {isAuthorized == true && renderRegularForm()}
         </div>
     </div>
     let pageNotFound = <PageNotFound></PageNotFound>
     const getUserData = async () => {
-        let response =  await fetch("/api/user/" + id)
+        let _id =  await verifyUser(token)
+        console.log("fdfd_"+ id)
+        if(_id == -1) {
+            window.location.assign("/signin");
+        }
+        let response =  await fetch("/api/user/" + _id)
         .then((response) => {
             setStatusCode(response.status)
             if (response.status == 200) {
@@ -92,17 +107,14 @@ function UserProfile(props) {
             } else {
                 setAuthorized(true)
             }
-            
-            
-            
         });
         
     }
     useEffect(() => {
         getUserData()
     }, [])
-    return ((statusCode == 200)? userPage : pageNotFound)
+        return ((statusCode == 200)? userPage : pageNotFound)
+    
   }
-  
-  
-  export default UserProfile
+
+export default MyProfile

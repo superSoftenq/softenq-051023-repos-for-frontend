@@ -4,6 +4,25 @@ export default class SignUp extends Component{
     constructor(){
         super();
     }
+    validatePassword() {
+        var form = document.getElementById('signup')
+        var p = document.getElementById('passwd').value,
+            errors = [];
+        if (p.length < 8) {
+            errors.push("Your password must be at least 8 characters"); 
+        }
+        if (p.search(/[a-z]/i) < 0) {
+            errors.push("Your password must contain at least one letter.");
+        }
+        if (p.search(/[0-9]/) < 0) {
+            errors.push("Your password must contain at least one digit."); 
+        }
+        if (errors.length > 0) {
+            form.setCustomValidity("s")
+            return false;
+        }
+        return true;
+    };
 
     render(){
         return <>
@@ -37,7 +56,7 @@ export default class SignUp extends Component{
             }} id = "signup">
                 <input className = "form-field" name='username' type="text" placeholder='username' pattern="^[a-zA-Z][a-zA-Z0-9-_\]{3,64}$"/>
                 <input className = "form-field" name='email' type="text" placeholder='email' pattern="^\S+@\S+$" />
-                <input className = "form-field" name='password' type="password" placeholder='password' pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"/>
+                <input className = "form-field" id="passwd" name='password' type="password" placeholder='password' oninvalid="setCustomValidity('dssd')" onchange="try{setCustomValidity('')}catch(e){}" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"/>
                 <input type="submit" value = "Sign Up"/>
             </form>
             

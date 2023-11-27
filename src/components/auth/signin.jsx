@@ -5,6 +5,7 @@ import {
     Navigate,
   } from "react-router-dom";
 import * as Cookie from "../includes/cookie"
+import SignupBtn from "../includes/signupbtn";
 let count = 0;
 const max_count = 3;
 const cookieNameToken = "token"
@@ -58,6 +59,9 @@ function SignIn() {
             <input className = "form-field" name='password' type="password" placeholder='password'/>
             <input type="submit" value = "Login"/>
         </form>
+        <SignupBtn
+        buttonText = {"Sign up"}/>
+
         
       </div>
     <div  id="all">
