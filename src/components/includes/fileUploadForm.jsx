@@ -34,7 +34,7 @@ function FileUploadForm(props) {
         </form>
         <div className = "load_con">
             <div id={"loader_" + props.formClassName} ></div>
-            <div id={"result_" + props.formClassName} class="text"></div>
+            <div id={"result_" + props.formClassName} className ="text"></div>
         </div>
         
         

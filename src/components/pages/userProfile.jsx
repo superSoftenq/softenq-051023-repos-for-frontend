@@ -1,74 +1,40 @@
 import { NavLink, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react"
-import FileUploadForm from '../includes/fileUploadForm.jsx';
 import PageNotFound from '../includes/pageNotFound.jsx'
 import './userProfile.css'
-import Logout from "../includes/logout.jsx";
 import * as Cookie from "../includes/cookie.js"
+import * as GoogleLinks from "../includes/googleLinks.js"
 import { verifyUser } from "../includes/verifyUser.js";
-import Login from "../includes/login.jsx";
+import * as UserPageIncludes from "./userPageIncludes.jsx"
 function UserProfile(props) {
     
-    const renderScreen = () => (
-        <img src = {link}  alt="" className = "photo"/>
-    );
-    const renderLogout = () => {
-       return <Logout
-        buttonText = "Log out"
-       />
-    };
-    const renderLogin = () => {
-        return <Login
-            buttonText = "Sign in"
-        />
-     };
-    const renderAvatarForm = () => {
-        return <FileUploadForm
-            urlLeft = {'/api/user/'} 
-            urlRight = {'/avatar'}
-            userId = {user.id}
-            refreshPage = {true}
-            />
-    }
-    const renderRegularForm = () => {
-        return <FileUploadForm
-            urlLeft = {'/api/user/'} 
-            urlRight = {'/photos'}
-            userId = {user.id}
-            refreshPage = {true}
-            />
-    }
+    
+    
     const [user, setUser] = useState([])
     const [statusCode, setStatusCode] = useState([])
     const [isAuthorized, setAuthorized] = useState([])
-
-    const googleLink = "https://drive.google.com/u/0/uc?id=";
-    const urlRight = "&export=download"
+    const [photos, setPhotos] = useState([])
+    
     const params = useParams();
     // const link = async () => fetch(`/api/user/${user.id}/avatar`)
-    const link = googleLink + user.profilePicture + urlRight
+    const link = GoogleLinks.driveIdToLink(user.profilePicture);
     const id = params.userId
     let token = Cookie.getCookie("token")
     let userPage = 
     <div className="head"> 
         <div>
-        { isAuthorized !== -1  && renderLogout()}
-        { isAuthorized == -1 && renderLogin()}
+        { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
+        { isAuthorized == -1 && UserPageIncludes.renderLogin()}
         </div>
         <p className="title">Вы запросили информацию о пользователе, вот его данные:</p>
         <div >
-            {user.profilePicture !== undefined && renderScreen()}
+            {user.profilePicture !== undefined && UserPageIncludes.renderAvatar(link)}
         </div>
         <p className = "infoAboutUser">id: {user.id}</p>
         <p className = "infoAboutUser">username: {user.username}</p>
         <p className = "infoAboutUser">email: {user.email}</p>
         <div>
-            <p>Загрузить аватар</p>
-            {isAuthorized == true && renderAvatarForm()}
-        </div>
-        <div>
-            <p>Загрузить фотографи</p>
-            {isAuthorized == true && renderRegularForm()}
+            {photos.length != 0 && UserPageIncludes.renderGallery(photos)}
         </div>
     </div>
     let pageNotFound = <PageNotFound></PageNotFound>
@@ -84,6 +50,15 @@ function UserProfile(props) {
             let rs = await verifyUser(token)
             console.log(data.id == rs)
             console.log(rs)
+            let photoLinks = await fetch("/api/user/" + id + "/photos")
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                return data;
+            })
+            console.log(photoLinks)
+            setPhotos(photoLinks)
             setUser(data)
             if (rs == -1) {
                 setAuthorized(-1)
@@ -91,10 +66,8 @@ function UserProfile(props) {
                 setAuthorized(false)
             } else {
                 setAuthorized(true)
+                window.location.assign("/myprofile");
             }
-            
-            
-            
         });
         
     }
