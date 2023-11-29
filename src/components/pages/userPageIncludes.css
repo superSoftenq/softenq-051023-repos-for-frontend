@@ -1,0 +1,6 @@
+* {
+    list-style: none;
+}
+.photo_item{
+    display: inline-block;
+}

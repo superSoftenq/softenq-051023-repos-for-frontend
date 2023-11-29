@@ -1,8 +1,10 @@
 import Login from "../includes/login.jsx";
 import Logout from "../includes/logout.jsx";
 import FileUploadForm from '../includes/fileUploadForm.jsx';
-import * as Cookie from "../includes/cookie.js"
+import DeleteBtn from "../includes/deleteBtn.jsx"
+import *  as Cookie from "../includes/cookie.js"
 import * as GoogleLinks from "../includes/googleLinks.js"
+import './userPageIncludes.css'
 export const renderAvatar = (link) => (
     <img src = {link}  alt="" className = "photo avatar"/>
 );
@@ -16,9 +18,40 @@ export const renderLogin = () => {
         buttonText = "Sign in"
     />
  };
- export const renderGallery = (photoArray) => {
+ export const renderMyGallery = (photoArray) => {
     let photoItems = photoArray.map((photo) => 
-    <img src = {GoogleLinks.driveIdToLink(photo["link"])}  alt={photo["id"]} id = {"regular_photo_" + photo["id"]} className = "photo regular"/>)
+            <div className="photo_item">
+                <div>
+                <img src = {GoogleLinks.driveIdToLink(photo["link"])}  alt={photo["id"]} id = {"regular_photo_" + photo["id"]} className = "photo regular"/>
+                </div>
+                <div>
+                    <DeleteBtn
+                        buttonText = "Delete"
+                        deleteRoute = {"/api/user/" + photo["userId"] + "/photos/" + photo["id"]}
+                        refreshPage = {true}
+                        token = {Cookie.getCookie("token")}
+                    />
+                </div>
+            </div>
+        
+        
+   )
+    return (
+        <>
+            <div>Gallery</div>
+            {photoItems}
+        </>
+    ) 
+}
+export const renderGallery = (photoArray) => {
+    let photoItems = photoArray.map((photo) => 
+        <div>
+            <div>
+            <img src = {GoogleLinks.driveIdToLink(photo["link"])}  alt={photo["id"]} id = {"regular_photo_" + photo["id"]} className = "photo regular"/>
+            </div>
+        </div>
+        
+   )
     return (
         <>
             <div>Gallery</div>

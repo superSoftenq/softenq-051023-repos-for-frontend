@@ -44,7 +44,7 @@ function MyProfile(props){
             {isAuthorized == true && UserPageIncludes.renderRegularForm(user)}
         </div>
         <div>
-            {photos.length != 0 && UserPageIncludes.renderGallery(photos)}
+            {photos.length != 0 && UserPageIncludes.renderMyGallery(photos)}
         </div>
     </div>
     let pageNotFound = <PageNotFound></PageNotFound>
