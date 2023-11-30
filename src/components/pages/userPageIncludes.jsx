@@ -45,7 +45,7 @@ export const renderLogin = () => {
 }
 export const renderGallery = (photoArray) => {
     let photoItems = photoArray.map((photo) => 
-        <div>
+        <div className="photo_item">
             <div>
             <img src = {GoogleLinks.driveIdToLink(photo["link"])}  alt={photo["id"]} id = {"regular_photo_" + photo["id"]} className = "photo regular"/>
             </div>
