@@ -1,48 +1,11 @@
-import UserProfile from "./userProfile.jsx";
 import * as Cookie from "../includes/cookie.js"
 import { verifyUser } from "../includes/verifyUser.js";
-import SignIn from "../auth/signin.jsx";
 import { NavLink, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react"
-import FileUploadForm from '../includes/fileUploadForm.jsx';
 import PageNotFound from '../includes/pageNotFound.jsx'
+import * as UserPageIncludes from "./userPageIncludes.jsx"
 import './userProfile.css'
-import Logout from "../includes/logout.jsx";
-import Login from "../includes/login.jsx";
 function MyProfile(props){
-    const renderScreen = () => (
-        <img src = {link}  alt="" className = "photo"/>
-    );
-    const renderLogout = () => {
-       return <Logout
-        buttonText = "Log out"
-       />
-    };
-    const renderLogin = () => {
-        return <Login
-            buttonText = "Sign in"
-        />
-     };
-    const renderAvatarForm = () => {
-        return <FileUploadForm
-            title = {<p>Загрузить аватар</p>}
-            urlLeft = {'/api/user/'} 
-            urlRight = {'/avatar'}
-            userId = {user.id}
-            formClassName = {'avatar_form'}
-            refreshPage = {true}
-            />
-    }
-    const renderRegularForm = () => {
-        return <FileUploadForm
-            title = {<p>Загрузить фотографии</p>}
-            urlLeft = {'/api/user/'} 
-            urlRight = {'/photos'}
-            userId = {user.id}
-            formClassName = {'regular_form'}
-            refreshPage = {false}
-            />
-    }
     const [id, setId] = useState([])
     let token = Cookie.getCookie("token")  
     const getId = async () => {
@@ -53,6 +16,7 @@ function MyProfile(props){
     const [user, setUser] = useState([])
     const [statusCode, setStatusCode] = useState([])
     const [isAuthorized, setAuthorized] = useState([])
+    const [photos, setPhotos] = useState([])
 
     const googleLink = "https://drive.google.com/u/0/uc?id=";
     const urlRight = "&export=download"
@@ -62,23 +26,25 @@ function MyProfile(props){
     let userPage = 
     <div className="head"> 
         <div>
-        { isAuthorized !== -1  && renderLogout()}
-        { isAuthorized == -1 && renderLogin()}
+        { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
+        { isAuthorized == -1 && UserPageIncludes.renderLogin()}
         </div>
         <p className="title">Вы зашли на свою страницу, ваши данные:</p>
         <div >
-            {user.profilePicture !== undefined && renderScreen()}
+            {user.profilePicture !== undefined && UserPageIncludes.renderAvatar(link)}
         </div>
         <p className = "infoAboutUser">id: {user.id}</p>
         <p className = "infoAboutUser">username: {user.username}</p>
         <p className = "infoAboutUser">email: {user.email}</p>
         <div>
             
-            {isAuthorized == true && renderAvatarForm()}
+            {isAuthorized == true && UserPageIncludes.renderAvatarForm(user)}
         </div>
         <div>
-            
-            {isAuthorized == true && renderRegularForm()}
+            {isAuthorized == true && UserPageIncludes.renderRegularForm(user)}
+        </div>
+        <div>
+            {photos.length != 0 && UserPageIncludes.renderMyGallery(photos)}
         </div>
     </div>
     let pageNotFound = <PageNotFound></PageNotFound>
@@ -99,6 +65,15 @@ function MyProfile(props){
             let rs = await verifyUser(token)
             console.log(data.id == rs)
             console.log(rs)
+            let photoLinks = await fetch("/api/user/" + rs + "/photos")
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                return data;
+            })
+            console.log(photoLinks)
+            setPhotos(photoLinks)
             setUser(data)
             if (rs == -1) {
                 setAuthorized(-1)

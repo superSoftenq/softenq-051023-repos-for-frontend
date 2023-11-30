@@ -9,11 +9,12 @@ import LoginSucceed from './components/auth/loginSucceed.jsx';
 import UserProfile from './components/pages/userProfile.jsx'
 import FileUploadForm from './components/includes/fileUploadForm.jsx';
 import MyProfile from './components/pages/myProfile.jsx';
-
+import PageNotFound from './components/includes/pageNotFound.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="/*" element={<PageNotFound/>} />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login_succeed" element={<LoginSucceed />} />
