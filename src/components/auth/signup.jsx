@@ -55,8 +55,8 @@ export default class SignUp extends Component{
 
     render(){
         return <>
-        <h3>signup</h3>
-        <div className="form">
+        
+        <div className="modal">
             <form onSubmit={async (event) => {
                 event.preventDefault();
                 let form = document.getElementById('signup');
@@ -115,18 +115,21 @@ export default class SignUp extends Component{
                     });
                     
             }} id = "signup">
-                <input className = "form-field" name='username' type="text" placeholder='username' pattern="^[a-zA-Z][a-zA-Z0-9-_\]{3,64}$"/>
-                <input className = "form-field" name='email' type="text" placeholder='email' />
-                <input className = "form-field" id="passwd" name='password' type="password" placeholder='password'/>
-                <input type="submit" value = "Sign Up"/>
+                <div className="head_title1"><h3>signup</h3></div>
+                <div> <input className = "form-field" name='username' type="text" placeholder='username' pattern="^[a-zA-Z][a-zA-Z0-9-_\]{3,64}$"/> </div>
+                <div><input className = "form-field" name='email' type="text" placeholder='email' /></div>
+                <div><input className = "form-field" id="passwd" name='password' type="password" placeholder='password'/></div>
+                <div><input type="submit" value = "Sign Up"/></div>
+                <div id="message" className="error"></div>
+                    <form className = "stylesignin" action="/signin">
+                    <input type="submit" value = "Go to Login page"/>
+                </form>
+                
             </form>
             
         </div>
         
-        <div id="message" className="error"></div>
-        <form className = "stylesignin" action="/signin">
-            <input type="submit" value = "Go to Login page"/>
-        </form>
+      
         </>
     }
 }

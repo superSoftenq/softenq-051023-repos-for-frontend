@@ -6,6 +6,7 @@ import {
   } from "react-router-dom";
 import * as Cookie from "../includes/cookie"
 import SignupBtn from "../includes/signupbtn";
+import './signin.css'
 let count = 0;
 const max_count = 3;
 const cookieNameToken = "token"
@@ -13,8 +14,8 @@ const daysToExpire = 1
 function SignIn() {
   return (
     <>
-        <h3>signin</h3>
-      <div className="form">
+        
+      <div className="modal">
         <form onSubmit={async (event) => {
             event.preventDefault();
             if(count >= max_count){
@@ -55,9 +56,10 @@ function SignIn() {
                     }
                 });
         }} id = "signin" method = "POST">
-            <input className = "form-field" name='username' type="text" placeholder='username'/>
-            <input className = "form-field" name='password' type="password" placeholder='password'/>
-            <input type="submit" value = "Login"/>
+            <h3 className="form_title">signin</h3>
+            <div><input className = "form-field" name='username' type="text" placeholder='username'/></div>
+            <div><input className = "form-field" name='password' type="password" placeholder='password'/></div>
+            <div><input type="submit" value = "Login"/></div>
         </form>
         <SignupBtn
         buttonText = {"Sign up"}/>

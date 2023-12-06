@@ -6,7 +6,8 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    background-color: blue;
+    
+    
 }
 .stylesignin{
     display: block
@@ -17,4 +18,15 @@
 }
 .success{
     color: rgb(7, 170, 7)
+}
+.modal{
+    padding: 2px; 
+    position: fixed; top: 50%; left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: linear-gradient(45deg, #9890e3, #b1f4cf);
+  }
+  :root {
+    background: linear-gradient(45deg, #9890e3, #b1f4cf);
 }
