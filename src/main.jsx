@@ -10,6 +10,7 @@ import UserProfile from './components/pages/userProfile.jsx'
 import FileUploadForm from './components/includes/fileUploadForm.jsx';
 import MyProfile from './components/pages/myProfile.jsx';
 import PageNotFound from './components/includes/pageNotFound.jsx';
+import MyProfileSettings from './components/pages/myProfleSettings.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <Routes>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login_succeed" element={<LoginSucceed />} />
       <Route path="/myprofile" element={<MyProfile />} />
+      <Route path="/settings" element={<MyProfileSettings />} />
       <Route path="/user/:userId" element={
       <UserProfile>
         
