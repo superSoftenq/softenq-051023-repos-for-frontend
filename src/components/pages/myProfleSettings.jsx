@@ -4,6 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react"
 import PageNotFound from '../includes/pageNotFound.jsx'
 import * as UserPageIncludes from "./userPageIncludes.jsx"
+import CloseBtn from "../includes/closeBtn.jsx"
 function MyProfileSettings(props){
     const [id, setId] = useState([])
     let token = Cookie.getCookie("token")  
@@ -52,6 +53,11 @@ function MyProfileSettings(props){
     let settingsPage = 
     <div className="head"> 
         <p className="title">Настройки</p>
+        <div>
+            <CloseBtn
+            link = "/myprofile"
+            />
+        </div>
         <p className = "infoAboutUser">id: {user.id}</p>
         {settingsForm}
         <div>
