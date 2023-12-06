@@ -12,3 +12,9 @@
     display: block
     ;
 }
+.error{
+    color: red
+}
+.success{
+    color: rgb(7, 170, 7)
+}

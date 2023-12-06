@@ -4,25 +4,54 @@ export default class SignUp extends Component{
     constructor(){
         super();
     }
-    validatePassword() {
-        var form = document.getElementById('signup')
-        var p = document.getElementById('passwd').value,
-            errors = [];
-        if (p.length < 8) {
-            errors.push("Your password must be at least 8 characters"); 
+    validatePassword(password, minlength) {
+        if (!password) return 'Password is required';
+        let str = ""
+        if (password.length < minlength) {
+          str += `Please enter a password that's at least ${minlength} characters long<br>`;
         }
-        if (p.search(/[a-z]/i) < 0) {
-            errors.push("Your password must contain at least one letter.");
+      
+        const hasCapitalLetter = /[A-Z]/g;
+        if (!hasCapitalLetter.test(password)) {
+            str +=  'Please use at least one capital letter.<br>';
         }
-        if (p.search(/[0-9]/) < 0) {
-            errors.push("Your password must contain at least one digit."); 
+        const hasSpecialSymbol = /[!@#$%^&*]/g;
+        if (!hasSpecialSymbol.test(password)) {
+            str +=  'Please use at least one special symbol.<br>';
         }
-        if (errors.length > 0) {
-            form.setCustomValidity("s")
-            return false;
+        
+        const hasRegularLetter = /[a-z]/g;
+        if (!hasRegularLetter.test(password)) {
+            str +=  'Please use at least one Regular Letter.<br>';
         }
-        return true;
-    };
+        
+      
+        const hasNumber = /\d/g;
+        if (!hasNumber.test(password)) {
+            str +=  'Please use at least one number.<br>';
+        }
+      
+        return str;
+      }
+      validateEmail(email) {
+        if (!email) return 'Email is required <br>';
+        let str =""
+        const isValidEmail1 = /^[a-zA-Z0-9_.+-]/g
+        if (!isValidEmail1.test(email)) {
+            str += 'EROOR symbol do sobaki <br>';
+        }
+        const isValidEmail2 = /@[a-zA-Z0-9-]/g
+        if (!isValidEmail2.test(email)) {
+            str += 'ERROR 2 symbol posle sobaki <br>';
+        }
+        const isValidEmail3 = /.[a-zA-Z0-9-.]+$/g
+        if (!isValidEmail3.test(email)) {
+            str += 'ERROR 3 Please enter a valid email<br>';
+        }
+        
+      
+        return str;
+      }
 
     render(){
         return <>
@@ -31,13 +60,36 @@ export default class SignUp extends Component{
             <form onSubmit={async (event) => {
                 event.preventDefault();
                 let form = document.getElementById('signup');
+                let _password = form.querySelector('input[name="password"]').value
+                let length = 8;
+                let validated = this.validatePassword(_password, length)
+
+                
+                let _email = form.querySelector('input[name="email"]').value
+                let validatedEmail = this.validateEmail(_email)
+                if (validatedEmail!=""){
+                    message.innerHTML = validatedEmail;
+                    message.classList.add("error")
+                    message.classList.remove("success")
+                    return;
+                }
+
+                console.log(validated)
+                if (validated != ""){
+                    message.innerHTML = validated;
+                    message.classList.add("error")
+                    message.classList.remove("success")
+                    return;
+                }
+                
                 let dataJson = {
                     username : form.querySelector('input[name="username"]').value,
-                    password : form.querySelector('input[name="password"]').value,
+                    password : _password,
                     email : form.querySelector('input[name="email"]').value,
                     roles: ["user"]
                 }
                 console.log(dataJson);
+                
                 let response = await fetch("/api/auth/signup", {
                     method: "POST",
                     headers: {
@@ -47,22 +99,31 @@ export default class SignUp extends Component{
                     body: JSON.stringify(dataJson)
                     })
                     .then((response) => {
+                        if (response.status == 200){
+                            message.classList.add("success")
+                            message.classList.remove("error")
+                        } else {
+                            message.classList.add("error")
+                            message.classList.remove("success")
+                        }
                         return response.json();
                     })
                     .then((data) => {
                         console.log(data.message);
+
                         message.innerHTML = data.message;
                     });
+                    
             }} id = "signup">
                 <input className = "form-field" name='username' type="text" placeholder='username' pattern="^[a-zA-Z][a-zA-Z0-9-_\]{3,64}$"/>
-                <input className = "form-field" name='email' type="text" placeholder='email' pattern="^\S+@\S+$" />
-                <input className = "form-field" id="passwd" name='password' type="password" placeholder='password' oninvalid="setCustomValidity('dssd')" onchange="try{setCustomValidity('')}catch(e){}" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"/>
+                <input className = "form-field" name='email' type="text" placeholder='email' />
+                <input className = "form-field" id="passwd" name='password' type="password" placeholder='password'/>
                 <input type="submit" value = "Sign Up"/>
             </form>
             
         </div>
         
-        <div id="message"></div>
+        <div id="message" className="error"></div>
         <form className = "stylesignin" action="/signin">
             <input type="submit" value = "Go to Login page"/>
         </form>
