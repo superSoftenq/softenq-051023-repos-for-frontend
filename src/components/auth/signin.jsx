@@ -15,6 +15,7 @@ function SignIn() {
   return (
     <>
         
+      <div className = "container">
       <div className="modal">
         <form onSubmit={async (event) => {
             event.preventDefault();
@@ -62,22 +63,12 @@ function SignIn() {
             <div><input type="submit" value = "Login"/></div>
         </form>
         <SignupBtn
-        buttonText = {"Sign up"}/>
-
-        
-      </div>
-    <div  id="all">
+        buttonText = {"Sign up"}/></div>
+    <div  id="all"></div>
+    <div id="user"></div>
+    <div id="mod"></div>
+    <div id="admin"></div>
     </div>
-    <div id="user">
-
-    </div>
-    <div id="mod">
-
-    </div>
-    <div id="admin">
-
-    </div>
-    
     </>
   )
 }

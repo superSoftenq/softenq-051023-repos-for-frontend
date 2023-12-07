@@ -4,12 +4,15 @@ export default class SignUp extends Component{
     constructor(){
         super();
     }
-    validatePassword(password, minlength) {
+    
+    validatePassword(password) {
+        const minlength = 8
         if (!password) return 'Password is required';
         let str = ""
         if (password.length < minlength) {
           str += `Please enter a password that's at least ${minlength} characters long<br>`;
         }
+        
       
         const hasCapitalLetter = /[A-Z]/g;
         if (!hasCapitalLetter.test(password)) {
@@ -52,84 +55,98 @@ export default class SignUp extends Component{
       
         return str;
       }
-
     render(){
         return <>
-        
-        <div className="modal">
-            <form onSubmit={async (event) => {
-                event.preventDefault();
-                let form = document.getElementById('signup');
-                let _password = form.querySelector('input[name="password"]').value
-                let length = 8;
-                let validated = this.validatePassword(_password, length)
+        <div className="container">
+            <div className="modal">
+                <form onSubmit={async (event) => {
+                    event.preventDefault();
+                    let form = document.getElementById('signup');
+                    let _password = form.querySelector('input[name="password"]').value
+                    let validated = this.validatePassword(_password)
 
-                
-                let _email = form.querySelector('input[name="email"]').value
-                let validatedEmail = this.validateEmail(_email)
-                if (validatedEmail!=""){
-                    message.innerHTML = validatedEmail;
-                    message.classList.add("error")
-                    message.classList.remove("success")
-                    return;
-                }
-
-                console.log(validated)
-                if (validated != ""){
-                    message.innerHTML = validated;
-                    message.classList.add("error")
-                    message.classList.remove("success")
-                    return;
-                }
-                
-                let dataJson = {
-                    username : form.querySelector('input[name="username"]').value,
-                    password : _password,
-                    email : form.querySelector('input[name="email"]').value,
-                    roles: ["user"]
-                }
-                console.log(dataJson);
-                
-                let response = await fetch("/api/auth/signup", {
-                    method: "POST",
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(dataJson)
-                    })
-                    .then((response) => {
-                        if (response.status == 200){
-                            message.classList.add("success")
-                            message.classList.remove("error")
-                        } else {
-                            message.classList.add("error")
-                            message.classList.remove("success")
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        console.log(data.message);
-
-                        message.innerHTML = data.message;
-                    });
                     
-            }} id = "signup">
-                <div className="head_title1"><h3>signup</h3></div>
-                <div> <input className = "form-field" name='username' type="text" placeholder='username' pattern="^[a-zA-Z][a-zA-Z0-9-_\]{3,64}$"/> </div>
-                <div><input className = "form-field" name='email' type="text" placeholder='email' /></div>
-                <div><input className = "form-field" id="passwd" name='password' type="password" placeholder='password'/></div>
-                <div><input type="submit" value = "Sign Up"/></div>
-                <div id="message" className="error"></div>
-                    <form className = "stylesignin" action="/signin">
-                    <input type="submit" value = "Go to Login page"/>
+                    let _email = form.querySelector('input[name="email"]').value
+                    let validatedEmail = this.validateEmail(_email)
+                    if (validatedEmail!=""){
+                        message.innerHTML = validatedEmail;
+                        message.classList.add("error")
+                        message.classList.remove("success")
+                        return;
+                    }
+
+                    console.log(validated)
+                    if (validated != ""){
+                        message.innerHTML = validated;
+                        message.classList.add("error")
+                        message.classList.remove("success")
+                        return;
+                    }
+                    
+                    let dataJson = {
+                        username : form.querySelector('input[name="username"]').value,
+                        password : _password,
+                        email : form.querySelector('input[name="email"]').value,
+                        roles: ["user"]
+                    }
+                    console.log(dataJson);
+                    
+                    let response = await fetch("/api/auth/signup", {
+                        method: "POST",
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(dataJson)
+                        })
+                        .then((response) => {
+                            if (response.status == 200){
+                                message.classList.add("success")
+                                message.classList.remove("error")
+                            } else {
+                                message.classList.add("error")
+                                message.classList.remove("success")
+                            }
+                            return response.json();
+                        })
+                        .then((data) => {
+                            console.log(data.message);
+
+                            message.innerHTML = data.message;
+                        });
+                        
+                }} id = "signup">
+                    <div className="head_title1"><h3>signup</h3></div>
+                    <div> <input className = "form-field" name='username' type="text" placeholder='username' pattern="^[a-zA-Z][a-zA-Z0-9-_\]{3,64}$"/> </div>
+                    <div><input className = "form-field" id="email" name='email' type="text" placeholder='email' onChange={ () => {
+                        if (email !== undefined) {
+                            message.innerHTML = this.validateEmail(email.value)
+                            if(message.innerHTML != "") {
+                                message.classList.add("error")
+                                message.classList.remove("success")
+                            }
+                        }
+                    }}/></div>
+                    <div><input className = "form-field" id="passwd" name='password' type="password" placeholder='password' onChange={ () => {
+                        if (passwd !== undefined) {
+                            message.innerHTML = this.validatePassword(passwd.value)
+                            if(message.innerHTML != "") {
+                                message.classList.add("error")
+                                message.classList.remove("success")
+                            }
+                        }
+                    }}/></div>
+                    <div><input type="submit" value = "Sign Up"/></div>
+                    <div id="message" className="error"></div>
+                        <form className = "stylesignin" action="/signin">
+                        <input type="submit" value = "Go to Login page"/>
+                    </form>
+                    
                 </form>
                 
-            </form>
-            
+            </div>
         </div>
         
-      
         </>
     }
 }
