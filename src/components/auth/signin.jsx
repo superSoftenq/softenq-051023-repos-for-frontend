@@ -60,7 +60,7 @@ function SignIn() {
             <h3 className="form_title">signin</h3>
             <div><input className = "form-field" name='username' type="text" placeholder='username'/></div>
             <div><input className = "form-field" name='password' type="password" placeholder='password'/></div>
-            <div><input type="submit" value = "Login"/></div>
+            <div><input className="btnSignUp" type="submit" value = "Login"/></div>
         </form>
         <SignupBtn
         buttonText = {"Sign up"}/></div>

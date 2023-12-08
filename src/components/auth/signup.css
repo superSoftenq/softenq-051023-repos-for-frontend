@@ -10,8 +10,7 @@
     
 }
 .stylesignin{
-    display: block
-    ;
+    
 }
 .error{
     color: red
@@ -41,4 +40,15 @@
     height: 100%;
     transform: translate(-50%, -50%);
     background: linear-gradient(45deg, #9890e3, #b1f4cf);;
+}
+.form-field{
+    width: 300px;
+    height: 45px;
+    font-size: 20px;
+}
+.btnSignUp{
+    width: 170px;
+    height: 40px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
 }

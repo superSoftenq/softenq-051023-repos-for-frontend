@@ -1,3 +1,9 @@
 .signup_btn{
-    background-color: gray;;
+    width: 170px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 1%;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    
 }

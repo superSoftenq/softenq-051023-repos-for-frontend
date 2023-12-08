@@ -136,10 +136,10 @@ export default class SignUp extends Component{
                             }
                         }
                     }}/></div>
-                    <div><input type="submit" value = "Sign Up"/></div>
+                    <div><input className="btnSignUp" type="submit" value = "Sign Up"/></div>
                     <div id="message" className="error"></div>
                         <form className = "stylesignin" action="/signin">
-                        <input type="submit" value = "Go to Login page"/>
+                        <input className="btnSignUp" type="submit" value = "Go to Login page"/>
                     </form>
                     
                 </form>
