@@ -28,7 +28,44 @@ body {
     width: 200px;
     background: cover;
 }
-
+.avatar{
+    border-radius: 33%;
+    border: 2px solid #18181a;
+}
 .regular{
     margin-right: 30px;
+}
+.up_avatar{
+    display: inline-block;
+}
+.up_userinfo{
+    display: inline-block;    
+    margin-left: 50px;
+}
+.up_username{
+    color: blue;
+}
+.up_id{
+    display: block;
+}
+.up_avatar_container{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.up_menu_container{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    right: 0%;
+    position: absolute;
+}
+.up_menu{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
 }

@@ -26,20 +26,22 @@ function MyProfile(props){
     const link = googleLink + user.profilePicture + urlRight
     let userPage = 
     <div className="head"> 
-        <div>
-        { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
-        { isAuthorized == -1 && UserPageIncludes.renderLogin()}
-        <div>
-            {isAuthorized == true && <SettingsBtn/>}
+        <div className="up_menu_container">
+            <div className="up_menu">
+                { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
+                { isAuthorized == -1 && UserPageIncludes.renderLogin()}
+                {isAuthorized == true && <SettingsBtn/>}
+            </div>
         </div>
+        <div className="up_avatar_container">
+            <div className="up_avatar">
+                {user.profilePicture !== undefined && UserPageIncludes.renderAvatar(link)}
+            </div>
+            <div className="up_userinfo">
+                <p className = "infoAboutUser up_username"><h2>@{user.username}</h2></p>
+                <p className = "infoAboutUser up_id"><h3>#{user.id}</h3></p>
+            </div>
         </div>
-        <p className="title">Вы зашли на свою страницу, ваши данные:</p>
-        <div >
-            {user.profilePicture !== undefined && UserPageIncludes.renderAvatar(link)}
-        </div>
-        <p className = "infoAboutUser">id: {user.id}</p>
-        <p className = "infoAboutUser">username: {user.username}</p>
-        <p className = "infoAboutUser">email: {user.email}</p>
         <div>
             {isAuthorized == true && UserPageIncludes.renderRegularForm(user)}
         </div>
