@@ -6,8 +6,9 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    
-    
+    width: 400px;
+    height: 400px;
+    background-color: rgb(154, 202, 169);
 }
 .stylesignin{
     
@@ -45,6 +46,10 @@
     width: 300px;
     height: 45px;
     font-size: 20px;
+    margin-top: 25px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 1px solid black;
 }
 .btnSignUp{
     width: 170px;
