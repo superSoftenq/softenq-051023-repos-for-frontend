@@ -59,6 +59,7 @@ export default class SignUp extends Component{
         return <>
         <div className="container">
             <div className="modal">
+            <div id="message" className="error"></div>
                 <form onSubmit={async (event) => {
                     event.preventDefault();
                     let form = document.getElementById('signup');
@@ -137,7 +138,6 @@ export default class SignUp extends Component{
                         }
                     }}/></div>
                     <div><input className="btnSignUp" type="submit" value = "Sign Up"/></div>
-                    <div id="message" className="error"></div>
                         <form className = "stylesignin" action="/signin">
                         <input className="btnSignUp" type="submit" value = "Go to Login page"/>
                     </form>
