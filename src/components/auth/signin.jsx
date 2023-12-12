@@ -63,7 +63,7 @@ function SignIn() {
             <div><input className="btnSignUp" type="submit" value = "Login"/></div>
         </form>
         <SignupBtn
-        buttonText = {"Sign up"}/></div>
+        buttonText = {"Go to Signup page"}/></div>
     <div  id="all"></div>
     <div id="user"></div>
     <div id="mod"></div>
