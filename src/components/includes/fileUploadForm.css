@@ -2,6 +2,7 @@
     text-align: center;
     justify-content: center;
     display: flex;
+    
 }
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -19,3 +20,15 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+ 
+  .fu_form-field{
+    
+    height: 40px;
+    font-size: 20px;
+    color: black;
+    margin-top: 25px;
+    
+    
+    
+    
+   }

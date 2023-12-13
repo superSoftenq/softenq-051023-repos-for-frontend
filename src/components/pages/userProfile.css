@@ -22,6 +22,9 @@ body {
     place-items: normal start;
     min-width: 320px;
     min-height: 100vh;
+    background-image: url('bgr.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .photo{
     height: 200px;
@@ -45,12 +48,13 @@ body {
     margin-left: 50px;
 }
 .up_username{
-    color: blue;
+    color: rgb(0, 0, 0);
     font-size: 30px;
 }
 .up_id{
     font-size: 20px;
     display: block;
+    color: black;
 }
 .up_avatar_container{
     justify-content: left;
@@ -68,6 +72,7 @@ body {
     align-items: center;
     right: 0%;
     position: absolute;
+    
 }
 .up_menu{
     justify-content: center;

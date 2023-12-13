@@ -29,8 +29,10 @@ function FileUploadForm(props) {
             window.location.assign(window.location.href);
         }
         }} action = "#" className = {props.formClassName}>
-            <input type="file" multiple name = "files" required />
-            <input type="submit" value="upload files"/>
+            <div className='---'>
+            <input className="fu_form-field" type="file" multiple name = "files" required />
+            <input className="fu_form-field" type="submit" value="upload_files" />
+            </div>
         </form>
         <div className = "load_con">
             <div id={"loader_" + props.formClassName} ></div>
