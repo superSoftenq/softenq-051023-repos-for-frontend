@@ -1,0 +1,29 @@
+
+.downBar{
+    display: grid;
+
+    grid-template-areas: /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
+  "likesIcon repostIcon";
+  
+  grid-template-rows: 30px; /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
+  grid-template-columns:2fr 2fr 2fr 2fr;/*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
+  grid-gap: 0px
+}
+
+
+.likesIcon{
+    width: 20px;
+    grid-area: likesIcon;
+}
+.likesCounter{
+    grid-area: likeCounter
+}
+
+.repostIcon{
+    width: 20px;
+    grid-area: repostIcon;
+}
+
+.reposCounter{
+    grid-area: repostCounter
+}

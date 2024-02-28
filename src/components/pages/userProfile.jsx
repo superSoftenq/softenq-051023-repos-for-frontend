@@ -6,6 +6,9 @@ import * as Cookie from "../includes/cookie.js"
 import * as GoogleLinks from "../includes/googleLinks.js"
 import { verifyUser } from "../includes/verifyUser.js";
 import * as UserPageIncludes from "./userPageIncludes.jsx"
+
+import News from "../news.jsx";
+
 function UserProfile(props) {
     
     
@@ -79,7 +82,9 @@ function UserProfile(props) {
         getUserData()
     }, [])
     return ((statusCode == 200)? userPage : pageNotFound)
+    
   }
+  
   
   
   export default UserProfile

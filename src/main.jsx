@@ -11,6 +11,11 @@ import FileUploadForm from './components/includes/fileUploadForm.jsx';
 import MyProfile from './components/pages/myProfile.jsx';
 import PageNotFound from './components/includes/pageNotFound.jsx';
 import MyProfileSettings from './components/pages/myProfleSettings.jsx';
+import DateForPost from './stateDataForPosts.jsx';
+
+import PageWithNewsPosts from './components/pages/newPosts/pageWithNewsPosts.jsx';
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <Routes>
@@ -21,8 +26,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/login_succeed" element={<LoginSucceed />} />
       <Route path="/myprofile" element={<MyProfile />} />
       <Route path="/settings" element={<MyProfileSettings />} />
+      <Route path='/news' element = {<PageWithNewsPosts DateForPost= {DateForPost}/>} />
       <Route path="/user/:userId" element={
       <UserProfile>
+        
         
       </UserProfile>} />
       
