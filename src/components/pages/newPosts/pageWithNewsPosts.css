@@ -2,7 +2,7 @@
 .butForHome{
     color: black;
     outline: solid;
-    background-color: gray;
-    padding: 8px;
-    border-radius: 15%;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10%;
 }
