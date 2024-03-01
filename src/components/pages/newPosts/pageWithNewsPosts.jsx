@@ -1,4 +1,5 @@
 import Post from "./post";
+import './pageWithNewsPosts.css'
 
 const PageWithNewsPosts= (props) => {
     
@@ -13,7 +14,7 @@ const PageWithNewsPosts= (props) => {
     return(
 
         
-        <div>
+        <div className="myPosts">
                 this page from new Posts
                 {listPostsFromComp}
                 

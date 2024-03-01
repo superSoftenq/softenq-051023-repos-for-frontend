@@ -7,7 +7,10 @@ const Post = (props) => {
 
 
     return (
-        <div className="Post"> 
+        
+        
+        <div className="bigClassPosts">
+               <div className="Post"> 
            <div className="HeaderInPost">
                 <HeaderPost 
                 avtorPosta = {props.avtorPosta}
@@ -28,6 +31,12 @@ const Post = (props) => {
 
            
         </div>
+
+
+        </div>
+        
+        
+        
     )
 }
 

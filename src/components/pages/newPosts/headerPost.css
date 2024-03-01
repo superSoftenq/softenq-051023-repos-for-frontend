@@ -7,8 +7,10 @@
     grid-template-rows: 30px; /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
     
     grid-gap: 10px;
-
-    outline: solid;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    
 }
 
 .avatarIcon{

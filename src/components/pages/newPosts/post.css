@@ -9,7 +9,14 @@
   "headerInPost"
   "textInPost"
   "fhotoInPost";
+    
     outline: solid;
+    border-radius: 10%;
+
+    background: -webkit-linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
+background: -moz-linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
+background: linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
+    
 
 }
 
@@ -26,4 +33,8 @@
     width: 100px;
 
     grid-area: fhotoInPost;
+}
+
+.bigClassPosts{
+    padding: 20px;
 }
