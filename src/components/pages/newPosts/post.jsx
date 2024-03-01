@@ -5,7 +5,11 @@ import DownBar from "./downbar";
 
 const Post = (props) => {
 
-
+/*
+background: -webkit-linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
+background: -moz-linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
+background: linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
+*/
     return (
         
         

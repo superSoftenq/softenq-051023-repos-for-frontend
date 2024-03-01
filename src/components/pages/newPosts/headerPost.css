@@ -27,6 +27,9 @@
     grid-area: time;
 }
 
-.dotdotdot{
+.dotdotdot img{
     grid-area: dotdotdot;
+    width: 25px;
+    outline: solid;
+    outline-width: 1px;
 }

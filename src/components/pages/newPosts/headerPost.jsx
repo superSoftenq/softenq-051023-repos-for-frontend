@@ -1,6 +1,11 @@
 
 import './headerPost.css'
 const HeaderPost= (props) => {
+
+    let alarmFunc = () => {
+        alert('hello')
+    }
+
     return (
         <div className='headerPost'>
             <div className="avatarUser">
@@ -13,7 +18,7 @@ const HeaderPost= (props) => {
                 {props.timeByPost}
             </div>
             <div className="dotdotdot">
-                <button>  </button>
+                <img className='moreIcon' onClick={alarmFunc} src='https://cdn-icons-png.flaticon.com/512/149/149403.png'/>
             </div>
         </div>
     )
