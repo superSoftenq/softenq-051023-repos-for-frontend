@@ -6,6 +6,7 @@ import PageNotFound from '../includes/pageNotFound.jsx'
 import * as UserPageIncludes from "./userPageIncludes.jsx"
 import SettingsBtn from "../includes/settingsBtn.jsx";
 import './userProfile.css'
+
 function MyProfile(props){
     const [id, setId] = useState([])
     let token = Cookie.getCookie("token")  
@@ -26,12 +27,19 @@ function MyProfile(props){
     const link = googleLink + user.profilePicture + urlRight
     let userPage = 
     <div className="head"> 
+    
         <div className="up_menu_container">
+        
             <div className="up_menu">
                 { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
+                { isAuthorized !== -1  && UserPageIncludes.renderNews()}
                 { isAuthorized == -1 && UserPageIncludes.renderLogin()}
-                {isAuthorized == true && <SettingsBtn/>}
+
+                {isAuthorized == true && <SettingsBtn/> }
+                
             </div>
+
+            
         </div>
         <div className="up_avatar_container">
             <div className="up_avatar">
@@ -48,6 +56,7 @@ function MyProfile(props){
         <div>
             {photos.length != 0 && UserPageIncludes.renderMyGallery(photos)}
         </div>
+        
     </div>
     let pageNotFound = <PageNotFound></PageNotFound>
     const getUserData = async () => {
@@ -90,8 +99,11 @@ function MyProfile(props){
     useEffect(() => {
         getUserData()
     }, [])
-        return ((statusCode == 200)? userPage : pageNotFound)
+        return (
+            (statusCode == 200)? userPage : pageNotFound
+            )
     
-  }
+      
+}
 
 export default MyProfile

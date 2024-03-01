@@ -7,7 +7,7 @@ import * as GoogleLinks from "../includes/googleLinks.js"
 import { verifyUser } from "../includes/verifyUser.js";
 import * as UserPageIncludes from "./userPageIncludes.jsx"
 
-import News from "../news.jsx";
+
 
 function UserProfile(props) {
     
@@ -28,6 +28,7 @@ function UserProfile(props) {
         <div className="up_menu_container">
             <div className="up_menu">
                 { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
+                { isAuthorized !== -1  && UserPageIncludes.renderNews()}
                 { isAuthorized == -1 && UserPageIncludes.renderLogin()}
             </div>
         </div>

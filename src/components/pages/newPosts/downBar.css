@@ -14,14 +14,16 @@
 .likesIcon{
     width: 20px;
     grid-area: likesIcon;
+    border-radius: 30%;
 }
 .likesCounter{
     grid-area: likeCounter
 }
 
 .repostIcon{
-    width: 20px;
+    width: 18px;
     grid-area: repostIcon;
+    border-radius: 30%;
 }
 
 .reposCounter{

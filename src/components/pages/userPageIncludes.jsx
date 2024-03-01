@@ -5,6 +5,8 @@ import DeleteBtn from "../includes/deleteBtn.jsx"
 import *  as Cookie from "../includes/cookie.js"
 import * as GoogleLinks from "../includes/googleLinks.js"
 import './userPageIncludes.css'
+import { NavLink } from "react-router-dom";
+
 export const renderAvatar = (link) => (
     <img src = {link}  alt="" className = "photo avatar"/>
 );
@@ -18,6 +20,14 @@ export const renderLogin = () => {
         buttonText = "Sign in"
     />
  };
+export const renderNews = (props) => {
+    return (
+        <div>
+            <button onClick={async(event) => {window.location.assign("/news")}}>News</button>
+            
+        </div>
+    )
+}
  export const renderMyGallery = (photoArray) => {
     let photoItems = photoArray.map((photo) => 
             <div className="photo_item">

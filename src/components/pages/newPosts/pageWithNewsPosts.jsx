@@ -1,5 +1,6 @@
 import Post from "./post";
 import './pageWithNewsPosts.css'
+import { NavLink } from "react-router-dom";
 
 const PageWithNewsPosts= (props) => {
     
@@ -15,7 +16,10 @@ const PageWithNewsPosts= (props) => {
 
         
         <div className="myPosts">
-                this page from new Posts
+                <div >
+                    <NavLink className="butForHome" to = '/myprofile'> My Profile</NavLink>
+                    </div>
+                
                 {listPostsFromComp}
                 
         </div>
