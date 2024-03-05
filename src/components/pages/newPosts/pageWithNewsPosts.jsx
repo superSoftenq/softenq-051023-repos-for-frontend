@@ -1,6 +1,7 @@
 import Post from "./post";
 import './pageWithNewsPosts.css'
 import { NavLink } from "react-router-dom";
+import React from "react";
 
 const PageWithNewsPosts= (props) => {
     
@@ -12,6 +13,29 @@ const PageWithNewsPosts= (props) => {
         message = {p.message} 
         likecounter = {p.likecounter} 
         repostCounter = {p.repostCounter}/>)
+
+    let dataForPost = 
+    {
+    ownerId: '234567890787878',
+    photoId:'789'
+}
+     let createPost = fetch('/api/post/create', {
+     method: 'POST',
+     headers: { 
+        'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+      }, 
+     body: JSON.stringify(dataForPost)}).then(response => { 
+        if (!response.ok) { 
+          throw new Error('Ошибка сети или сервера'); 
+        } 
+        return response.json(); // Парсим ответ сервера в формате JSON 
+      }) 
+      .then(data => { 
+        console.log(data); // Обрабатываем полученные данные 
+      }) 
+      .catch(error => { 
+        console.error(error); // Обрабатываем ошибки 
+      });
     return(
 
         
@@ -19,7 +43,10 @@ const PageWithNewsPosts= (props) => {
                 <div >
                     <NavLink className="butForHome" to = '/myprofile'> My Profile</NavLink>
                     </div>
-                
+                <div>
+                    <div><textarea ></textarea></div>
+                    <div><button onClick={createPost}> add new Post</button></div>
+                </div>
                 {listPostsFromComp}
                 
         </div>
