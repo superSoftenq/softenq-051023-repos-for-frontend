@@ -20,6 +20,8 @@ function MyProfile(props){
     const [isAuthorized, setAuthorized] = useState([])
     const [photos, setPhotos] = useState([])
 
+
+
     const googleLink = "https://drive.google.com/u/0/uc?id=";
     const urlRight = "&export=download"
     const params = useParams();
@@ -54,6 +56,7 @@ function MyProfile(props){
             {isAuthorized == true && UserPageIncludes.renderRegularForm(user)}
         </div>
         <div>
+            {console.log('id 59 line = ', id)}
             {photos.length != 0 && UserPageIncludes.renderMyGallery(photos)}
         </div>
         

@@ -32,6 +32,7 @@ export const renderNews = (props) => {
     let photoItems = photoArray.map((photo) => 
             <div className="photo_item">
                 <div>
+                    {console.log('big links for check line 35',GoogleLinks.driveIdToLink(photo["link"]))}
                 <img src = {GoogleLinks.driveIdToLink(photo["link"])}  alt={photo["id"]} id = {"regular_photo_" + photo["id"]} className = "photo regular"/>
                 </div>
                 <div>
