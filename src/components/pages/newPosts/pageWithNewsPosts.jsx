@@ -16,26 +16,28 @@ const PageWithNewsPosts= (props) => {
 
     let dataForPost = 
     {
-    ownerId: '234567890787878',
-    photoId:'789'
+    ownerId: "568",
+    photoId: "7799"
 }
-     let createPost = fetch('/api/post/create', {
-     method: 'POST',
-     headers: { 
-        'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
-      }, 
-     body: JSON.stringify(dataForPost)}).then(response => { 
-        if (!response.ok) { 
-          throw new Error('Ошибка сети или сервера'); 
-        } 
-        return response.json(); // Парсим ответ сервера в формате JSON 
-      }) 
-      .then(data => { 
-        console.log(data); // Обрабатываем полученные данные 
-      }) 
-      .catch(error => { 
-        console.error(error); // Обрабатываем ошибки 
-      });
+     let createPost = () => {
+      fetch('/api/post/create', {
+        method: 'POST',
+        headers: { 
+           'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+         }, 
+        body: JSON.stringify(dataForPost)}).then(response => { 
+           if (!response.ok) { 
+             throw new Error('Ошибка сети или сервера'); 
+           } 
+           return response.json(); // Парсим ответ сервера в формате JSON 
+         }) 
+         .then(data => { 
+           console.log(data); // Обрабатываем полученные данные 
+         }) 
+         .catch(error => { 
+           console.error(error); // Обрабатываем ошибки 
+         });
+     }
     return(
 
         
