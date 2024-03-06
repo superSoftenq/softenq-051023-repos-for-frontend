@@ -1,6 +1,6 @@
 import Post from "./post";
 import './pageWithNewsPosts.css'
-import { NavLink } from "react-router-dom";
+import { NavLink, json } from "react-router-dom";
 import React from "react";
 
 const PageWithNewsPosts= (props) => {
@@ -38,6 +38,33 @@ const PageWithNewsPosts= (props) => {
            console.error(error); // Обрабатываем ошибки 
          });
      }
+     let dataForGetPost = {
+      startingPoint : 0,
+      postsCount: 9999,
+      flags: 0
+     }
+     let getPost = () => {
+      fetch('/api/feed', {
+        method: 'POST',
+        headers: { 
+           'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+         }, 
+        body: JSON.stringify(dataForGetPost)}).then(response => { 
+           if (!response.ok) { 
+             throw new Error('Ошибка сети или сервера'); 
+           } 
+           return response.json(); // Парсим ответ сервера в формате JSON 
+         }) 
+         .then(data => { 
+           console.log(data); // Обрабатываем полученные данные 
+         }) 
+         .catch(error => { 
+           console.error(error); // Обрабатываем ошибки 
+         });
+
+         
+     }
+     
     return(
 
         
@@ -48,6 +75,7 @@ const PageWithNewsPosts= (props) => {
                 <div>
                     <div><textarea ></textarea></div>
                     <div><button onClick={createPost}> add new Post</button></div>
+                    <div><button onClick={getPost}>view all post</button></div>
                 </div>
                 {listPostsFromComp}
                 
