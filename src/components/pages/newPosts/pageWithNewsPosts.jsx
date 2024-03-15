@@ -1,7 +1,7 @@
 import Post from "./post";
 import './pageWithNewsPosts.css'
 import { NavLink, json } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState } from "react"
 import { renderAllPost } from "../userPageIncludes";
 import FormNewPost from "./formFormAddNewPost/formForAddNewPost";
 
@@ -96,7 +96,28 @@ const PageWithNewsPosts = (props) => {
       message={p.message}
       likecounter={p.likecounter}
       repostCounter={p.repostCounter} />)*/
-
+  const [postsArray, setPosts] = useState([])
+  
+  let response = fetch('/api/feed', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+    },
+    body: JSON.stringify(dataForGetPost)
+  }).then(response => {
+    if (!response.ok) {
+      throw new Error('Ошибка сети или сервера');
+    }
+    return response.json(); // Парсим ответ сервера в формате JSON 
+  })
+    .then(data => {
+      console.log(data);
+      setPosts(data)
+    })
+    .catch(error => {
+      console.error(error); // Обрабатываем ошибки 
+    });
+  
   return (
 
 
@@ -112,6 +133,7 @@ const PageWithNewsPosts = (props) => {
       <div>
       {getPost()}
         {console.log('bigdata = ',bigdata)}
+        {postsArray.length != 0 && renderAllPost(postsArray)}
       </div>
       <div>
         <FormNewPost />
