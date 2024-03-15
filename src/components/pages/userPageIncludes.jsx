@@ -30,7 +30,7 @@ export const renderNews = (props) => {
     )
 }
 export const renderMyGallery = (photoArray) => {
-    
+
     let photoItems = photoArray.map((photo) =>
         <div className="photo_item">
             <div>
@@ -95,13 +95,19 @@ export const renderRegularForm = (user) => {
 
 export const renderAllPost = (postArray) => {
     console.log('arrive data = ', postArray);
+    console.log('проверка вывода элемента поста', postArray['comment'])
     let postItems = postArray.map((post) =>
         <div className="post_item">
             <div>
-                <Post message = 'hello for test hard Code'/>
+                {console.log('проверка вывода', post['comment'])}
+                {console.log('проверка  вывода 2', post['ownerId'])}
+                <div className="TextInPost">
+                    hello{post['comment']}
+                </div>
+                <Post avtorPosta={post['ownerId']} message={post["comment"]} />
 
             </div>
-            
+
         </div>
 
 
@@ -110,13 +116,13 @@ export const renderAllPost = (postArray) => {
         <>
             <div>Gallery</div>
             <div>
-            <Post message = 'hello for test hard Code'/>
-            {console.log('postItems = ', postItems)}
-            {postItems}
-    
+                <Post message='hello for test hard Code' />
+                {console.log('postItems = ', postItems)}
+                {postItems}
+
             </div>
-            
-            
+
+
         </>
     )
 }
