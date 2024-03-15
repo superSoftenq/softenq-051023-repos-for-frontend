@@ -14,6 +14,9 @@ background: linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
         
         
         <div className="bigClassPosts">
+          <div>
+               form for add new post
+          </div>
                <div className="Post"> 
            <div className="HeaderInPost">
                 <HeaderPost 

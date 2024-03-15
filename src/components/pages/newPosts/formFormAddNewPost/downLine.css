@@ -1,0 +1,21 @@
+.downLine{
+    display: grid;
+    grid-template-areas: /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
+    "btSetPostIcon btFotSentPost";
+    align-items: end;
+    outline: solid;
+    
+}   
+
+.bottonSettingPostIcon{
+    grid-area: btSetPostIcon;
+    width: 25px;
+    
+    border-radius: 40%;
+
+}
+
+.bottonForSentPost{
+    grid-area: btFotSentPost;
+
+}

@@ -6,8 +6,12 @@ import PageNotFound from '../includes/pageNotFound.jsx'
 import * as UserPageIncludes from "./userPageIncludes.jsx"
 import SettingsBtn from "../includes/settingsBtn.jsx";
 import './userProfile.css'
+import FormNewPost from "./newPosts/formFormAddNewPost/formForAddNewPost.jsx";
 
 function MyProfile(props){
+    let form = 
+    <FormNewPost />
+
     const [id, setId] = useState([])
     let token = Cookie.getCookie("token")  
     const getId = async () => {
@@ -57,6 +61,8 @@ function MyProfile(props){
         </div>
         <div>
             {console.log('id 59 line = ', id)}
+            тут дожно быть кнопки для ленты и для галереи
+            
             {photos.length != 0 && UserPageIncludes.renderMyGallery(photos)}
         </div>
         
@@ -73,9 +79,11 @@ function MyProfile(props){
             setStatusCode(response.status)
             if (response.status == 200) {
             }
+            
             return  response.json();
         })
         .then(async(data) => {
+            
             let rs = await verifyUser(token)
             console.log(data.id == rs)
             console.log(rs)
@@ -86,7 +94,7 @@ function MyProfile(props){
             .then((data) => {
                 return data;
             })
-            console.log(photoLinks)
+            console.log('тут должна быть ссылка photoLinks',photoLinks)
             setPhotos(photoLinks)
             setUser(data)
             if (rs == -1) {

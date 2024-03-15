@@ -7,6 +7,7 @@ import * as GoogleLinks from "../includes/googleLinks.js"
 import './userPageIncludes.css'
 import { NavLink } from "react-router-dom";
 import Post from "./newPosts/post.jsx";
+import HeaderLine from "./newPosts/formFormAddNewPost/headerLine.jsx";
 
 export const renderAvatar = (link) => (
     <img src={link} alt="" className="photo avatar" />
@@ -29,6 +30,8 @@ export const renderNews = (props) => {
         </div>
     )
 }
+
+
 export const renderMyGallery = (photoArray) => {
 
     let photoItems = photoArray.map((photo) =>
@@ -125,4 +128,6 @@ export const renderAllPost = (postArray) => {
 
         </>
     )
+
+    
 }
