@@ -2,6 +2,10 @@ import Post from "./post";
 import './pageWithNewsPosts.css'
 import { NavLink, json } from "react-router-dom";
 import React from "react";
+import { renderAllPost } from "../userPageIncludes";
+
+
+
 let bigdata = {
 
 }
@@ -56,6 +60,8 @@ let getPost = () => {
     .then(data => {
       console.log('data = ', data); // Обрабатываем полученные данные
       bigdata = data 
+      console.log('call func for render all post');
+      renderAllPost(data)
       
     })
     .catch(error => {
@@ -67,14 +73,14 @@ let getPost = () => {
 
 const PageWithNewsPosts = (props) => {
 
-  let listPostsFromComp = props.DateForPost.posts.map
+  /*let listPostsFromComp = props.DateForPost.posts.map
     (p => <Post
       id={p.id}
       avtorPosta={p.avtorPosta}
       timeByPost={p.timeByPost}
       message={p.message}
       likecounter={p.likecounter}
-      repostCounter={p.repostCounter} />)
+      repostCounter={p.repostCounter} />)*/
 
   return (
 
@@ -93,7 +99,7 @@ const PageWithNewsPosts = (props) => {
         {console.log('bigdata = ',bigdata)}
       </div>
 
-      {listPostsFromComp}
+      {/*listPostsFromComp*/}
 
     </div>
   )
