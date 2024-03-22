@@ -102,8 +102,6 @@ export const renderAllPost = (postArray) => {
     let postItems = postArray.map((post) =>
         <div className="post_item">
             <div>
-                {console.log('проверка вывода', post['comment'])}
-                {console.log('проверка  вывода 2', post['ownerId'])}
                 <div className="TextInPost">
                     hello{post['comment']}
                 </div>
@@ -117,9 +115,9 @@ export const renderAllPost = (postArray) => {
     )
     return (
         <>
-            <div>Gallery</div>
+            <div>lenta postov</div>
             <div>
-                <Post message='hello for test hard Code' />
+                
                 {console.log('postItems = ', postItems)}
                 {postItems}
 

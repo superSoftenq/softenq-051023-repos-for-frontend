@@ -88,35 +88,31 @@ let getPost = () => {
 
 const PageWithNewsPosts = (props) => {
 
-  /*let listPostsFromComp = props.DateForPost.posts.map
-    (p => <Post
-      id={p.id}
-      avtorPosta={p.avtorPosta}
-      timeByPost={p.timeByPost}
-      message={p.message}
-      likecounter={p.likecounter}
-      repostCounter={p.repostCounter} />)*/
   const [postsArray, setPosts] = useState([])
-  
-  let response = fetch('/api/feed', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
-    },
-    body: JSON.stringify(dataForGetPost)
-  }).then(response => {
-    if (!response.ok) {
-      throw new Error('Ошибка сети или сервера');
-    }
-    return response.json(); // Парсим ответ сервера в формате JSON 
-  })
-    .then(data => {
-      console.log(data);
-      setPosts(data)
+
+  useEffect(() => {
+    fetch('/api/feed', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+      },
+      body: JSON.stringify(dataForGetPost)
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Ошибка сети или сервера');
+      }
+      return response.json(); // Парсим ответ сервера в формате JSON 
     })
-    .catch(error => {
-      console.error(error); // Обрабатываем ошибки 
-    });
+      .then(data => {
+        console.log('olololo',data); //это почему-то выполняется бесконечное число раз
+        setPosts(data)
+      })
+      .catch(error => {
+        console.error(error); // Обрабатываем ошибки 
+      });
+
+  }, []);
+  
   
   return (
 
@@ -131,16 +127,14 @@ const PageWithNewsPosts = (props) => {
         <div><button className="butForViewAllPost">view all post</button></div>
       </div>
       <div>
-      {getPost()}
+      
         {console.log('bigdata = ',bigdata)}
         {postsArray.length != 0 && renderAllPost(postsArray)}
       </div>
       <div>
         <FormNewPost />
       </div>
-      <div>
-        <Post />
-      </div>
+      
 
       {/*listPostsFromComp*/}
 
