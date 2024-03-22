@@ -6,11 +6,9 @@ import PageNotFound from '../includes/pageNotFound.jsx'
 import * as UserPageIncludes from "./userPageIncludes.jsx"
 import SettingsBtn from "../includes/settingsBtn.jsx";
 import './userProfile.css'
-import FormNewPost from "./newPosts/formFormAddNewPost/formForAddNewPost.jsx";
 
 function MyProfile(props){
-    let form = 
-    <FormNewPost />
+    
 
     const [id, setId] = useState([])
     let token = Cookie.getCookie("token")  

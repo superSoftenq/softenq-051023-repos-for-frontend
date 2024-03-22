@@ -26,14 +26,28 @@ let dataForGetPost = {
   flags: 0
 }
 
-let dataForPost =
+/*let dataForPost =
 {
   ownerId: 568,
   photoId: 7799,
   comment:'hello this is my first post from dataBase'
-}
+}*/
 
+let newElementPost = React.createRef();
+
+let checkTempObj = () => {
+  
+}
 let createPost = () => {
+
+  
+  let dataForPost = {
+    ownerId: 568,
+  photoId: 7799
+  }
+
+  dataForPost.comment = newElementPost.current.value;
+  console.log('check temp Obj = ', dataForPost)
   fetch('/api/post/create', {
     method: 'POST',
     headers: {
@@ -104,7 +118,7 @@ const PageWithNewsPosts = (props) => {
       return response.json(); // Парсим ответ сервера в формате JSON 
     })
       .then(data => {
-        console.log('olololo',data); //это почему-то выполняется бесконечное число раз
+        console.log(data); //это почему-то выполняется бесконечное число раз
         setPosts(data)
       })
       .catch(error => {
@@ -123,7 +137,7 @@ const PageWithNewsPosts = (props) => {
       </div>
       <div>
         
-        <div><button className="butForAddNewPost" onClick={createPost}> add new Post</button></div>
+        <div><button className="butForAddNewPost" > add new Post</button></div>
         <div><button className="butForViewAllPost">view all post</button></div>
       </div>
       <div>
@@ -132,7 +146,10 @@ const PageWithNewsPosts = (props) => {
         {postsArray.length != 0 && renderAllPost(postsArray)}
       </div>
       <div>
-        <FormNewPost />
+        <button onClick={createPost}>add new post</button>
+        <textarea ref={newElementPost}></textarea>
+
+        <FormNewPost refForTextArea={newElementPost} funcForCreatePost = {createPost}/>
       </div>
       
 

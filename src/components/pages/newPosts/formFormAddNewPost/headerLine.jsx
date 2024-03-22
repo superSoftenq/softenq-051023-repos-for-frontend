@@ -11,7 +11,7 @@ const HeaderLine = (props) => {
             </div>
 
             <div className="plateForText" >
-                <textarea className='plateForTextTextArea'></textarea>
+                <textarea ref={props.refForTextArea} className='plateForTextTextArea'></textarea>
             </div>
 
         </div>

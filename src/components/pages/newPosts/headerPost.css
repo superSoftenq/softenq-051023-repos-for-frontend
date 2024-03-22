@@ -2,11 +2,14 @@
 .headerPost{
     display: grid;
     grid-template-areas: /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
-    "avaIcon NameUser time dotdotdot";
+    "avaIcon NameUser time dotdotdot"
     
-    grid-template-rows: 30px; /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
+    ;
     
-    grid-gap: 10px;
+    grid-template-rows: 30px 30px; /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
+    
+    
+    grid-gap: 20px;
     margin-top: 10px;
     margin-left: 5px;
     margin-right: 5px;

@@ -105,7 +105,7 @@ export const renderAllPost = (postArray) => {
                 <div className="TextInPost">
                     hello{post['comment']}
                 </div>
-                <Post avtorPosta={post['ownerId']} message={post["comment"]} />
+                <Post avtorPosta={post['ownerId']} message={post["comment"]} publicationDate = {post["publicationDate"]}/>
 
             </div>
 

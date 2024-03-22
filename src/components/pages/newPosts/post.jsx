@@ -3,13 +3,21 @@ import TextInPost from "./textInPost";
 import './post.css'
 import DownBar from "./downbar";
 
+
 const Post = (props) => {
 
 /*
 background: -webkit-linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
 background: -moz-linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
 background: linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
+
+
 */
+
+let tmpDate = props.publicationDate;
+let localDate = new Date(tmpDate)
+let normDate = String(localDate.toUTCString())
+
     return (
         
         
@@ -21,7 +29,7 @@ background: linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
            <div className="HeaderInPost">
                 <HeaderPost 
                 avtorPosta = {props.avtorPosta}
-                timeByPost = {props.timeByPost}/>
+                timeByPost = {normDate}/>
            </div>
 
            <div className="TextInPost">

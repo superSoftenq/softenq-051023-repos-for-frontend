@@ -8,11 +8,11 @@ const FormNewPost = (props) => {
     return(
         <div className='FormNewPost'>
             <div className='headerLine'>
-                <HeaderLine />
+                <HeaderLine refForTextArea = {props.refForTextArea}/>
             </div>
 
             <div>
-                <DownLine />
+                <DownLine funcForCreatePost = {props.funcForCreatePost}/>
             </div>
         </div>
     )
