@@ -26,12 +26,7 @@ let dataForGetPost = {
   flags: 0
 }
 
-/*let dataForPost =
-{
-  ownerId: 568,
-  photoId: 7799,
-  comment:'hello this is my first post from dataBase'
-}*/
+
 
 let newElementPost = React.createRef();
 
