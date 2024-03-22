@@ -102,9 +102,7 @@ export const renderAllPost = (postArray) => {
     let postItems = postArray.map((post) =>
         <div className="post_item">
             <div>
-                <div className="TextInPost">
-                    hello{post['comment']}
-                </div>
+                
                 <Post avtorPosta={post['ownerId']} message={post["comment"]} publicationDate = {post["publicationDate"]}/>
 
             </div>

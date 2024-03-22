@@ -22,9 +22,6 @@ let normDate = String(localDate.toUTCString())
         
         
         <div className="bigClassPosts">
-          <div>
-               form for add new post
-          </div>
                <div className="Post"> 
            <div className="HeaderInPost">
                 <HeaderPost 

@@ -6,7 +6,7 @@
     
     ;
     
-    grid-template-rows: 30px 30px; /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
+    grid-template-rows: 30px; /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
     
     
     grid-gap: 20px;
