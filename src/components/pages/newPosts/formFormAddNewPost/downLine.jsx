@@ -1,6 +1,7 @@
 import './downLine.css'
 
 const DownLine = (props) => {
+    console.log('user data from downLine.jsx = ', props.userdata.id)
 
     return(
         <div className="downLine">

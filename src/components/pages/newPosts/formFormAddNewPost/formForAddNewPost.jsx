@@ -12,7 +12,7 @@ const FormNewPost = (props) => {
             </div>
 
             <div>
-                <DownLine funcForCreatePost = {props.funcForCreatePost}/>
+                <DownLine funcForCreatePost = {props.funcForCreatePost} userdata={props.userdata}/>
             </div>
         </div>
     )
