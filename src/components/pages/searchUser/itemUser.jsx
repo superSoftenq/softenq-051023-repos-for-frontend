@@ -16,11 +16,11 @@ export const ItemUser = (props) => {
                 </div>
 
                 <div className={style.userId}>
-                    id: 3
+                    {props.userId}
                 </div>
 
                 <div className={style.userEmail}>
-                    email: vanya@mail.ru
+                    {props.userEmail}
                 </div>
             </div>
 

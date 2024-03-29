@@ -81,12 +81,7 @@ const SearchUser = (props) => {
                     <div>
                         <ItemUser />
                     </div>
-                    <div>
-                        <ItemUser />
-                    </div>
-                    <div>
-                        <ItemUser />
-                    </div>
+                    
                 </div>
             </div>
 
