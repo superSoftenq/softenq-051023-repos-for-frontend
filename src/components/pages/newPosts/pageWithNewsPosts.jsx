@@ -32,7 +32,42 @@ const PageWithNewsPosts = (props) => {
   
   const [statusCode, setStatusCode] = useState([])
 
+  const [user, setUser] = useState([])
+
+  
+  const getUserData = async () => {
+    let _id = await verifyUser(token)
+    console.log("fdfd_" + id)
+    if (_id == -1) {
+      window.location.assign("/signin");
+    }
+    let response = await fetch("/api/user/" + _id)
+      .then((response) => {
+        setStatusCode(response.status)
+        if (response.status == 200) {
+        }
+
+        return response.json();
+      })
+      .then(async (data) => {
+        console.log('data users = ', data)
+        setUser(data)
+        if (rs == -1) {
+          setAuthorized(-1)
+        } else if (rs != data.id) {
+          setAuthorized(false)
+        } else {
+          setAuthorized(true)
+        }
+      });
+
+  }
+
+
   useEffect(() => {
+    getUserData()
+
+
     fetch('/api/feed', {
       method: 'POST',
       headers: {
@@ -46,14 +81,15 @@ const PageWithNewsPosts = (props) => {
       return response.json(); // Парсим ответ сервера в формате JSON 
     })
       .then(data => {
-        console.log(data); //это почему-то выполняется бесконечное число раз
+        console.log('PUPER DATA',data); //это почему-то выполняется бесконечное число раз
         setPosts(data)
       })
       .catch(error => {
         console.error(error); // Обрабатываем ошибки 
       });
-
   }, []);
+
+
   let createPost = () => {
 
     
@@ -82,35 +118,6 @@ const PageWithNewsPosts = (props) => {
       .catch(error => {
         console.error(error); // Обрабатываем ошибки 
       });
-  }
-
-  const [user, setUser] = useState([])
-  const getUserData = async () => {
-    let _id = await verifyUser(token)
-    console.log("fdfd_" + id)
-    if (_id == -1) {
-      window.location.assign("/signin");
-    }
-    let response = await fetch("/api/user/" + _id)
-      .then((response) => {
-        setStatusCode(response.status)
-        if (response.status == 200) {
-        }
-
-        return response.json();
-      })
-      .then(async (data) => {
-        console.log('data users = ', data)
-        setUser(data)
-        if (rs == -1) {
-          setAuthorized(-1)
-        } else if (rs != data.id) {
-          setAuthorized(false)
-        } else {
-          setAuthorized(true)
-        }
-      });
-
   }
 
 
