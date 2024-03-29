@@ -1,0 +1,25 @@
+.mainContent{
+
+    display: grid;
+
+    grid-template-areas: 
+    "myPage newsPage searcgPage";
+    padding: 10px;
+        
+}
+
+.butForMyPage{
+    grid-area: "myPage";
+    margin-right: 15px;
+    margin-left: 15px;
+}
+.butForNews{
+grid-area: "newsPage";
+margin-right: 15px;
+    margin-left: 15px;
+}
+.butForSearch{
+grid-area: "searcgPage";
+margin-right: 15px;
+    margin-left: 15px;
+}
