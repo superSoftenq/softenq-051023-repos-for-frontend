@@ -59,7 +59,7 @@ const PageWithNewsPosts = (props) => {
     
     let dataForPost = {
       ownerId: user.id,
-      photoId: 77
+      photoID:77
     }
 
     dataForPost.comment = newElementPost.current.value;
