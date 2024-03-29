@@ -7,7 +7,7 @@ import FormNewPost from "./formFormAddNewPost/formForAddNewPost";
 import { verifyUser } from "../../includes/verifyUser.js";
 import * as Cookie from "../../includes/cookie.js"
 import { UniversalButton } from "../../includes/universalButton/universalButton.jsx";
-
+import { UniversalHeader } from "../../includes/universalHeader/universalHeader.jsx";
 let dataForGetPost = {
   startingPoint: 0,
   postsCount: 9999,
@@ -30,12 +30,12 @@ const PageWithNewsPosts = (props) => {
   console.log('id == ', id)
 
   const [postsArray, setPosts] = useState([])
-  
+
   const [statusCode, setStatusCode] = useState([])
 
   const [user, setUser] = useState([])
 
-  
+
   const getUserData = async () => {
     let _id = await verifyUser(token)
     console.log("fdfd_" + id)
@@ -82,7 +82,7 @@ const PageWithNewsPosts = (props) => {
       return response.json(); // Парсим ответ сервера в формате JSON 
     })
       .then(data => {
-        console.log('PUPER DATA',data); //это почему-то выполняется бесконечное число раз
+        console.log('PUPER DATA', data); //это почему-то выполняется бесконечное число раз
         setPosts(data)
       })
       .catch(error => {
@@ -93,10 +93,10 @@ const PageWithNewsPosts = (props) => {
 
   let createPost = () => {
 
-    
+
     let dataForPost = {
       ownerId: user.id,
-      photoID:77
+      photoID: 77
     }
 
     dataForPost.comment = newElementPost.current.value;
@@ -126,11 +126,14 @@ const PageWithNewsPosts = (props) => {
 
 
     <div className="myPosts">
-      <div >
-        <NavLink className="butForHome" to='/myprofile'> My Profile</NavLink>
+
+      <div>
+        <UniversalHeader />
       </div>
       <div>
-        <button onClick={getUserData}>get user data</button>
+        {
+        // тут была кнопка с получением данных 
+        }
         {console.log('user id from return == ', user.id)/*работает */}
       </div>
       <div>
@@ -141,9 +144,7 @@ const PageWithNewsPosts = (props) => {
 
         <div><button className="butForViewAllPost">view all post</button></div>
       </div>
-      <div>
-        <UniversalButton toGoto = '/hello wolrd!' textInBtn = 'my Button hola bolla'/>
-      </div>
+
       <div>
 
 
