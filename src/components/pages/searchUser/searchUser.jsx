@@ -1,19 +1,79 @@
+import style from "./searchUser.module.css"
+import React, { useEffect, useState } from "react"
+import { renderUserList } from "../userPageIncludes"
+import { UniversalButton } from "../../includes/universalButton/universalButton"
+import { UniversalHeader } from "../../includes/universalHeader/universalHeader"
 
 
-const searchUser = () => {
-    
 
-    return(
+const SearchUser = (props) => {
+
+    const [userList, setUserList] = useState([])
+
+    let textFindUser = React.createRef(); //шаг 1 сделали ссылку
+
+    const findUser = (userName) => {
+        let tempObj = {
+            flags: 0 // пока что других нет
+            //userName: textFindUser.current.value
+
+
+        }
+
+        tempObj.userName = textFindUser.current.value;
+        console.log('temp obj for fetch find userName = ', tempObj.userName)
+        fetch('/api/user/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+            },
+            body: JSON.stringify(tempObj)
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка сети или сервера');
+            }
+            return response.json(); // Парсим ответ сервера в формате JSON 
+        })
+            .then(data => {
+                console.log('полученные пользователь', data); // Обрабатываем полученные данные 
+                setUserList(data)
+            })
+            .catch(error => {
+                console.error(error); // Обрабатываем ошибки 
+            });
+
+    }
+
+    return (
         <div>
             <div>
-                <textarea></textarea>
+                <UniversalHeader />
             </div>
 
-            <div>
+            <div className={style.mainContent}>
+
+                <div className={style.textArea} >
+                    <textarea ref={textFindUser}></textarea>
+                </div>
+
+                <div>
+                    <img
+                        onClick={findUser}
+                        className={style.logoSearch} src="https://w7.pngwing.com/pngs/111/369/png-transparent-computer-icons-web-search-engine-search-box-introduction-internet-microsoft-autocomplete.png" />
+                </div>
                 <h2>результаты поиска</h2>
+
+                <div className={style.item}>
+
+                    <div className="item">
+                        {userList.length != 0 && renderUserList(userList)}
+                    </div>
+                </div>
+
             </div>
+
         </div>
     )
 }
 
-export default searchUser;
+export default SearchUser;
