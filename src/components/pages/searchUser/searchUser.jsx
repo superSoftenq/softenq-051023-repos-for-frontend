@@ -10,7 +10,7 @@ const searchUser = () => {
             </div>
 
             <div>
-
+                <h2>результаты поиска</h2>
             </div>
         </div>
     )

@@ -6,6 +6,7 @@ import { renderAllPost } from "../userPageIncludes";
 import FormNewPost from "./formFormAddNewPost/formForAddNewPost";
 import { verifyUser } from "../../includes/verifyUser.js";
 import * as Cookie from "../../includes/cookie.js"
+import { UniversalButton } from "../../includes/universalButton/universalButton.jsx";
 
 let dataForGetPost = {
   startingPoint: 0,
@@ -139,6 +140,9 @@ const PageWithNewsPosts = (props) => {
 
 
         <div><button className="butForViewAllPost">view all post</button></div>
+      </div>
+      <div>
+        <UniversalButton toGoto = '/hello wolrd!' textInBtn = 'my Button hola bolla'/>
       </div>
       <div>
 
