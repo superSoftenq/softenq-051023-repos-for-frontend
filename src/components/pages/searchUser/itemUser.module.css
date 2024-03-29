@@ -1,2 +1,42 @@
 
+.mainContent{
+    display: grid;
 
+    grid-template-areas: 
+    "userAva infoAboutUser"
+    ;
+
+    outline: solid;
+
+    border-radius: 7%;
+    margin-top: 50px;
+}
+.profilePicture img{
+    width: 100px;
+    grid-area: "userAva";
+
+    
+    
+}
+.infoAboutUser{
+    display: grid;
+
+    grid-template-areas: 
+    "name"
+    "id"
+    "email";
+    grid-area: "infoAboutUser";
+
+    
+}
+.userName{
+
+    grid-area:"name"
+}
+.userId{
+
+    grid-area: "id";
+}
+.userEmail{
+    grid-area: "email";
+}

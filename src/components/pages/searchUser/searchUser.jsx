@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { renderUserList } from "../userPageIncludes"
 import { UniversalButton } from "../../includes/universalButton/universalButton"
 import { UniversalHeader } from "../../includes/universalHeader/universalHeader"
+import { ItemUser } from "./itemUser"
 
 
 
@@ -67,6 +68,16 @@ const SearchUser = (props) => {
 
                     <div className="item">
                         {userList.length != 0 && renderUserList(userList)}
+                    </div>
+
+                    <div>
+                        <ItemUser />
+                    </div>
+                    <div>
+                        <ItemUser />
+                    </div>
+                    <div>
+                        <ItemUser />
                     </div>
                 </div>
 
