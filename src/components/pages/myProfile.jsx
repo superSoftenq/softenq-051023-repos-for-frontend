@@ -38,7 +38,7 @@ function MyProfile(props){
             <div className="up_menu">
                 { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
                 <UniversalButton toGoto = '/news' textInBtn = 'news' />
-                <UniversalButton textInBtn = 'search User' toGoto = '/helo world'/>
+                <UniversalButton textInBtn = 'search User' toGoto = '/usersearch'/>
                 { isAuthorized == -1 && UserPageIncludes.renderLogin()}
                 
                 {isAuthorized == true && <SettingsBtn/> }
