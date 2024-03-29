@@ -143,7 +143,7 @@ export const renderUserList = (userList) => {
             <div className="userItem">
                 <div>
                     {/* {console.log('test test = ', user["username"])} */}
-                    <ItemUser userName = {userList["username"]}/>
+                    <ItemUser userName = {userList["username"]} userId = {userList["id"]} userEmail = {userList["email"]} />
                 </div>
             </div>
             {/* {userItems} */}
