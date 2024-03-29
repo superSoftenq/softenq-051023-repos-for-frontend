@@ -8,6 +8,7 @@ import './userPageIncludes.css'
 import { NavLink } from "react-router-dom";
 import Post from "./newPosts/post.jsx";
 import HeaderLine from "./newPosts/formFormAddNewPost/headerLine.jsx";
+import { ItemUser } from "./searchUser/itemUser.jsx";
 
 export const renderAvatar = (link) => (
     <img src={link} alt="" className="photo avatar" />
@@ -124,6 +125,20 @@ export const renderAllPost = (postArray) => {
 
         </>
     )
+}
 
+export const renderUserList = (userList) => {
     
+    let userItems = userList.map((user) => 
+    <div className="userItem">
+        <div>
+            <ItemUser />
+        </div>
+    </div>)
+    return(
+        <div>
+
+            {userItems}
+        </div>
+    )
 }
