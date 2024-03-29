@@ -25,8 +25,11 @@ function MyProfile(props){
 
 
 
-    const googleLink = "https://drive.google.com/u/0/uc?id=";
-    const urlRight = "&export=download"
+    //const googleLink = "https://drive.google.com/u/0/uc?id=";
+    const googleLink = "https://drive.google.com/thumbnail?id="
+
+    //const urlRight = "&export=download"
+    const urlRight = "&sz=w1000"
     const params = useParams();
     // const link = async () => fetch(`/api/user/${user.id}/avatar`)
     const link = googleLink + user.profilePicture + urlRight
