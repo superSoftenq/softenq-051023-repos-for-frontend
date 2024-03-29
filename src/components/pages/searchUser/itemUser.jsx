@@ -1,6 +1,6 @@
 import style from "./itemUser.module.css"
 
-export const ItemUser = () => {
+export const ItemUser = (props) => {
 
     return (
         <div className={style.mainContent}>
@@ -12,7 +12,7 @@ export const ItemUser = () => {
             <div className={style.infoAboutUser} >
 
                 <div className={style.userName}>
-                    vanya Ivanov
+                    {props.userName}
                 </div>
 
                 <div className={style.userId}>

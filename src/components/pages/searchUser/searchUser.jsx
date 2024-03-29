@@ -15,14 +15,15 @@ const SearchUser = (props) => {
 
     const findUser = (userName) => {
         let tempObj = {
-            flags: 0 // пока что других нет
+            flags: 0, // пока что других нет
+            
             //userName: textFindUser.current.value
 
 
         }
 
-        tempObj.userName = textFindUser.current.value;
-        console.log('temp obj for fetch find userName = ', tempObj.userName)
+        tempObj.username = textFindUser.current.value;
+        console.log('temp obj for fetch find userName = ', tempObj.username)
         fetch('/api/user/search', {
             method: 'POST',
             headers: {

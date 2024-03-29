@@ -128,17 +128,25 @@ export const renderAllPost = (postArray) => {
 }
 
 export const renderUserList = (userList) => {
-    
-    let userItems = userList.map((user) => 
-    <div className="userItem">
-        <div>
-            <ItemUser />
-        </div>
-    </div>)
+    console.log('arrive data find User = ', userList)
+    // let userItems = userList.map((user) => (
+    //     <div className="userItem">
+    //         <div>
+    //             {console.log('test test = ', user["username"])}
+    //             <ItemUser userName = {user["username"]}/>
+    //         </div>
+    //     </div>
+    //     )
+    // )
     return(
         <div>
-
-            {userItems}
+            <div className="userItem">
+                <div>
+                    {/* {console.log('test test = ', user["username"])} */}
+                    <ItemUser userName = {userList["username"]}/>
+                </div>
+            </div>
+            {/* {userItems} */}
         </div>
     )
 }
