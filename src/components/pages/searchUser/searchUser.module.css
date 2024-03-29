@@ -4,11 +4,11 @@
     display: grid;
 
 
-    grid-template-areas: /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
-    "GoToMyPage"
+    grid-template-areas: /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/           
     "input logo"
     ;
     margin-top: 30px;
+    
     
 }
 .ButForMyPage{
@@ -22,12 +22,14 @@
 
 .textArea{
     grid-area: "input";
+    
 }
 
 .logoSearch{
 
-    width: 40px;
+    width: 55px;
     grid-area: "logo";
+   
 }
 
 

@@ -50,10 +50,13 @@ const SearchUser = (props) => {
             <div>
                 <UniversalHeader />
             </div>
+            <div >
+
+            </div>
 
             <div className={style.mainContent}>
 
-                <div className={style.textArea} >
+                <div className={style.textArea}>
                     <textarea ref={textFindUser}></textarea>
                 </div>
 
@@ -62,6 +65,10 @@ const SearchUser = (props) => {
                         onClick={findUser}
                         className={style.logoSearch} src="https://w7.pngwing.com/pngs/111/369/png-transparent-computer-icons-web-search-engine-search-box-introduction-internet-microsoft-autocomplete.png" />
                 </div>
+
+
+            </div>
+            <div className={style.containerUserList}>
                 <h2>результаты поиска</h2>
 
                 <div className={style.item}>
@@ -80,7 +87,6 @@ const SearchUser = (props) => {
                         <ItemUser />
                     </div>
                 </div>
-
             </div>
 
         </div>
