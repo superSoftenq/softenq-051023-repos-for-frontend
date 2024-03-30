@@ -14,9 +14,10 @@
     background-color: white;
 }
 .profilePicture img{
-    width: 80px;
+    height: 90px;
+    
     grid-area: "userAva";
-    border-radius: 8%;
+    border-radius: 30%;
     padding: 10px;
 
 
