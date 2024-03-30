@@ -6,6 +6,7 @@ import * as Cookie from "../includes/cookie.js"
 import * as GoogleLinks from "../includes/googleLinks.js"
 import { verifyUser } from "../includes/verifyUser.js";
 import * as UserPageIncludes from "./userPageIncludes.jsx"
+import { UniversalButton } from "../includes/universalButton/universalButton.jsx";
 
 
 
@@ -28,7 +29,10 @@ function UserProfile(props) {
         <div className="up_menu_container">
             <div className="up_menu">
                 { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
-                { isAuthorized !== -1  && UserPageIncludes.renderNews()}
+                {// isAuthorized !== -1  && UserPageIncludes.renderNews()
+                }
+                <UniversalButton toGoto = '/news' textInBtn = 'news' />
+                <UniversalButton textInBtn = 'search User' toGoto = '/usersearch'/>
                 { isAuthorized == -1 && UserPageIncludes.renderLogin()}
             </div>
         </div>
