@@ -7,6 +7,7 @@ import * as UserPageIncludes from "./userPageIncludes.jsx"
 import SettingsBtn from "../includes/settingsBtn.jsx";
 import './userProfile.css'
 import { UniversalButton } from "../includes/universalButton/universalButton.jsx";
+import { UniversalHeader } from "../includes/universalHeader/universalHeader.jsx";
 
 function MyProfile(props){
     
@@ -40,8 +41,7 @@ function MyProfile(props){
         
             <div className="up_menu">
                 { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
-                <UniversalButton toGoto = '/news' textInBtn = 'news' />
-                <UniversalButton textInBtn = 'search User' toGoto = '/usersearch'/>
+                <UniversalHeader />
                 { isAuthorized == -1 && UserPageIncludes.renderLogin()}
                 
                 {isAuthorized == true && <SettingsBtn/> }

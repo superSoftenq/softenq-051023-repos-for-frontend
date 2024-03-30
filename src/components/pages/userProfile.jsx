@@ -7,6 +7,7 @@ import * as GoogleLinks from "../includes/googleLinks.js"
 import { verifyUser } from "../includes/verifyUser.js";
 import * as UserPageIncludes from "./userPageIncludes.jsx"
 import { UniversalButton } from "../includes/universalButton/universalButton.jsx";
+import { UniversalHeader } from "../includes/universalHeader/universalHeader.jsx";
 
 
 
@@ -31,8 +32,7 @@ function UserProfile(props) {
                 { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
                 {// isAuthorized !== -1  && UserPageIncludes.renderNews()
                 }
-                <UniversalButton toGoto = '/news' textInBtn = 'news' />
-                <UniversalButton textInBtn = 'search User' toGoto = '/usersearch'/>
+                <UniversalHeader />
                 { isAuthorized == -1 && UserPageIncludes.renderLogin()}
             </div>
         </div>
