@@ -33,6 +33,7 @@
     "id"
     "email";
     grid-area: "infoAboutUser";
+    margin-top: 5px;
 
     
 }
