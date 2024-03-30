@@ -6,8 +6,9 @@ import PageNotFound from '../includes/pageNotFound.jsx'
 import * as UserPageIncludes from "./userPageIncludes.jsx"
 import SettingsBtn from "../includes/settingsBtn.jsx";
 import './userProfile.css'
-import { UniversalButton } from "../includes/universalButton/universalButton.jsx";
 import { UniversalHeader } from "../includes/universalHeader/universalHeader.jsx";
+import { UniversalButton } from "../includes/universalButton/universalButton.jsx";
+import { logOutFunc } from "../includes/funcForLogOut/logout.jsx";
 
 function MyProfile(props){
     
@@ -41,6 +42,7 @@ function MyProfile(props){
         
             <div className="up_menu">
                 { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
+                <UniversalButton textInBtn = "logout" toGoto= "/myProfile" func = {logOutFunc}  />
                 <UniversalHeader />
                 { isAuthorized == -1 && UserPageIncludes.renderLogin()}
                 
@@ -64,7 +66,8 @@ function MyProfile(props){
         </div>
         <div>
             {console.log('id 59 line = ', id)}
-            тут дожно быть кнопки для ленты и для галереи
+            <UniversalButton textInBtn = 'My Posts'/>
+            <UniversalButton textInBtn = 'My Gallery'/>
             
             {photos.length != 0 && UserPageIncludes.renderMyGallery(photos)}
         </div>

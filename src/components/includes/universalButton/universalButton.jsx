@@ -7,7 +7,7 @@ export const UniversalButton = (props) => {
 
     return(
         <div>
-            <div >
+            <div onClick={props.func}>
                 <NavLink className="universalBtn" to = {props.toGoto}> {props.textInBtn} </NavLink>
             </div>
         </div>
