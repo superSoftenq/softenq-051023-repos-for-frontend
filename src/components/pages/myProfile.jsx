@@ -42,7 +42,7 @@ function MyProfile(props){
         
             <div className="up_menu">
                 { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
-                <UniversalButton textInBtn = "logout" toGoto= "/myProfile" func = {logOutFunc}  />
+                
                 <UniversalHeader />
                 { isAuthorized == -1 && UserPageIncludes.renderLogin()}
                 

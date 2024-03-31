@@ -1,5 +1,7 @@
 import style from "./universalHeader.module.css"
 import { UniversalButton } from "../universalButton/universalButton"
+import { logOutFunc } from "../funcForLogOut/logout"
+import SettingsBtn from "../settingsBtn"
 
 export const UniversalHeader = (props) => {
 
@@ -15,6 +17,14 @@ export const UniversalHeader = (props) => {
            
             <div className={style.butForSearch}>
                 <UniversalButton toGoto="/usersearch" textInBtn="search User" />
+            </div>
+
+            <div className={style.logOut}>
+                <UniversalButton textInBtn = "logout" toGoto= "/myProfile" func = {logOutFunc}  />
+            </div>
+
+            <div className={style.SettingsBtn}>
+                <UniversalButton toGoto = "/settings" textInBtn = "settings" /> 
             </div>
         </div>
     )

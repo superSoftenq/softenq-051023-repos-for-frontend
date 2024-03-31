@@ -3,7 +3,7 @@
     display: grid;
 
     grid-template-areas: 
-    "myPage newsPage searcgPage";
+    "myPage newsPage searcgPage logOut SettingsBtn";
     padding: 10px;
         
 }
@@ -21,5 +21,17 @@ margin-right: 15px;
 .butForSearch{
 grid-area: "searcgPage";
 margin-right: 15px;
+    margin-left: 15px;
+}
+
+.logOut{
+    grid-area: "logOut";
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.SettingsBtn{
+    grid-area: "SettingsBtn";
+    margin-right: 15px;
     margin-left: 15px;
 }
