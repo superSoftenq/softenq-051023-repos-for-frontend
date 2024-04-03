@@ -121,6 +121,8 @@ const PageWithNewsPosts = (props) => {
       });
   }
 
+  
+
 
   return (
 
@@ -149,6 +151,10 @@ const PageWithNewsPosts = (props) => {
 
 
         {postsArray.length != 0 && renderAllPost(postsArray)}
+      </div>
+
+      <div>
+        
       </div>
 
     </div>

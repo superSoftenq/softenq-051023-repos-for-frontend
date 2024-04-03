@@ -2,6 +2,7 @@ import HeaderPost from "./headerPost";
 import TextInPost from "./textInPost";
 import './post.css'
 import DownBar from "./downbar";
+import React, { useEffect, useState } from "react"
 
 
 const Post = (props) => {
@@ -13,11 +14,62 @@ background: linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
 
 
 */
-
+const [likes, setLikes] = useState([])
+const [statusCode, setStatusCode] = useState([])
 let tmpDate = props.publicationDate;
 let localDate = new Date(tmpDate)
 let normDate = String(localDate.toUTCString())
+const getLikesPost = async () => {
+     console.log('пытаюсь получит ЛАЙКИ')
+     
+    fetch("/api/post/" + props.postId + "/getlikes")
+      .then((response) => {
+        setStatusCode(response.status)
+        if (response.status == 200) {
+        }
 
+        return response.json();
+      })
+      .then((data) => {
+        console.log('data Likes = ', data)
+        setLikes(data)
+        if (rs == -1) {
+          setAuthorized(-1)
+        } else if (rs != data.id) {
+          setAuthorized(false)
+        } else {
+          setAuthorized(true)
+        }
+      });
+   }
+
+useEffect(() => {
+  fetch("/api/post/" + props.postId + "/getlikes")
+  .then((response) => {
+    setStatusCode(response.status)
+    if (response.status == 200) {
+    }
+
+    return response.json();
+  })
+  .then((data) => {
+    console.log('data Likes = ', data)
+    setLikes(data)
+    if (rs == -1) {
+      setAuthorized(-1)
+    } else if (rs != data.id) {
+      setAuthorized(false)
+    } else {
+      setAuthorized(true)
+    }
+  });
+     
+   }, []);
+
+
+console.log('PROPS = ', props)
+let likess = likes.length
+console.log("all likes in post = ", likess)
     return (
         
         
@@ -38,7 +90,7 @@ let normDate = String(localDate.toUTCString())
            </div>
 
            <div>
-            <DownBar likecounter = {props.likecounter} repostCounter = {props.repostCounter} />
+            <DownBar likecounter = {likess} repostCounter = {props.repostCounter} postId = {props.postId}/>
            </div>
 
            

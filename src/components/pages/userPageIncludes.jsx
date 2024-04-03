@@ -10,6 +10,7 @@ import Post from "./newPosts/post.jsx";
 import HeaderLine from "./newPosts/formFormAddNewPost/headerLine.jsx";
 import { ItemUser } from "./searchUser/itemUser.jsx";
 
+
 export const renderAvatar = (link) => (
     <img src={link} alt="" className="photo avatar" />
 );
@@ -98,13 +99,12 @@ export const renderRegularForm = (user) => {
 }
 
 export const renderAllPost = (postArray) => {
-    console.log('arrive data = ', postArray);
-    console.log('проверка вывода элемента поста', postArray['comment'])
+    console.log('arrive data TEST POST= ', postArray);
     let postItems = postArray.map((post) =>
         <div className="post_item">
             <div>
                 
-                <Post avtorPosta={post['ownerId']} message={post["comment"]} publicationDate = {post["publicationDate"]}/>
+                <Post avtorPosta={post['ownerId']} message={post["comment"]} publicationDate = {post["publicationDate"]} postId = {post["id"]}/>
 
             </div>
 
