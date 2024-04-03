@@ -139,7 +139,7 @@ const PageWithNewsPosts = (props) => {
         {console.log('user id from return == ', user.id)/*работает */}
       </div>
 
-      <div>
+      <div className="formAddNewPost">
         <FormNewPost refForTextArea={newElementPost} funcForCreatePost={createPost} userdata={user} />
       </div>
 

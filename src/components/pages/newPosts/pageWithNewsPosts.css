@@ -4,3 +4,7 @@
     
 }
 
+.formAddNewPost{
+    display: flex;
+    justify-content: center;
+}
