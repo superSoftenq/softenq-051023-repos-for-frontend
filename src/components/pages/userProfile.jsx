@@ -59,18 +59,18 @@ function UserProfile(props) {
             return  response.json();
         })
         .then(async(data) => {
-            let rs = await verifyUser(token)
-            console.log(data.id == rs)
-            console.log(rs)
-            let photoLinks = await fetch("/api/user/" + id + "/photos")
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                return data;
-            })
-            console.log(photoLinks)
-            setPhotos(photoLinks)
+            // let rs = await verifyUser(token)
+            // console.log(data.id == rs)
+            // console.log(rs)
+            // let photoLinks = await fetch("/api/user/" + id + "/photos")
+            // .then((response) => {
+            //     return response.json();
+            // })
+            // .then((data) => {
+            //     return data;
+            // })
+            // console.log(photoLinks)
+            // setPhotos(photoLinks)
             setUser(data)
             if (rs == -1) {
                 setAuthorized(-1)
