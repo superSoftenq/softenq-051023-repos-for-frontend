@@ -113,9 +113,10 @@ const DownBar = (props) => {
     <div className="downBar">
 
       <div>
+      {likes.length}
         <img className="likesIcon" src='https://icones.pro/wp-content/uploads/2021/04/icone-noire-noir.png'
           onClick={addLike} />
-        {likes.length}
+        
       </div>
 
 
