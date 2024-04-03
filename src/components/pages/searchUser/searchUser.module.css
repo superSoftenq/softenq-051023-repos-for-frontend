@@ -8,6 +8,8 @@
     "input logo"
     ;
     margin-top: 30px;
+    justify-content: center;
+    grid-gap: 8px;
     
     
 }
@@ -23,6 +25,7 @@
 .textArea{
     grid-area: "input";
     
+    
 }
 
 .logoSearch{
@@ -30,6 +33,12 @@
     width: 55px;
     grid-area: "logo";
    
+}
+
+.containerUserList{
+    display: flex;
+
+    justify-content: center;
 }
 
 
