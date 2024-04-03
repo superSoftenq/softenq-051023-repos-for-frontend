@@ -129,24 +129,32 @@ export const renderAllPost = (postArray) => {
 
 export const renderUserList = (userList) => {
     console.log('arrive data find User = ', userList)
-    // let userItems = userList.map((user) => (
-    //     <div className="userItem">
-    //         <div>
-    //             {console.log('test test = ', user["username"])}
-    //             <ItemUser userName = {user["username"]}/>
-    //         </div>
-    //     </div>
-    //     )
-    // )
+    let userItems = userList.map((user) => (
+        <div className="userItem">
+            <div>
+                {console.log('test test = ', user["username"])}
+                <ItemUser userName = {user["username"]} userId = {user["id"]} userEmail = {user["email"]} profilePicture = {user.profilePicture}/>
+            </div>
+        </div>
+        )
+    )
+    
     return(
         <div>
-            <div className="userItem">
-                <div>
-                    {/* {console.log('test test = ', user["username"])} */}
-                    <ItemUser userName = {userList["username"]} userId = {userList["id"]} userEmail = {userList["email"]} profilePicture = {userList.profilePicture}/>
-                </div>
-            </div>
-            {/* {userItems} */}
+            {userItems}
         </div>
     )
+    
+    
+    // return(
+    //     <div>
+    //         <div className="userItem">
+    //             <div>
+    //                 {/* {console.log('test test = ', user["username"])} */}
+    //                 <ItemUser userName = {userList["username"]} userId = {userList["id"]} userEmail = {userList["email"]} profilePicture = {userList.profilePicture}/>
+    //             </div>
+    //         </div>
+    //         {/* {userItems} */}
+    //     </div>
+    // )
 }
