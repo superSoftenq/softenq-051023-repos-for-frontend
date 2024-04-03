@@ -121,40 +121,35 @@ const PageWithNewsPosts = (props) => {
       });
   }
 
-  
+
 
 
   return (
 
 
-    <div className="myPosts">
+    <div>
 
       <div>
         <UniversalHeader />
       </div>
       <div>
         {
-        // тут была кнопка с получением данных 
+          // тут была кнопка с получением данных 
         }
         {console.log('user id from return == ', user.id)/*работает */}
       </div>
+
       <div>
         <FormNewPost refForTextArea={newElementPost} funcForCreatePost={createPost} userdata={user} />
       </div>
-      <div>
 
-
-        <div><button className="butForViewAllPost">view all post</button></div>
-      </div>
 
       <div>
+        <div className="myPosts">
 
 
-        {postsArray.length != 0 && renderAllPost(postsArray)}
-      </div>
-
-      <div>
-        
+          {postsArray.length != 0 && renderAllPost(postsArray)}
+        </div>
       </div>
 
     </div>

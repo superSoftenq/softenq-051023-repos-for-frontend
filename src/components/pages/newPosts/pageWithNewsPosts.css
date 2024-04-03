@@ -1,14 +1,6 @@
+.myPosts{
+    display: flex;
+    justify-content: center;
+    
+}
 
-.butForHome{
-    color: black;
-    outline: solid;
-    background-color: white;
-    padding: 5px;
-    border-radius: 10%;
-}
-.butForViewAllPost{
-    margin-top: 15px;
-}
-.butForAddNewPost{
-    margin-top: 40px;
-}
