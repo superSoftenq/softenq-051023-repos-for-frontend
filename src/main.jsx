@@ -15,6 +15,7 @@ import DateForPost from './stateDataForPosts.jsx';
 
 import PageWithNewsPosts from './components/pages/newPosts/pageWithNewsPosts.jsx';
 import SearchUser from './components/pages/searchUser/searchUser.jsx';
+import MyProfileV2 from './components/pages/myProfile-v2/myProfile-v2.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -28,6 +29,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/myprofile" element={<MyProfile />} />
       <Route path="/settings" element={<MyProfileSettings />} />
       <Route path='/news' element = {<PageWithNewsPosts DateForPost= {DateForPost}/>} />
+      <Route path='/myprofile-v2' element = {<MyProfileV2 />} />
+      
       <Route path='/usersearch' element = {<SearchUser />} />
       <Route path="/user/:userId" element={
       <UserProfile>
