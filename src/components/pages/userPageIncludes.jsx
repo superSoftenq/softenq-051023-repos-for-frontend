@@ -56,8 +56,9 @@ export const renderMyGallery = (photoArray) => {
     )
     return (
         <>
-            <div>Gallery</div>
-            {photoItems}
+            
+            <div>{photoItems}</div>
+            
         </>
     )
 }
@@ -72,8 +73,9 @@ export const renderGallery = (photoArray) => {
     )
     return (
         <>
-            <div>Gallery</div>
-            {photoItems}
+            <div>Gallery from userPageIncludes</div>
+            <div>{photoItems}</div>
+            
         </>
     )
 }

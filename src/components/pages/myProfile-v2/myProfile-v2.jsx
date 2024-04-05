@@ -4,6 +4,8 @@ import * as Cookie from "../../includes/cookie.js"
 import { renderMyGallery } from "../userPageIncludes.jsx";
 import { renderAvatar } from "../userPageIncludes.jsx";
 import style from "./myProfile-v2.module.css"
+import FileUploadForm from "../../includes/fileUploadForm.jsx";
+import { renderRegularForm } from "../userPageIncludes.jsx";
 
 const MyProfileV2 = (props) => {
     const googleLink = "https://drive.google.com/thumbnail?id="
@@ -19,10 +21,10 @@ const MyProfileV2 = (props) => {
 
 
     useEffect(() => {
-        if (id != 0){
+        if (id != 0) {
             getUserData()
         }
-        
+
     }, [id])
 
 
@@ -55,28 +57,28 @@ const MyProfileV2 = (props) => {
             })
             .catch(error => {
                 console.error(error); // Обрабатываем ошибки 
-              });;
+            });;
         const objForGetPhoto = {
             flags: -1
         }
         fetch(`/api/user/${id}/photos`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+                'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
             },
             body: JSON.stringify(objForGetPhoto)
-          }).then(response => {
+        }).then(response => {
             if (!response.ok) {
-              throw new Error('Ошибка сети или сервера');
+                throw new Error('Ошибка сети или сервера');
             }
             return response.json(); // Парсим ответ сервера в формате JSON 
-          })
+        })
             .then(data => {
-              console.log('data user-s photo', data); //это почему-то выполняется бесконечное число раз
-              setPhotos(data)
+                console.log('data user-s photo', data); //это почему-то выполняется бесконечное число раз
+                setPhotos(data)
             })
             .catch(error => {
-              console.error(error); // Обрабатываем ошибки 
+                console.error(error); // Обрабатываем ошибки 
             });
 
 
@@ -89,17 +91,36 @@ const MyProfileV2 = (props) => {
 
 
     return (
-        <div >
-            <div>{id}</div>
-           <div>hello this is page MyProfile version-2</div>
-            <div >{user.profilePicture !== undefined && renderAvatar(googleLink + user.profilePicture + urlRight)}</div>
+        <div>
 
-            <div>
-                <div>{user.username}</div>
-                <div>{user.id}</div>
-                <div>{user.email}</div>
+            <div className={style.MainConteiner}>
+                <div className={style.profilePicture}>
+
+                    {user.profilePicture !== undefined && renderAvatar(googleLink + user.profilePicture + urlRight)}
+
+                </div>
+
+                <div className={style.infoAboutUser}>
+
+                    <div className={style.userName}>      {user.username}        </div>
+
+                    <div className={style.userId}>       # {user.id}        </div>
+
+                    <div className={style.userEmail}>        {user.email}      </div>
+
+                </div>
+
+
             </div>
-            {photos.length != 0 && renderMyGallery(photos)}
+
+
+           
+            <div className={style.userGallery}>
+                {photos.length != 0 && renderMyGallery(photos)}
+            </div>
+
+
+           
         </div>
     )
 }
