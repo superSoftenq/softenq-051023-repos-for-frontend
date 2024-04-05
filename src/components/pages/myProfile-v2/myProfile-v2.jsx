@@ -3,6 +3,7 @@ import { verifyUser } from "../../includes/verifyUser.js";
 import * as Cookie from "../../includes/cookie.js"
 import { renderMyGallery } from "../userPageIncludes.jsx";
 import { renderAvatar } from "../userPageIncludes.jsx";
+import style from "./myProfile-v2.module.css"
 
 const MyProfileV2 = (props) => {
     const googleLink = "https://drive.google.com/thumbnail?id="
@@ -18,7 +19,10 @@ const MyProfileV2 = (props) => {
 
 
     useEffect(() => {
-        getUserData()
+        if (id != 0){
+            getUserData()
+        }
+        
     }, [id])
 
 
@@ -48,18 +52,14 @@ const MyProfileV2 = (props) => {
             .then((data) => {
                 console.log('user data = ', data)
                 setUser(data)
-                if (rs == -1) {
-                    setAuthorized(-1)
-                } else if (rs != data.id) {
-                    setAuthorized(false)
-                } else {
-                    setAuthorized(true)
-                }
-            });
+            })
+            .catch(error => {
+                console.error(error); // Обрабатываем ошибки 
+              });;
         const objForGetPhoto = {
             flags: -1
         }
-        fetch('/api/user/'+ id + '/photos', {
+        fetch(`/api/user/${id}/photos`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
@@ -89,10 +89,16 @@ const MyProfileV2 = (props) => {
 
 
     return (
-        <div>
+        <div >
             <div>{id}</div>
            <div>hello this is page MyProfile version-2</div>
-            <div>{user.profilePicture !== undefined && renderAvatar(googleLink + user.profilePicture + urlRight)}</div>
+            <div >{user.profilePicture !== undefined && renderAvatar(googleLink + user.profilePicture + urlRight)}</div>
+
+            <div>
+                <div>{user.username}</div>
+                <div>{user.id}</div>
+                <div>{user.email}</div>
+            </div>
             {photos.length != 0 && renderMyGallery(photos)}
         </div>
     )
