@@ -41,9 +41,9 @@ function MyProfile(props) {
             <div className="up_menu_container">
 
                 <div className="up_menu">
-                    {isAuthorized !== -1 && UserPageIncludes.renderLogout()}
+                    {/*isAuthorized !== -1 && UserPageIncludes.renderLogout()*/}
 
-                    <UniversalHeader />
+                   
                     {isAuthorized == -1 && UserPageIncludes.renderLogin()}
 
                     {isAuthorized == true && <SettingsBtn />}

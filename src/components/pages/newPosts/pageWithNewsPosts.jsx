@@ -129,9 +129,7 @@ const PageWithNewsPosts = (props) => {
 
     <div>
 
-      <div>
-        <UniversalHeader />
-      </div>
+      
       <div>
         {
           // тут была кнопка с получением данных 

@@ -48,9 +48,7 @@ const SearchUser = (props) => {
 
     return (
         <div>
-            <div>
-                <UniversalHeader />
-            </div>
+            
             <div >
 
             </div>

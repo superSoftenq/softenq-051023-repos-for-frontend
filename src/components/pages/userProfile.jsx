@@ -29,10 +29,9 @@ function UserProfile(props) {
     <div className="head"> 
         <div className="up_menu_container">
             <div className="up_menu">
-                { isAuthorized !== -1  && UserPageIncludes.renderLogout()}
+                {/* isAuthorized !== -1  && UserPageIncludes.renderLogout()*/}
                 {// isAuthorized !== -1  && UserPageIncludes.renderNews()
                 }
-                <UniversalHeader />
                 { isAuthorized == -1 && UserPageIncludes.renderLogin()}
             </div>
         </div>

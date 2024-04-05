@@ -16,10 +16,13 @@ import DateForPost from './stateDataForPosts.jsx';
 import PageWithNewsPosts from './components/pages/newPosts/pageWithNewsPosts.jsx';
 import SearchUser from './components/pages/searchUser/searchUser.jsx';
 import MyProfileV2 from './components/pages/myProfile-v2/myProfile-v2.jsx';
+import { UniversalHeader } from './components/includes/universalHeader/universalHeader.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  
   <Router>
+    <UniversalHeader />
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/*" element={<PageNotFound/>} />
