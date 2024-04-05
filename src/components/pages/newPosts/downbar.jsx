@@ -54,9 +54,29 @@ const DownBar = (props) => {
 
   }, []);
 
+  useEffect(()=>{
+    getAllLikes()
+  }, [user])
+
 
 
   console.log('проверка прихода ИД через пропсы = ', props.postId)
+  const getAllLikes = () => {
+    fetch("/api/post/" + props.postId + "/getlikes")
+      .then((response) => {
+        setStatusCode(response.status)
+        if (response.status == 200) {
+        }
+
+        return response.json();
+      })
+      .then((data) => {
+        console.log('data Likes ПЕРВАЯ ЗАГРУЗКА = ', data)
+        setLikes(data)
+        
+      });
+  }
+  
   const addLike = () => {
 
 
@@ -80,25 +100,7 @@ const DownBar = (props) => {
       return response.json(); // Парсим ответ сервера в формате JSON 
     })
       .then(data => {
-        fetch("/api/post/" + props.postId + "/getlikes")
-      .then((response) => {
-        setStatusCode(response.status)
-        if (response.status == 200) {
-        }
-
-        return response.json();
-      })
-      .then((data) => {
-        console.log('data Likes = ', data)
-        setLikes(data)
-        if (rs == -1) {
-          setAuthorized(-1)
-        } else if (rs != data.id) {
-          setAuthorized(false)
-        } else {
-          setAuthorized(true)
-        }
-      });
+        getAllLikes()
         console.log("str mess after like submit", data); // Обрабатываем полученные данные
         
 

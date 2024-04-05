@@ -35,14 +35,13 @@ const PageWithNewsPosts = (props) => {
 
   const [user, setUser] = useState([])
 
-
   const getUserData = async () => {
     let _id = await verifyUser(token)
     console.log("fdfd_" + id)
     if (_id == -1) {
       window.location.assign("/signin");
     }
-    let response = await fetch("/api/user/" + _id)
+    fetch("/api/user/" + _id)
       .then((response) => {
         setStatusCode(response.status)
         if (response.status == 200) {
@@ -64,11 +63,7 @@ const PageWithNewsPosts = (props) => {
 
   }
 
-
-  useEffect(() => {
-    getUserData()
-
-
+  const getDataOfAllPost =()=>{
     fetch('/api/feed', {
       method: 'POST',
       headers: {
@@ -88,7 +83,22 @@ const PageWithNewsPosts = (props) => {
       .catch(error => {
         console.error(error); // Обрабатываем ошибки 
       });
+
+
+  }
+
+
+  useEffect(() => {
+    getUserData()
   }, []);
+
+  useEffect(() => {
+    if (user!=0){
+      getDataOfAllPost()
+    }
+   
+  }, [user]);
+
 
 
   let createPost = () => {
