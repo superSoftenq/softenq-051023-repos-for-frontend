@@ -7,7 +7,7 @@ function LoginSucceed() {
     let token =  Cookie.getCookie("token")
     const renderScreen = () => (
       <button className = "proceed_btn" onClick={async(event) => {
-        window.location.assign("/myprofile");
+        window.location.assign("/myprofile-v2");
       }}>Go to my page </button>
     );
     const getUserData = async () => {

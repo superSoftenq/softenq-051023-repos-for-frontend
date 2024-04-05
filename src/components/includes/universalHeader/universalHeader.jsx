@@ -8,7 +8,7 @@ export const UniversalHeader = (props) => {
     return (
         <div className={style.mainContent}>
             <div className={style.butForMyPage}>
-                <UniversalButton toGoto="/myProfile" textInBtn="go to my page" />
+                <UniversalButton toGoto="/myProfile-v2" textInBtn="go to my page" />
             </div>
 
             <div className={style.butForNews}>

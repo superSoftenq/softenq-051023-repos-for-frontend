@@ -116,7 +116,7 @@ export const renderAllPost = (postArray) => {
     )
     return (
         <>
-            <div>lenta postov</div>
+            <div></div>
             <div>
                 
                 {console.log('postItems = ', postItems)}

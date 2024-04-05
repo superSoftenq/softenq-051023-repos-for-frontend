@@ -67,8 +67,9 @@ const SearchUser = (props) => {
 
 
             </div>
+            <div><h2>результаты поиска</h2></div>
             <div className={style.containerUserList}>
-                <h2>результаты поиска</h2>
+                
 
                 <div className={style.item}>
 
