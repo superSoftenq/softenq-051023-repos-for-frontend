@@ -67,7 +67,7 @@ useEffect(() => {
    }, []);
 
 
-console.log('PROPS = ', props)
+console.log('PROPS in post jsx = ', props)
 let likess = likes.length
 console.log("all likes in post = ", likess)
     return (
@@ -86,7 +86,7 @@ console.log("all likes in post = ", likess)
            </div>
            
            <div>
-                <img className="fhotoInPost" src="https://images.unsplash.com/photo-1531564701487-f238224b7ce3?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cG9zdHxlbnwwfHwwfHx8MA%3D%3D"/>
+                <img className="fhotoInPost" src='{photolink}'/>
            </div>
 
            <div>
