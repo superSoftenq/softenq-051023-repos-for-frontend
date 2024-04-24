@@ -9,8 +9,10 @@ import * as Cookie from "../../includes/cookie.js"
 import { UniversalButton } from "../../includes/universalButton/universalButton.jsx";
 import { UniversalHeader } from "../../includes/universalHeader/universalHeader.jsx";
 import { UnBtn } from "../../includes/unBtn/unBtn.jsx";
+import Modal from "../modalPortal/Modal.jsx";
+import { driveIdToLink } from "../../includes/googleLinks.js";
 
-
+import DeleteBtn from "../../includes/deleteBtn.jsx";
 let dataForGetPost = {
   startingPoint: 0,
   postsCount: 9999,
@@ -20,6 +22,68 @@ let dataForGetPost = {
 
 let newElementPost = React.createRef();
 
+export const renderMyGalleryForCreatePost = (photoArray,user) => {
+
+  let photoItems = photoArray.map((photo) =>
+      <div className="photo_item">
+          <div>
+              {console.log('big links for check line 35', driveIdToLink(photo["link"]))}
+              <img src={driveIdToLink(photo["link"])} 
+              alt={photo["id"]} 
+              id={"regular_photo_" + photo["id"]} 
+              className="photo regular" 
+              onClick={()=> createPost(photo["id"], user)}/>
+          </div>
+          <div>
+              <DeleteBtn
+                  buttonText="Delete"
+                  deleteRoute={"/api/user/" + photo["userId"] + "/photos/" + photo["id"]}
+                  refreshPage={true}
+                  token={Cookie.getCookie("token")}
+              />
+          </div>
+      </div>
+
+
+  )
+  return (
+      <>
+          
+          <div>{photoItems}</div>
+          
+      </>
+  )
+}
+
+export let createPost = (photoId, user) => {
+
+
+  let dataForPost = {
+    ownerId: user.id,
+    photoId: photoId
+  }
+
+  dataForPost.comment = newElementPost.current.value;
+  console.log('check temp Obj = ', dataForPost)
+  fetch('/api/post/create', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+    },
+    body: JSON.stringify(dataForPost)
+  }).then(response => {
+    if (!response.ok) {
+      throw new Error('Ошибка сети или сервера');
+    }
+    return response.json(); // Парсим ответ сервера в формате JSON 
+  })
+    .then(data => {
+      console.log(data); // Обрабатываем полученные данные 
+    })
+    .catch(error => {
+      console.error(error); // Обрабатываем ошибки 
+    });
+}
 
 
 const PageWithNewsPosts = (props) => {
@@ -132,39 +196,11 @@ const PageWithNewsPosts = (props) => {
 
 
 
-  let createPost = () => {
-
-
-    let dataForPost = {
-      ownerId: user.id,
-      photoId: 4
-    }
-
-    dataForPost.comment = newElementPost.current.value;
-    console.log('check temp Obj = ', dataForPost)
-    fetch('/api/post/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
-      },
-      body: JSON.stringify(dataForPost)
-    }).then(response => {
-      if (!response.ok) {
-        throw new Error('Ошибка сети или сервера');
-      }
-      return response.json(); // Парсим ответ сервера в формате JSON 
-    })
-      .then(data => {
-        console.log(data); // Обрабатываем полученные данные 
-      })
-      .catch(error => {
-        console.error(error); // Обрабатываем ошибки 
-      });
-  }
+  
 
 
 
-
+  const [open, setOpen] = useState(false);
 
   return (
 
@@ -180,11 +216,11 @@ const PageWithNewsPosts = (props) => {
       </div>
 
       <div className="formAddNewPost">
-        <FormNewPost refForTextArea={newElementPost} funcForCreatePost={createPost} userdata={user} />
+        <FormNewPost refForTextArea={newElementPost} funcForCreatePost={() => createPost(user)} userdata={user} />
       </div>
 
       <div>
-        <UnBtn text="показать галерею" />
+        <UnBtn viewMiniGallery = {() => setOpen(true)}  text="показать галерею" />
       </div>
 
       <div>
@@ -195,6 +231,11 @@ const PageWithNewsPosts = (props) => {
           {console.log("страница новостей знает твою галерею = ", photos)}
         </div>
       </div>
+      <Modal
+      user = {user} 
+      photos = {photos}
+      open = {open}
+      onClose = {()=> setOpen(false)}/>
 
     </div>
   )

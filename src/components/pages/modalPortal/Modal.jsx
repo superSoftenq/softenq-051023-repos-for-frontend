@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from "react"
 import { createPortal } from "react-dom"
 import style from './Modal.module.css'
+import { renderMyGalleryForCreatePost } from "../newPosts/pageWithNewsPosts"
 
 const modalRootElement = document.querySelector("#modal")
 const Modal = (props) => {
@@ -27,8 +28,15 @@ const Modal = (props) => {
     if (open) {
         return createPortal(
             <div className={style.modal_background} onClick={onClose}>
-                <div className={style.modal_card}>
-                    hello
+                <div className={style.modal_card} onClick={(e) => e.stopPropagation()}>
+                   <div>hello</div>
+                   
+                   {renderMyGalleryForCreatePost(props.photos, props.user)}
+                   <div>hello</div>
+                   <div>hello</div>
+                   <div>hello</div>
+                   <div>hello</div>
+
                 </div>
             </div>, element)
 

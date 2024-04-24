@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import Post from "./newPosts/post.jsx";
 import HeaderLine from "./newPosts/formFormAddNewPost/headerLine.jsx";
 import { ItemUser } from "./searchUser/itemUser.jsx";
+import { createPost } from "./newPosts/pageWithNewsPosts.jsx";
 
 
 export const renderAvatar = (link) => (
@@ -40,7 +41,11 @@ export const renderMyGallery = (photoArray) => {
         <div className="photo_item">
             <div>
                 {console.log('big links for check line 35', GoogleLinks.driveIdToLink(photo["link"]))}
-                <img src={GoogleLinks.driveIdToLink(photo["link"])} alt={photo["id"]} id={"regular_photo_" + photo["id"]} className="photo regular" />
+                <img src={GoogleLinks.driveIdToLink(photo["link"])} 
+                alt={photo["id"]} 
+                id={"regular_photo_" + photo["id"]} 
+                className="photo regular" 
+                onClick={()=> console.log('вы выбрали фото с ид = ', photo["id"] )}/>
             </div>
             <div>
                 <DeleteBtn
@@ -106,7 +111,12 @@ export const renderAllPost = (postArray) => {
         <div className="post_item">
             <div>
                 
-                <Post avtorPosta={post['ownerId']} message={post["comment"]} publicationDate = {post["publicationDate"]} postId = {post["id"]}/>
+                <Post 
+                avtorPosta={post['ownerId']} 
+                message={post["comment"]} 
+                publicationDate = {post["publicationDate"]} 
+                postId = {post["id"]}
+                photoLink = ''/>
 
             </div>
 
