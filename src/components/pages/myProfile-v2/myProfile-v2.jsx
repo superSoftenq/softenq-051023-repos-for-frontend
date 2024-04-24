@@ -61,7 +61,7 @@ const MyProfileV2 = (props) => {
         const objForGetPhoto = {
             flags: -1
         }
-        fetch(`/api/user/${id}/photos`, {
+        fetch(`/api/user/${id}/photo/get`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
@@ -113,6 +113,9 @@ const MyProfileV2 = (props) => {
 
             </div>
 
+            <div>
+                {renderRegularForm(user)}
+            </div>
 
            
             <div className={style.userGallery}>

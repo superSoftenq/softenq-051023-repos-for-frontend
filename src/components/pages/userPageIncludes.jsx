@@ -93,7 +93,7 @@ export const renderRegularForm = (user) => {
     return <FileUploadForm
         title={<p>Загрузить фотографии</p>}
         urlLeft={'/api/user/'}
-        urlRight={'/photos'}
+        urlRight={'/photo/uploadphotos'}
         userId={user.id}
         formClassName={'regular_form'}
         refreshPage={true}
