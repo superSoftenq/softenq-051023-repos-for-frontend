@@ -7,9 +7,14 @@ import style from "./myProfile-v2.module.css"
 import FileUploadForm from "../../includes/fileUploadForm.jsx";
 import { renderRegularForm } from "../userPageIncludes.jsx";
 
+
+
 const MyProfileV2 = (props) => {
     const googleLink = "https://drive.google.com/thumbnail?id="
     const urlRight = "&sz=w1000"
+
+
+
 
     const [id, setId] = useState([])
 
@@ -88,7 +93,7 @@ const MyProfileV2 = (props) => {
     console.log("global user data = ", user)
 
 
-
+    const [modalActive, setModalActive] = useState(false)
 
     return (
         <div>
@@ -117,13 +122,13 @@ const MyProfileV2 = (props) => {
                 {renderRegularForm(user)}
             </div>
 
-           
+
             <div className={style.userGallery}>
                 {photos.length != 0 && renderMyGallery(photos)}
             </div>
 
+            
 
-           
         </div>
     )
 }
