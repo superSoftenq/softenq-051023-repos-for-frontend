@@ -78,15 +78,20 @@ export let createPost = (photoId, user) => {
     return response.json(); // Парсим ответ сервера в формате JSON 
   })
     .then(data => {
-      console.log(data); // Обрабатываем полученные данные 
+      console.log(data); // Обрабатываем полученные данные
+      
     })
     .catch(error => {
       console.error(error); // Обрабатываем ошибки 
     });
+
+
+    //window.location.reload()
 }
 
 
 const PageWithNewsPosts = (props) => {
+  const [postsArray, setPosts] = useState([])
 
 
   const [id, setId] = useState([])
@@ -98,7 +103,7 @@ const PageWithNewsPosts = (props) => {
   }
   console.log('id == ', id)
 
-  const [postsArray, setPosts] = useState([])
+  //const [postsArray, setPosts] = useState([])
 
   const [statusCode, setStatusCode] = useState([])
 
@@ -123,13 +128,13 @@ const PageWithNewsPosts = (props) => {
       .then(async (data) => {
         console.log('data users = ', data)
         setUser(data)
-        if (rs == -1) {
-          setAuthorized(-1)
-        } else if (rs != data.id) {
-          setAuthorized(false)
-        } else {
-          setAuthorized(true)
-        }
+        // if (rs == -1) {
+        //   setAuthorized(-1)
+        // } else if (rs != data.id) {
+        //   setAuthorized(false)
+        // } else {
+        //   setAuthorized(true)
+        // }
 
 
       });
@@ -228,7 +233,7 @@ const PageWithNewsPosts = (props) => {
 
 
           {postsArray.length != 0 && renderAllPost(postsArray)}
-          {console.log("страница новостей знает твою галерею = ", photos)}
+          {/*console.log("страница новостей знает твою галерею = ", photos)*/}
         </div>
       </div>
       <Modal

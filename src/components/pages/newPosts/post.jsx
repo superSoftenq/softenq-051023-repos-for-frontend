@@ -3,6 +3,7 @@ import TextInPost from "./textInPost";
 import './post.css'
 import DownBar from "./downbar";
 import React, { useEffect, useState } from "react"
+import { driveIdToLink } from "../../includes/googleLinks";
 
 
 const Post = (props) => {
@@ -14,6 +15,7 @@ background: linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
 
 
 */
+const [postPhoto, setPostPhoto] = useState([])
 const [likes, setLikes] = useState([])
 const [statusCode, setStatusCode] = useState([])
 let tmpDate = props.publicationDate;
@@ -55,21 +57,34 @@ useEffect(() => {
   .then((data) => {
     console.log('data Likes = ', data)
     setLikes(data)
-    if (rs == -1) {
-      setAuthorized(-1)
-    } else if (rs != data.id) {
-      setAuthorized(false)
-    } else {
-      setAuthorized(true)
-    }
+    //тут была неработающая с rs проверка авторизации
   });
      
    }, []);
 
 
-console.log('PROPS in post jsx = ', props)
+useEffect(()=>{
+  fetch("/api/photo/" + props.photoId)
+  .then((response) => {
+    setStatusCode(response.status)
+    if (response.status == 200) {
+    }
+
+    return response.json();
+  })
+  .then((data) => {
+    console.log('photo in ONE post data = ', data)
+    setPostPhoto(data)
+    //тут была неработающая с rs проверка авторизации
+  });
+  
+
+}, [likes])
+
+//console.log("такая ссылка должна получится = ", driveIdToLink(postPhoto.googleDriveId))
+//console.log('PROPS in post jsx = ', props)
 let likess = likes.length
-console.log("all likes in post = ", likess)
+//console.log("all likes in post = ", likess)
     return (
         
         
@@ -86,7 +101,7 @@ console.log("all likes in post = ", likess)
            </div>
            
            <div>
-                <img className="fhotoInPost" src='{photolink}'/>
+                <img className="fhotoInPost" src={driveIdToLink(postPhoto.googleDriveId)}/>
            </div>
 
            <div>

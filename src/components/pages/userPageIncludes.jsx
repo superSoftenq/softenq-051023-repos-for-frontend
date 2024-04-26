@@ -114,7 +114,8 @@ export const renderAllPost = (postArray) => {
                 <Post 
                 avtorPosta={post['ownerId']} 
                 message={post["comment"]} 
-                publicationDate = {post["publicationDate"]} 
+                publicationDate = {post["publicationDate"]}
+                photoId = {post["photoId"]} 
                 postId = {post["id"]}
                 photoLink = ''/>
 
