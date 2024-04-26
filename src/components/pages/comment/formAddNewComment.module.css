@@ -1,0 +1,46 @@
+
+
+
+.MainContainer{
+
+    display: grid;
+
+    grid-template-areas: "userAvatar input sendBtnq";
+
+    justify-content: left;
+
+    padding: 10px;
+    margin-left: 15px;
+}
+
+.userAvatar{
+
+    grid-area: "userAvatar";
+    padding: 10px;
+}
+
+.textAreaInput{
+
+    grid-area: "input";
+    padding: 10px;
+    
+}
+.textAreaInput input{
+
+    grid-area: "input";
+    border-radius: 5%;
+    
+} 
+
+.sendButton{
+    grid-area: "sendBtnq";
+}
+
+.userAvaImg{
+    width: 20px;
+}
+
+.sendButtonImg{
+    padding: 10px;
+    width: 20px;
+}

@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import Post from "./newPosts/post.jsx";
 import HeaderLine from "./newPosts/formFormAddNewPost/headerLine.jsx";
 import { ItemUser } from "./searchUser/itemUser.jsx";
-import { createPost } from "./newPosts/pageWithNewsPosts.jsx";
+
 import CommentItem from "./comment/commentItem.jsx";
 
 
@@ -106,7 +106,7 @@ export const renderRegularForm = (user) => {
     />
 }
 
-export const renderAllPost = (postArray) => {
+export const renderAllPost = (postArray, userData) => {
     console.log('arrive data TEST POST= ', postArray);
     let postItems = postArray.map((post) =>
         <div className="post_item">
@@ -118,7 +118,8 @@ export const renderAllPost = (postArray) => {
                 publicationDate = {post["publicationDate"]}
                 photoId = {post["photoId"]} 
                 postId = {post["id"]}
-                photoLink = ''/>
+                photoLink = ''
+                userAuthData = {userData}/>
 
             </div>
 
@@ -169,6 +170,7 @@ export const renderCommentOfPost = (commentsArray) => {
             <div>
                 <CommentItem 
                 text = {comment["commentContent"]}
+                avtorId = {comment["actorId"]}
                 
                 />
             </div>

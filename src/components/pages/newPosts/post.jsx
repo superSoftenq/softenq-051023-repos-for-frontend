@@ -7,6 +7,7 @@ import { driveIdToLink } from "../../includes/googleLinks";
 import CommentItem from "../comment/commentItem";
 
 import { renderCommentOfPost } from "../userPageIncludes";
+import FormAddNewComment from "../comment/formAddNewComment";
 
 
 const Post = (props) => {
@@ -22,6 +23,7 @@ const [postPhoto, setPostPhoto] = useState([])
 const [likes, setLikes] = useState([])
 const [statusCode, setStatusCode] = useState([])
 const [commetsArray, setCommentsArray] = useState([])
+const [show_comments, setShowComments] = useState(true);
 let tmpDate = props.publicationDate;
 let localDate = new Date(tmpDate)
 let normDate = String(localDate.toUTCString())
@@ -120,6 +122,7 @@ useEffect(() => {
 //console.log("такая ссылка должна получится = ", driveIdToLink(postPhoto.googleDriveId))
 console.log('PROPS in post jsx = ', props)
 let likess = likes.length
+const handleOnShow = () => setShowComments(!show_comments);
 //console.log("all likes in post = ", likess)
     return (
         
@@ -141,15 +144,24 @@ let likess = likes.length
            </div>
 
            <div>
-            <DownBar likecounter = {likess} repostCounter = {props.repostCounter} postId = {props.postId}/>
+            <DownBar 
+            onShow = {handleOnShow}
+            likecounter = {likess} repostCounter = {props.repostCounter} postId = {props.postId}/>
            </div>
 
            <div className= "commentBar">
               <div>тут должны быть комменты</div>
               {props.postId}
 
-              {renderCommentOfPost(commetsArray)}
+              {show_comments && renderCommentOfPost(commetsArray)}
               
+           </div>
+
+           <div className="addCommentForm">
+              <FormAddNewComment 
+              postId = {props.postId}
+              userAuthData = {props.userAuthData}
+              />
            </div>
 
            

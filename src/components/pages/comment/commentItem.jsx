@@ -1,7 +1,40 @@
 import style from './commentItem.module.css'
+import { useEffect, useState } from 'react'
 
 const CommentItem = (props) => {
 
+    const [userInfo, setUserInfo] = useState([])
+    const [statusCode, setStatusCode] = useState([])
+    const getUserInfo = () => {
+      fetch("/api/user/" + props.avtorId)
+      .then((response) => {
+        setStatusCode(response.status)
+        if (response.status == 200) {
+        }
+
+        return response.json();
+      })
+      .then(async (data) => {
+        console.log('data users in COMMNET inTem = ', data)
+        setUserInfo(data)
+        // if (rs == -1) {
+        //   setAuthorized(-1)
+        // } else if (rs != data.id) {
+        //   setAuthorized(false)
+        // } else {
+        //   setAuthorized(true)
+        // }
+
+
+      });
+    }
+    useEffect(() => {
+      getUserInfo()
+    }, []);
+
+  
+
+    
 
     return(
         <div className={style.mainContainerOfItem}>
@@ -12,7 +45,7 @@ const CommentItem = (props) => {
 
             <div className={style.userInfoContainer}>
                 <div className={style.userName}>
-                        ivanov Ivan
+                        {userInfo.username}
                 </div>
 
                 <div className={style.commentContent}>

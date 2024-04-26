@@ -1,8 +1,6 @@
 import style from "./searchUser.module.css"
 import React, { useEffect, useState } from "react"
 import { renderUserList } from "../userPageIncludes"
-import { UniversalButton } from "../../includes/universalButton/universalButton"
-import { UniversalHeader } from "../../includes/universalHeader/universalHeader"
 import { ItemUser } from "./itemUser"
 
 

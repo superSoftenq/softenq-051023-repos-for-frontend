@@ -22,36 +22,36 @@ let dataForGetPost = {
 
 let newElementPost = React.createRef();
 
-export const renderMyGalleryForCreatePost = (photoArray,user) => {
+export const renderMyGalleryForCreatePost = (photoArray, user) => {
 
   let photoItems = photoArray.map((photo) =>
-      <div className="photo_item">
-          <div>
-              {console.log('big links for check line 35', driveIdToLink(photo["link"]))}
-              <img src={driveIdToLink(photo["link"])} 
-              alt={photo["id"]} 
-              id={"regular_photo_" + photo["id"]} 
-              className="photo regular" 
-              onClick={()=> createPost(photo["id"], user)}/>
-          </div>
-          <div>
-              <DeleteBtn
-                  buttonText="Delete"
-                  deleteRoute={"/api/user/" + photo["userId"] + "/photos/" + photo["id"]}
-                  refreshPage={true}
-                  token={Cookie.getCookie("token")}
-              />
-          </div>
+    <div className="photo_item">
+      <div>
+        {console.log('big links for check line 35', driveIdToLink(photo["link"]))}
+        <img src={driveIdToLink(photo["link"])}
+          alt={photo["id"]}
+          id={"regular_photo_" + photo["id"]}
+          className="photo regular"
+          onClick={() => createPost(photo["id"], user)} />
       </div>
+      <div>
+        <DeleteBtn
+          buttonText="Delete"
+          deleteRoute={"/api/user/" + photo["userId"] + "/photos/" + photo["id"]}
+          refreshPage={true}
+          token={Cookie.getCookie("token")}
+        />
+      </div>
+    </div>
 
 
   )
   return (
-      <>
-          
-          <div>{photoItems}</div>
-          
-      </>
+    <>
+
+      <div>{photoItems}</div>
+
+    </>
   )
 }
 
@@ -79,14 +79,14 @@ export let createPost = (photoId, user) => {
   })
     .then(data => {
       console.log(data); // Обрабатываем полученные данные
-      
+
     })
     .catch(error => {
       console.error(error); // Обрабатываем ошибки 
     });
 
 
-    //window.location.reload()
+  //window.location.reload()
 }
 
 
@@ -108,6 +108,8 @@ const PageWithNewsPosts = (props) => {
   const [statusCode, setStatusCode] = useState([])
 
   const [user, setUser] = useState([])
+
+  const [userInfo, setuserInfo] = useState([])
 
   const [photos, setPhotos] = useState([])
 
@@ -138,8 +140,13 @@ const PageWithNewsPosts = (props) => {
 
 
       });
-      const objForGetPhoto = {
-        flags: -1
+
+
+
+
+    
+    const objForGetPhoto = {
+      flags: -1
     }
     fetch(`/api/user/${_id}/photo/get`, {
       method: 'POST',
@@ -160,6 +167,8 @@ const PageWithNewsPosts = (props) => {
       .catch(error => {
         console.error(error); // Обрабатываем ошибки 
       });
+
+
 
   }
 
@@ -185,9 +194,9 @@ const PageWithNewsPosts = (props) => {
       });
 
 
-      //получаю комментарии ко всем постам
+    //получаю комментарии ко всем постам
 
-      
+
 
 
 
@@ -207,12 +216,12 @@ const PageWithNewsPosts = (props) => {
 
 
 
-  
+
   const addComment = () => {
     let tmpInfoForCreateComment = {
 
-      actorId:7,
-      topicId:17,
+      actorId: 7,
+      topicId: 17,
       commentContent: "hello my comment 2",
       isReply: false
     }
@@ -231,7 +240,7 @@ const PageWithNewsPosts = (props) => {
     })
       .then(data => {
         console.log('ответ после добавление комментария = ', data); //это почему-то выполняется бесконечное число раз
-        
+
       })
       .catch(error => {
         console.error(error); // Обрабатываем ошибки 
@@ -288,26 +297,26 @@ const PageWithNewsPosts = (props) => {
       </div>
 
       <div>
-        <UnBtn viewMiniGallery = {() => setOpen(true)}  text="показать галерею" />
-        <button onClick = {addComment}>костыль add comment 2</button>
-        <button onClick = {getCommentForThisPost}>найти комменты add comment 2</button>
-        
+        <UnBtn viewMiniGallery={() => setOpen(true)} text="показать галерею" />
+        <button onClick={addComment}>костыль add comment 2</button>
+        <button onClick={getCommentForThisPost}>найти комменты add comment 2</button>
+
       </div>
 
       <div>
         <div className="myPosts">
 
 
-          {postsArray.length != 0 && renderAllPost(postsArray)}
+          {postsArray.length != 0 && renderAllPost(postsArray, user)}
           {/*console.log("страница новостей знает твою галерею = ", photos)*/}
         </div>
       </div>
       <Modal
-      user = {user} 
-      photos = {photos}
-      open = {open}
-      funcForViewContent = {renderMyGalleryForCreatePost}
-      onClose = {()=> setOpen(false)}/>
+        user={user}
+        photos={photos}
+        open={open}
+        funcForViewContent={renderMyGalleryForCreatePost}
+        onClose={() => setOpen(false)} />
 
     </div>
   )
