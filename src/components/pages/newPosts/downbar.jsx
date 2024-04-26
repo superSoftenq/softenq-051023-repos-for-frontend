@@ -3,6 +3,7 @@ import './downBar.css'
 import React, { useEffect, useState } from "react"
 import { verifyUser } from '../../includes/verifyUser'
 import * as Cookie from "../../includes/cookie.js"
+import Modal from '../modalPortal/Modal.jsx'
 
 
 
@@ -13,6 +14,7 @@ const DownBar = (props) => {
   const [user, setUser] = useState([])
   const [id, setId] = useState([])
   const [likes, setLikes] = useState([])
+  const [open, setOpen] = useState(false);
 
 
   let token = Cookie.getCookie("token")
@@ -60,7 +62,7 @@ const DownBar = (props) => {
 
 
 
-  //console.log('проверка прихода ИД через пропсы = ', props.postId)
+  console.log('пропсы в нижней панели = ', props)
   const getAllLikes = () => {
     fetch("/api/post/" + props.postId + "/getlikes")
       .then((response) => {
@@ -123,12 +125,16 @@ const DownBar = (props) => {
 
       <div className='commentIcon'>
         
-        <img src='https://static-00.iconduck.com/assets.00/comment-icon-1024x964-julk98bl.png'/>
+        <img  on onClick= {()=> setOpen(true)} src='https://static-00.iconduck.com/assets.00/comment-icon-1024x964-julk98bl.png'/>
       </div>
       <div>
         <img className='repostIcon' src='https://static-00.iconduck.com/assets.00/send-icon-2048x1863-u8j8xnb6.png' />
         {props.repostCounter}
       </div>
+
+      <Modal 
+      open = {open}
+      onClose = {()=> setOpen(false)}/>
 
     </div>
   )

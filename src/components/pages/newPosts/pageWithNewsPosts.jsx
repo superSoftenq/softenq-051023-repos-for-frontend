@@ -240,6 +240,7 @@ const PageWithNewsPosts = (props) => {
       user = {user} 
       photos = {photos}
       open = {open}
+      funcForViewContent = {renderMyGalleryForCreatePost}
       onClose = {()=> setOpen(false)}/>
 
     </div>

@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo } from "react"
 import { createPortal } from "react-dom"
 import style from './Modal.module.css'
-import { renderMyGalleryForCreatePost } from "../newPosts/pageWithNewsPosts"
+
 
 const modalRootElement = document.querySelector("#modal")
 const Modal = (props) => {
-    //console.log('props = ', props)
+    console.log('props in modal window = ', props)
 
     
     const open = props.open
@@ -29,7 +29,8 @@ const Modal = (props) => {
         return createPortal(
             <div className={style.modal_background} onClick={onClose}>
                 <div className={style.modal_card} onClick={(e) => e.stopPropagation()}>
-                   {renderMyGalleryForCreatePost(props.photos, props.user)}
+                
+                   {props.funcForViewContent(props.photos, props.user)}
                 </div>
             </div>, element)
 
