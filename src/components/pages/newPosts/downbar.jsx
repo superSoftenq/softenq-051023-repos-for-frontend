@@ -37,13 +37,13 @@ const DownBar = (props) => {
       .then((data) => {
         console.log('data users = ', data)
         setUser(data)
-        if (rs == -1) {
-          setAuthorized(-1)
-        } else if (rs != data.id) {
-          setAuthorized(false)
-        } else {
-          setAuthorized(true)
-        }
+        // if (rs == -1) {
+        //   setAuthorized(-1)
+        // } else if (rs != data.id) {
+        //   setAuthorized(false)
+        // } else {
+        //   setAuthorized(true)
+        // }
       });
 
   }
@@ -60,7 +60,7 @@ const DownBar = (props) => {
 
 
 
-  console.log('проверка прихода ИД через пропсы = ', props.postId)
+  //console.log('проверка прихода ИД через пропсы = ', props.postId)
   const getAllLikes = () => {
     fetch("/api/post/" + props.postId + "/getlikes")
       .then((response) => {
@@ -71,7 +71,7 @@ const DownBar = (props) => {
         return response.json();
       })
       .then((data) => {
-        console.log('data Likes ПЕРВАЯ ЗАГРУЗКА = ', data)
+        //console.log('data Likes ПЕРВАЯ ЗАГРУЗКА = ', data)
         setLikes(data)
         
       });

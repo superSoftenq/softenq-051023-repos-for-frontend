@@ -5,7 +5,7 @@ import { renderMyGalleryForCreatePost } from "../newPosts/pageWithNewsPosts"
 
 const modalRootElement = document.querySelector("#modal")
 const Modal = (props) => {
-    console.log('props = ', props)
+    //console.log('props = ', props)
 
     
     const open = props.open
