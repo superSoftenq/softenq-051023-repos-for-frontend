@@ -1,4 +1,6 @@
-
+.MyProfileV2PAge{
+    width: 100vw;
+}
 
 .MainConteiner{
     display: grid;
@@ -8,6 +10,9 @@
     
     margin-top: 50px;
     padding: 50px;
+
+    justify-content: left;
+    
     
     
 }
@@ -36,6 +41,8 @@
     color: black;
 
     
+
+    
 }
 
 .userName{
@@ -61,4 +68,9 @@
 .userGallery{
 
     display: flex;
+
+}
+.regFormPhoto{
+    display: flex;
+    
 }

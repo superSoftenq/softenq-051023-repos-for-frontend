@@ -96,7 +96,7 @@ const MyProfileV2 = (props) => {
     const [modalActive, setModalActive] = useState(false)
 
     return (
-        <div>
+        <div className={style.MyProfileV2PAge}>
 
             <div className={style.MainConteiner}>
                 <div className={style.profilePicture}>
@@ -118,7 +118,7 @@ const MyProfileV2 = (props) => {
 
             </div>
 
-            <div>
+            <div className={style.regFormPhoto}>
                 {renderRegularForm(user)}
             </div>
 
