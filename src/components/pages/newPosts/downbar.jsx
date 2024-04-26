@@ -37,7 +37,7 @@ const DownBar = (props) => {
         return response.json();
       })
       .then((data) => {
-        console.log('data users = ', data)
+        //console.log('data users = ', data)
         setUser(data)
         // if (rs == -1) {
         //   setAuthorized(-1)
@@ -62,7 +62,7 @@ const DownBar = (props) => {
 
 
 
-  console.log('пропсы в нижней панели = ', props)
+  //console.log('пропсы в нижней панели = ', props)
   const getAllLikes = () => {
     fetch("/api/post/" + props.postId + "/getlikes")
       .then((response) => {

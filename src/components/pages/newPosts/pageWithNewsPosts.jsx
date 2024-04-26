@@ -185,6 +185,12 @@ const PageWithNewsPosts = (props) => {
       });
 
 
+      //получаю комментарии ко всем постам
+
+      
+
+
+
   }
 
 
@@ -202,10 +208,67 @@ const PageWithNewsPosts = (props) => {
 
 
   
+  const addComment = () => {
+    let tmpInfoForCreateComment = {
 
+      actorId:7,
+      topicId:17,
+      commentContent: "hello my comment 2",
+      isReply: false
+    }
+
+    fetch('/api/comment/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+      },
+      body: JSON.stringify(tmpInfoForCreateComment)
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Ошибка сети или сервера');
+      }
+      return response.json(); // Парсим ответ сервера в формате JSON 
+    })
+      .then(data => {
+        console.log('ответ после добавление комментария = ', data); //это почему-то выполняется бесконечное число раз
+        
+      })
+      .catch(error => {
+        console.error(error); // Обрабатываем ошибки 
+      });
+
+  }
 
 
   const [open, setOpen] = useState(false);
+
+
+
+  const getCommentForThisPost = () => {
+
+    let tmpDateForGetAllComment = {
+      isReply: false
+    }
+    fetch('/api/comment/' + 17 + '/getall', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+      },
+      body: JSON.stringify(tmpDateForGetAllComment)
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Ошибка сети или сервера');
+      }
+      return response.json(); // Парсим ответ сервера в формате JSON 
+    })
+      .then(data => {
+        console.log('получаю комменты к конкретному посту', data); //это почему-то выполняется бесконечное число раз
+        //setCommentsArray(data)
+      })
+      .catch(error => {
+        console.error(error); // Обрабатываем ошибки 
+      });
+  }
 
   return (
 
@@ -226,6 +289,9 @@ const PageWithNewsPosts = (props) => {
 
       <div>
         <UnBtn viewMiniGallery = {() => setOpen(true)}  text="показать галерею" />
+        <button onClick = {addComment}>костыль add comment 2</button>
+        <button onClick = {getCommentForThisPost}>найти комменты add comment 2</button>
+        
       </div>
 
       <div>

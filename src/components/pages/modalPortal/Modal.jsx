@@ -5,7 +5,7 @@ import style from './Modal.module.css'
 
 const modalRootElement = document.querySelector("#modal")
 const Modal = (props) => {
-    console.log('props in modal window = ', props)
+    //console.log('props in modal window = ', props)
 
     
     const open = props.open

@@ -18,9 +18,38 @@ background: linear-gradient(45deg, rgb(153, 163, 160), rgb(147, 159, 159) 8%);
 const [postPhoto, setPostPhoto] = useState([])
 const [likes, setLikes] = useState([])
 const [statusCode, setStatusCode] = useState([])
+const [commetsArray, setCommentsArray] = useState([])
 let tmpDate = props.publicationDate;
 let localDate = new Date(tmpDate)
 let normDate = String(localDate.toUTCString())
+
+
+const getCommentForThisPost = () => {
+
+  let tmpDateForGetAllComment = {
+    isReply: false
+  }
+  fetch('/api/comment/' + props.postId + '/getall', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+    },
+    body: JSON.stringify(tmpDateForGetAllComment)
+  }).then(response => {
+    if (!response.ok) {
+      throw new Error('Ошибка сети или сервера');
+    }
+    return response.json(); // Парсим ответ сервера в формате JSON 
+  })
+    .then(data => {
+      console.log('получаю комменты к конкретному посту', data); //это почему-то выполняется бесконечное число раз
+      setCommentsArray(data)
+    })
+    .catch(error => {
+      console.error(error); // Обрабатываем ошибки 
+    });
+}
+
 const getLikesPost = async () => {
      console.log('пытаюсь получит ЛАЙКИ')
      
@@ -63,7 +92,11 @@ useEffect(() => {
    }, []);
 
 
-useEffect(()=>{
+   useEffect(()=>{
+    getCommentForThisPost()
+  
+  }, [likes])
+   useEffect(()=>{
   fetch("/api/photo/" + props.photoId)
   .then((response) => {
     setStatusCode(response.status)
@@ -82,7 +115,7 @@ useEffect(()=>{
 }, [likes])
 
 //console.log("такая ссылка должна получится = ", driveIdToLink(postPhoto.googleDriveId))
-//console.log('PROPS in post jsx = ', props)
+console.log('PROPS in post jsx = ', props)
 let likess = likes.length
 //console.log("all likes in post = ", likess)
     return (
@@ -106,6 +139,11 @@ let likess = likes.length
 
            <div>
             <DownBar likecounter = {likess} repostCounter = {props.repostCounter} postId = {props.postId}/>
+           </div>
+
+           <div className= "commentBar">
+              <div>тут должны быть комменты</div>
+              {props.postId}
            </div>
 
            
