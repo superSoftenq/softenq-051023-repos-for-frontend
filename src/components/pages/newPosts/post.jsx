@@ -4,6 +4,7 @@ import './post.css'
 import DownBar from "./downbar";
 import React, { useEffect, useState } from "react"
 import { driveIdToLink } from "../../includes/googleLinks";
+import CommentItem from "../comment/commentItem";
 
 
 const Post = (props) => {
@@ -144,6 +145,7 @@ let likess = likes.length
            <div className= "commentBar">
               <div>тут должны быть комменты</div>
               {props.postId}
+              <CommentItem />
            </div>
 
            
