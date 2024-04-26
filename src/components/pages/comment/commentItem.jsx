@@ -16,7 +16,7 @@ const CommentItem = (props) => {
                 </div>
 
                 <div className={style.commentContent}>
-                        hello i from ital
+                        {props.text}
                 </div>
 
                 <div className={style.commentDownBar}>

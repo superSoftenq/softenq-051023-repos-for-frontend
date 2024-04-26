@@ -10,6 +10,7 @@ import Post from "./newPosts/post.jsx";
 import HeaderLine from "./newPosts/formFormAddNewPost/headerLine.jsx";
 import { ItemUser } from "./searchUser/itemUser.jsx";
 import { createPost } from "./newPosts/pageWithNewsPosts.jsx";
+import CommentItem from "./comment/commentItem.jsx";
 
 
 export const renderAvatar = (link) => (
@@ -157,17 +158,27 @@ export const renderUserList = (userList) => {
             {userItems}
         </div>
     )
+}
+
+export const renderCommentOfPost = (commentsArray) => {
+    console.log('arrive data of comment = ', commentsArray)
+
+    let commentsList = commentsArray.map((comment) => (
+        <div className="commentItem">
+            {console.log("PARSING = ", comment["commentContent"])}
+            <div>
+                <CommentItem 
+                text = {comment["commentContent"]}
+                
+                />
+            </div>
+        </div>
+    ))
     
+    return(
+        <div>
+            {commentsList}
+        </div>
+    )
     
-    // return(
-    //     <div>
-    //         <div className="userItem">
-    //             <div>
-    //                 {/* {console.log('test test = ', user["username"])} */}
-    //                 <ItemUser userName = {userList["username"]} userId = {userList["id"]} userEmail = {userList["email"]} profilePicture = {userList.profilePicture}/>
-    //             </div>
-    //         </div>
-    //         {/* {userItems} */}
-    //     </div>
-    // )
 }
