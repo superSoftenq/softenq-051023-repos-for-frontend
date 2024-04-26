@@ -29,14 +29,7 @@ const Modal = (props) => {
         return createPortal(
             <div className={style.modal_background} onClick={onClose}>
                 <div className={style.modal_card} onClick={(e) => e.stopPropagation()}>
-                   <div>hello</div>
-                   
                    {renderMyGalleryForCreatePost(props.photos, props.user)}
-                   <div>hello</div>
-                   <div>hello</div>
-                   <div>hello</div>
-                   <div>hello</div>
-
                 </div>
             </div>, element)
 
