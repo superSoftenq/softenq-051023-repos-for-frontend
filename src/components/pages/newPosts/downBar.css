@@ -3,7 +3,7 @@
     display: grid;
 
     grid-template-areas: /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
-  "likesIcon repostIcon";
+  "likesIcon  repostIcon";
   
   grid-template-rows: 30px; /*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
   grid-template-columns:2fr 2fr 2fr 2fr;/*ПОРЯДОК ЭТИХ СТРОК ВАЖЕН*/
@@ -13,19 +13,24 @@
 
 .likesIcon{
     width: 20px;
-    grid-area: likesIcon;
+    grid-area: "likesIcon";
     border-radius: 30%;
 }
 .likesCounter{
-    grid-area: likeCounter
+    grid-area: "likeCounter"
 }
 
 .repostIcon{
     width: 18px;
-    grid-area: repostIcon;
+    grid-area: "repostIcon";
     border-radius: 30%;
 }
 
 .reposCounter{
-    grid-area: repostCounter
+    grid-area: "repostCounter"
+}
+
+.commentIcon img{
+    width: 18px;
+    grid-area: "commIcon";
 }

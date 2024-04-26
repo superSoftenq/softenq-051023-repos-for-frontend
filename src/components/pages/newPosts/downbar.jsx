@@ -121,7 +121,10 @@ const DownBar = (props) => {
         
       </div>
 
-
+      <div className='commentIcon'>
+        
+        <img src='https://static-00.iconduck.com/assets.00/comment-icon-1024x964-julk98bl.png'/>
+      </div>
       <div>
         <img className='repostIcon' src='https://static-00.iconduck.com/assets.00/send-icon-2048x1863-u8j8xnb6.png' />
         {props.repostCounter}
