@@ -29,8 +29,8 @@ const Modal = (props) => {
         return createPortal(
             <div className={style.modal_background} onClick={onClose}>
                 <div className={style.modal_card} onClick={(e) => e.stopPropagation()}>
-                
-                   {props.funcForViewContent(props.photos, props.user)}
+                    {console.log("модалка открылась")}
+                    {props.content}
                 </div>
             </div>, element)
 

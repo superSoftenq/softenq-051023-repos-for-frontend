@@ -22,75 +22,44 @@ let dataForGetPost = {
 
 let newElementPost = React.createRef();
 
-export const renderMyGalleryForCreatePost = (photoArray, user) => {
-
-  let photoItems = photoArray.map((photo) =>
-    <div className="photo_item">
-      <div>
-        {console.log('big links for check line 35', driveIdToLink(photo["link"]))}
-        <img src={driveIdToLink(photo["link"])}
-          alt={photo["id"]}
-          id={"regular_photo_" + photo["id"]}
-          className="photo regular"
-          onClick={() => createPost(photo["id"], user)} />
-      </div>
-      <div>
-        <DeleteBtn
-          buttonText="Delete"
-          deleteRoute={"/api/user/" + photo["userId"] + "/photos/" + photo["id"]}
-          refreshPage={true}
-          token={Cookie.getCookie("token")}
-        />
-      </div>
-    </div>
-
-
-  )
-  return (
-    <>
-
-      <div>{photoItems}</div>
-
-    </>
-  )
-}
-
-export let createPost = (photoId, user) => {
-
-
-  let dataForPost = {
-    ownerId: user.id,
-    photoId: photoId
-  }
-
-  dataForPost.comment = newElementPost.current.value;
-  console.log('check temp Obj = ', dataForPost)
-  fetch('/api/post/create', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
-    },
-    body: JSON.stringify(dataForPost)
-  }).then(response => {
-    if (!response.ok) {
-      throw new Error('Ошибка сети или сервера');
-    }
-    return response.json(); // Парсим ответ сервера в формате JSON 
-  })
-    .then(data => {
-      console.log(data); // Обрабатываем полученные данные
-
-    })
-    .catch(error => {
-      console.error(error); // Обрабатываем ошибки 
-    });
-
-
-  //window.location.reload()
-}
-
-
 const PageWithNewsPosts = (props) => {
+
+  let createPost = (photoId, user) => {
+
+
+    let dataForPost = {
+      ownerId: user.id,
+      photoId: photoId
+    }
+
+    dataForPost.comment = newElementPost.current.value;
+    console.log('check temp Obj = ', dataForPost)
+    fetch('/api/post/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных 
+      },
+      body: JSON.stringify(dataForPost)
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Ошибка сети или сервера');
+      }
+      return response.json(); // Парсим ответ сервера в формате JSON 
+    })
+      .then(data => {
+        console.log(data); // Обрабатываем полученные данные
+
+
+      })
+      .catch(error => {
+        console.error(error); // Обрабатываем ошибки 
+      });
+    console.log('обновляю информацию о постах 1 РАЗ')
+    getDataOfAllPost();
+
+
+    //window.location.reload()
+  }
   const [postsArray, setPosts] = useState([])
 
 
@@ -102,8 +71,6 @@ const PageWithNewsPosts = (props) => {
     setId(_id)
   }
   console.log('id == ', id)
-
-  //const [postsArray, setPosts] = useState([])
 
   const [statusCode, setStatusCode] = useState([])
 
@@ -144,7 +111,7 @@ const PageWithNewsPosts = (props) => {
 
 
 
-    
+
     const objForGetPhoto = {
       flags: -1
     }
@@ -186,14 +153,14 @@ const PageWithNewsPosts = (props) => {
       return response.json(); // Парсим ответ сервера в формате JSON 
     })
       .then(data => {
-        console.log('PUPER DATA', data); //это почему-то выполняется бесконечное число раз
+        console.log('DATA OF POSTS', data); //это почему-то выполняется бесконечное число раз
         setPosts(data)
       })
       .catch(error => {
         console.error(error); // Обрабатываем ошибки 
       });
 
-
+      return 1
     //получаю комментарии ко всем постам
 
 
@@ -279,6 +246,36 @@ const PageWithNewsPosts = (props) => {
       });
   }
 
+  const [modalWindowContent, setModalWindowContent] = useState([])
+  const miniGalleryForModalWindowContent = (photoArray, user) => {
+    console.log('arrive data mini gallary = ', photoArray)
+    setOpen(true)
+
+    let photoItems = photoArray.map((photo) =>
+      <div className="photo_item">
+        <div>
+          {console.log('big links for check line 35', driveIdToLink(photo["link"]))}
+          <img src={driveIdToLink(photo["link"])}
+            alt={photo["id"]}
+            id={"regular_photo_" + photo["id"]}
+            className="photo regular"
+            onClick={() => createPost(photo["id"], user)} />
+        </div>
+        <div>
+          <DeleteBtn
+            buttonText="Delete"
+            deleteRoute={"/api/user/" + photo["userId"] + "/photos/" + photo["id"]}
+            refreshPage={true}
+            token={Cookie.getCookie("token")}
+          />
+        </div>
+      </div>
+    )
+    setModalWindowContent(photoItems)
+
+  }
+
+
   return (
 
 
@@ -297,7 +294,7 @@ const PageWithNewsPosts = (props) => {
       </div>
 
       <div>
-        <UnBtn viewMiniGallery={() => setOpen(true)} text="показать галерею" />
+        <UnBtn viewContent={() => miniGalleryForModalWindowContent(photos, user)} text="показать галерею" />
         <button onClick={addComment}>костыль add comment 2</button>
         <button onClick={getCommentForThisPost}>найти комменты add comment 2</button>
 
@@ -312,12 +309,9 @@ const PageWithNewsPosts = (props) => {
         </div>
       </div>
       <Modal
-        user={user}
-        photos={photos}
+        content={modalWindowContent}
         open={open}
-        funcForViewContent={renderMyGalleryForCreatePost}
         onClose={() => setOpen(false)} />
-
     </div>
   )
 }
