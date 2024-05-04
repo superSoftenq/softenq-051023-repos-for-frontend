@@ -149,11 +149,13 @@ const PageWithNewsPosts = (props) => {
   };
 
   useEffect(() => {
+    console.log('PWNP USE EFFECT 1');
     getUserData();
   }, []);
 
   useEffect(() => {
     if (user != 0) {
+      console.log('PWNP USE EFFECT 2');
       getDataOfAllPost();
     }
   }, [user]);
@@ -253,6 +255,7 @@ const PageWithNewsPosts = (props) => {
         </div>
       </div>
       <Modal content={modalWindowContent} open={open} onClose={() => setOpen(false)} />
+      <div></div>
     </div>
   );
 };

@@ -105,21 +105,26 @@ export const renderRegularForm = (user) => {
 
 export const renderAllPost = (postArray, userData) => {
   console.log('arrive data TEST POST= ', postArray);
-  let postItems = postArray.map((post) => (
-    <div className="post_item">
-      <div>
-        <Post
-          avtorPosta={post['ownerId']}
-          message={post['comment']}
-          publicationDate={post['publicationDate']}
-          photoId={post['photoId']}
-          postId={post['id']}
-          photoLink=""
-          userAuthData={userData}
-        />
+
+  let postItems = postArray.map((post) => {
+    console.log('POST!!!!!!!!!!!!!!!!!!!: ', post);
+    return (
+      <div className="post_item">
+        {console.log('ЦИКЛ ОТРИСОВКИ ПОСТА')}
+        <div>
+          <Post
+            avtorPosta={post['ownerId']}
+            message={post['comment']}
+            publicationDate={post['publicationDate']}
+            photoId={post['photoId']}
+            postId={post['id']}
+            photoLink=""
+            userAuthData={userData}
+          />
+        </div>
       </div>
-    </div>
-  ));
+    );
+  });
   return (
     <>
       <div></div>
@@ -157,7 +162,11 @@ export const renderCommentOfPost = (commentsArray) => {
     <div className="commentItem">
       {console.log('PARSING = ', comment['commentContent'])}
       <div>
-        <CommentItem text={comment['commentContent']} avtorId={comment['actorId']} />
+        <CommentItem
+          commentId={comment['commentId']}
+          text={comment['commentContent']}
+          avtorId={comment['actorId']}
+        />
       </div>
     </div>
   ));

@@ -1,0 +1,9 @@
+.myPosts {
+  display: flex;
+  justify-content: center;
+}
+
+.formAddNewPost {
+  display: flex;
+  justify-content: center;
+}

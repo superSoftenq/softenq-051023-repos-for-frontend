@@ -15,6 +15,8 @@ import PageWithNewsPosts from './components/pages/newPosts/pageWithNewsPosts.jsx
 import SearchUser from './components/pages/searchUser/searchUser.jsx';
 import MyProfileV2 from './components/pages/myProfile-v2/myProfile-v2.jsx';
 import { UniversalHeader } from './components/includes/universalHeader/universalHeader.jsx';
+import NewsMainPage from './components/pages/news-v2/NewsMainPage.jsx';
+import ForgotPassword from './components/pages/forgotPassword/forgotPassword.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
@@ -28,12 +30,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/myprofile" element={<MyProfile />} />
       <Route path="/settings" element={<MyProfileSettings />} />
       <Route path="/news" element={<PageWithNewsPosts />} />
+      <Route path="/news-v2" element={<NewsMainPage />} />
       <Route path="/myprofile-v2" element={<MyProfileV2 />} />
 
       <Route path="/usersearch" element={<SearchUser />} />
       <Route path="/user/:userId" element={<UserProfile></UserProfile>} />
 
       <Route path="/fileuploadform" element={<FileUploadForm />} />
+      <Route path="/forgotPassword" element={<ForgotPassword />} />
     </Routes>
   </Router>
 );
