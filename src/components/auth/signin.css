@@ -1,4 +1,15 @@
+.signup_btn {
+  margin-top: 25px;
+}
 
-.signup_btn{
-    margin-top: 25px;
+.login-alternative {
+  margin-top: 20px;
+  width: 200px;
+}
+.navLinkGoSignUp {
+  color: black;
+  background-color: white;
+  border-radius: 10%;
+  padding-left: 10px;
+  padding-right: 10px;
 }

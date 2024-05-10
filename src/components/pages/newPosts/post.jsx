@@ -21,6 +21,7 @@ const Post = (props) => {
   const [commetsArray, setCommentsArray] = useState([]);
   const [show_comments, setShowComments] = useState(true);
   const [commentsBar, setCommentsBar] = useState([]);
+  const [deleteStatusPost, setDeleteStatusPost] = useState(false);
 
   let tmpDate = props.publicationDate;
   let localDate = new Date(tmpDate);
@@ -145,6 +146,7 @@ const Post = (props) => {
       })
       .then((data) => {
         console.log('data user-s photo', data); //это почему-то выполняется бесконечное число раз
+        setDeleteStatusPost(!deleteStatusPost);
         //можно обновить страницу и проверить удален ли коммент
       })
       .catch((error) => {
