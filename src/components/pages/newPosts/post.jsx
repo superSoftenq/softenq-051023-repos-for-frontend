@@ -20,6 +20,8 @@ const Post = (props) => {
   const [statusCode, setStatusCode] = useState([]);
   const [commetsArray, setCommentsArray] = useState([]);
   const [show_comments, setShowComments] = useState(true);
+  const [commentsBar, setCommentsBar] = useState([]);
+
   let tmpDate = props.publicationDate;
   let localDate = new Date(tmpDate);
   let normDate = String(localDate.toUTCString());
@@ -95,7 +97,11 @@ const Post = (props) => {
   useEffect(() => {
     console.log('USE EFFECT 2');
     getCommentForThisPost();
-  }, [likes]);
+  }, []);
+
+  useEffect(() => {
+    setCommentsBar(renderCommentOfPost(commetsArray));
+  }, [commetsArray]);
 
   useEffect(() => {
     console.log('USE EFFECT 3', props.photoId);
@@ -120,7 +126,7 @@ const Post = (props) => {
   }, [props.photoId]);
 
   //console.log("такая ссылка должна получится = ", driveIdToLink(postPhoto.googleDriveId))
-  // console.log('PROPS in post jsx = ', props);
+  console.log('PROPS in post jsx = ', props);
   let likess = likes.length;
   //const handleOnShow = () => setShowComments(!show_comments);
   //console.log("all likes in post = ", likess)
@@ -147,6 +153,8 @@ const Post = (props) => {
   };
   return (
     <div className="bigClassPosts">
+      <div></div>
+
       <div className="Post">
         <div className="HeaderInPost">
           <HeaderPost avtorPosta={props.avtorPosta} timeByPost={normDate} />
@@ -168,7 +176,7 @@ const Post = (props) => {
           <div>тут должны быть комменты</div>
           {props.postId}
 
-          {show_comments && renderCommentOfPost(commetsArray)}
+          {commentsBar}
         </div>
 
         <div className="addCommentForm">
