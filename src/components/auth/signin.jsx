@@ -4,6 +4,8 @@ import SignupBtn from '../includes/signupbtn';
 import './signin.css';
 
 import { UniversalButton } from '../includes/universalButton/universalButton';
+import { UnBtn } from '../includes/unBtn/unBtn';
+
 let count = 0;
 const max_count = 3;
 const cookieNameToken = 'token';
@@ -70,7 +72,10 @@ function SignIn() {
               <input className="btnSignUp" type="submit" value="Login" />
             </div>
             <div>
-              <UniversalButton text="forgotPassword" />
+              <UniversalButton toGoto="/forgotPassword" textInBtn="forgotPassword" />
+            </div>
+            <div>
+              <UnBtn text="hello " toGoto="/1" />
             </div>
           </form>
           <SignupBtn buttonText={'Go to Signup page'} />
