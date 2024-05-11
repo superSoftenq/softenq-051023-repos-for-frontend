@@ -9,10 +9,9 @@ export default defineConfig(
                 react(),
             ],
         server: {
-            port: 8000,
             proxy: {
                 "/api": {
-                    target: "http://127.0.0.1:3000",
+                    target: "http://social-api.gtsk.site",
                     changeOrigin: true,
                     rewrite:
                         (
@@ -23,6 +22,9 @@ export default defineConfig(
                                 ""
                             ),
                 },
+            },
+            watch: {
+                usePolling: true,
             },
             host: true, // needed for the Docker Container port mapping to work
             strictPort: true, // not necessary

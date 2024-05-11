@@ -10,3 +10,9 @@ services:
     ports:
       - "8000:8000"
     command: yarn dev
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
