@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, NavLink } from 'react-router-dom';
 import * as Cookie from '../includes/cookie';
 import SignupBtn from '../includes/signupbtn';
 import './signin.css';
@@ -69,16 +69,16 @@ function SignIn() {
               />
             </div>
             <div>
-              <input className="btnSignUp" type="submit" value="Login" />
-            </div>
-            <div>
-              <UniversalButton toGoto="/forgotPassword" textInBtn="forgotPassword" />
-            </div>
-            <div>
-              <UnBtn text="hello " toGoto="/1" />
+              <button className="login-alternative">Login</button>
             </div>
           </form>
-          <SignupBtn buttonText={'Go to Signup page'} />
+          <div>
+            <NavLink className="navLinkGoSignUp" to="/1">
+              Go to signup page
+            </NavLink>
+          </div>
+
+          <button className="login-alternative">Go to signUp page</button>
         </div>
         <div id="all"></div>
         <div id="user"></div>
