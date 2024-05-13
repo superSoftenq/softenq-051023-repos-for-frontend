@@ -11,7 +11,7 @@ export default defineConfig(
         server: {
             proxy: {
                 "/api": {
-                    target: "http://social-api.gtsk.site",
+                    target: "https://social-api.gtsk.site",
                     changeOrigin: true,
                     rewrite:
                         (
