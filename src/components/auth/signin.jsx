@@ -69,16 +69,12 @@ function SignIn() {
               />
             </div>
             <div>
-              <button className="login-alternative">Login</button>
+            <input className="btnSignUp" type="submit" value="Login" />
             </div>
           </form>
           <div>
-            <NavLink className="navLinkGoSignUp" to="/1">
-              Go to signup page
-            </NavLink>
+          <SignupBtn buttonText={'Go to Signup page'} />
           </div>
-
-          <button className="login-alternative">Go to signUp page</button>
         </div>
         <div id="all"></div>
         <div id="user"></div>
