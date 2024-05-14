@@ -8,15 +8,15 @@ export const UniversalHeader = (props) => {
     return (
         <div className={style.mainContent}>
             <div className={style.butForMyPage}>
-                <UniversalButton toGoto="/myProfile-v2" textInBtn="go to my page" />
+                <UniversalButton toGoto="/myProfile-v2" textInBtn="Моя страница" />
             </div>
 
             <div className={style.butForNews}>
-                <UniversalButton toGoto="/news" textInBtn="news" />
+                <UniversalButton toGoto="/news" textInBtn="Новости" />
             </div>
            
             <div className={style.butForSearch}>
-                <UniversalButton toGoto="/usersearch" textInBtn="search User" />
+                <UniversalButton toGoto="/usersearch" textInBtn="Поиск пользователей" />
             </div>
 
             <div className={style.logOut}>
@@ -24,7 +24,15 @@ export const UniversalHeader = (props) => {
             </div>
 
             <div className={style.SettingsBtn}>
-                <UniversalButton toGoto = "/settings" textInBtn = "settings" /> 
+                <UniversalButton toGoto = "/settings" textInBtn = "Настройки" /> 
+            </div>
+
+            <div className={style.signUp}>
+                <UniversalButton toGoto = "/signup" textInBtn = "Регистрация"/>
+            </div>
+
+            <div className={style.signIn}>
+                 <UniversalButton toGoto = "/signup" textInBtn = "Авторизация"/>
             </div>
         </div>
     )

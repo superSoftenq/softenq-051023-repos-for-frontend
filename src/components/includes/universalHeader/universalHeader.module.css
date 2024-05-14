@@ -3,7 +3,7 @@
     display: grid;
 
     grid-template-areas: 
-    "myPage newsPage searcgPage logOut SettingsBtn";
+    "myPage newsPage searcgPage logOut SettingsBtn signUp signIn";
     padding: 10px;
     justify-content: left;
     
@@ -30,10 +30,23 @@ margin-right: 15px;
     grid-area: "logOut";
     margin-right: 15px;
     margin-left: 15px;
+    
 }
 
 .SettingsBtn{
     grid-area: "SettingsBtn";
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.signUp{
+    grid-area: "signUp";
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.signIn{
+    grid-area: "signIn";
     margin-right: 15px;
     margin-left: 15px;
 }
