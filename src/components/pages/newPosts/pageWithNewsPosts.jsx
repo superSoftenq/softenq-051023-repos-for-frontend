@@ -19,6 +19,7 @@ let dataForGetPost = {
 let newElementPost = React.createRef();
 
 const PageWithNewsPosts = (props) => {
+  const [addPostStatus, setAddPostStatus] = useState(false);
   let createPost = (photoId, user) => {
     let dataForPost = {
       ownerId: user.id,
@@ -42,7 +43,7 @@ const PageWithNewsPosts = (props) => {
       })
       .then((data) => {
         console.log(data); // Обрабатываем полученные данные
-        getDataOfAllPost();
+        setAddPostStatus(!addPostStatus);
         setOpen(false);
       })
       .catch((error) => {
@@ -151,6 +152,7 @@ const PageWithNewsPosts = (props) => {
   useEffect(() => {
     console.log('PWNP USE EFFECT 1');
     getUserData();
+    getDataOfAllPost();
   }, []);
 
   useEffect(() => {
@@ -158,7 +160,7 @@ const PageWithNewsPosts = (props) => {
       console.log('PWNP USE EFFECT 2');
       getDataOfAllPost();
     }
-  }, [user]);
+  }, [addPostStatus]);
 
   const addComment = () => {
     let tmpInfoForCreateComment = {
@@ -244,7 +246,6 @@ const PageWithNewsPosts = (props) => {
           viewContent={() => miniGalleryForModalWindowContent(photos, user)}
           text="показать галерею"
         />
-        <button onClick={addComment}>костыль add comment 2</button>
       </div>
 
       <div>
