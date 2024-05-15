@@ -1,76 +1,58 @@
-.MyProfileV2PAge{
-    width: 100vw;
+.MyProfileV2PAge {
+  width: 100vw;
 }
 
-.MainConteiner{
-    display: grid;
+.MainConteiner {
+  display: grid;
 
-    grid-template-areas: "userAvatar infoAboutUser";
+  grid-template-areas: 'userAvatar infoAboutUser';
 
-    
-    margin-top: 50px;
-    padding: 50px;
+  margin-top: 50px;
+  padding: 50px;
 
-    justify-content: left;
-    
-    
-    
+  justify-content: left;
 }
 
-.profilePicture img{
-    height: 300px;
-    grid-area: "userAvatar";
+.profilePicture img {
+  height: 300px;
+  grid-area: 'userAvatar';
 
-    margin-right: 50px;
-
-
+  margin-right: 50px;
 }
-.infoAboutUser{
-    display: grid;
+.infoAboutUser {
+  display: grid;
 
-    grid-template-areas: 
-    "name"
-    "id"
-    "email";
+  grid-template-areas:
+    'name'
+    'id'
+    'email'
+    'countFollowing';
 
-    grid-area: "infoAboutUser";
+  grid-area: 'infoAboutUser';
 
-    
-
-    font-size: 30px;
-    color: black;
-
-    
-
-    
+  font-size: 30px;
+  color: black;
 }
 
-.userName{
+.userName {
+  grid-area: 'name';
 
-    grid-area:"name";
-
-    
-
-    font-weight:bold;
+  font-weight: bold;
 }
-.userId{
-
-    grid-area: "id";
-
-    
+.userId {
+  grid-area: 'id';
 }
-.userEmail{
-    grid-area: "email";
-
-    
+.userEmail {
+  grid-area: 'email';
 }
 
-.userGallery{
-
-    display: flex;
-
+.userGallery {
+  display: flex;
 }
-.regFormPhoto{
-    display: flex;
-    
+.regFormPhoto {
+  display: flex;
+}
+
+.countFollowing {
+  grid-area: 'countFollowing';
 }
