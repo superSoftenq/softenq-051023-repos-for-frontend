@@ -12,6 +12,8 @@ const MyProfileV2 = (props) => {
   const urlRight = '&sz=w1000';
   const [id, setId] = useState([]);
 
+  const [userFollowingList, setUserFollowingList] = useState([]);
+
   useEffect(() => {
     getId();
   }, []);
@@ -19,6 +21,7 @@ const MyProfileV2 = (props) => {
   useEffect(() => {
     if (id != 0) {
       getUserData();
+      getUserFollowing();
     }
   }, [id]);
 
@@ -77,6 +80,24 @@ const MyProfileV2 = (props) => {
   };
   console.log('global user data = ', user);
 
+  const getUserFollowing = () => {
+    fetch('/api/relation/subscribe_count/' + id)
+      .then((response) => {
+        setStatusCode(response.status);
+        if (response.status == 200) {
+        }
+
+        return response.json();
+      })
+      .then((data) => {
+        console.log('user following list = ', data);
+        setUserFollowingList(data);
+      })
+      .catch((error) => {
+        console.error(error); // Обрабатываем ошибки
+      });
+  };
+
   const [modalActive, setModalActive] = useState(false);
 
   return (
@@ -93,6 +114,8 @@ const MyProfileV2 = (props) => {
           <div className={style.userId}> # {user.id} </div>
 
           <div className={style.userEmail}> {user.email} </div>
+
+          <div className={style.countFollowing}> поклонники: {userFollowingList.length}</div>
         </div>
       </div>
 

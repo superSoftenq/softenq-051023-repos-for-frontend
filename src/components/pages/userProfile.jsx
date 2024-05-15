@@ -16,6 +16,8 @@ function UserProfile(props) {
   const [statusCode, setStatusCode] = useState([]);
   const [isAuthorized, setAuthorized] = useState([]);
   const [photos, setPhotos] = useState([]);
+  const [userFollowingList, setUserFollowingList] = useState([]);
+  const [subs, setSubs] = useState(false);
 
   const params = useParams();
   // const link = async () => fetch(`/api/user/${user.id}/avatar`)
@@ -51,7 +53,7 @@ function UserProfile(props) {
         })
         .then((data) => {
           console.log('ответ по Результату подписки = ', data); // Обрабатываем полученные данные
-          //тут должно быть установка в стейт что-то для обновления числа подписчиков
+          setSubs(!subs);
         })
         .catch((error) => {
           console.error(error); // Обрабатываем ошибки
@@ -59,6 +61,23 @@ function UserProfile(props) {
     } else {
       console.log(`пользователь не авторизован т.к. id = ${authUserId}`);
     }
+  };
+  const getUserFollowing = () => {
+    console.log('ID = , ', id);
+    fetch('/api/relation/subscribe_count/' + id)
+      .then((response) => {
+        setStatusCode(response.status);
+        if (response.status == 200) {
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('user following list = ', data);
+        setUserFollowingList(data);
+      })
+      .catch((error) => {
+        console.error(error); // Обрабатываем ошибки
+      });
   };
   let userPage = (
     <div className="head">
@@ -81,6 +100,7 @@ function UserProfile(props) {
           </p>
           <p className="infoAboutUser up_id">
             <h3>#{user.id}</h3>
+            <h2>поклонники: {userFollowingList.length}</h2>
           </p>
         </div>
       </div>
@@ -124,9 +144,15 @@ function UserProfile(props) {
       });
   };
   useEffect(() => {
+    console.log('effect 1');
     getUserData();
     getId();
+    getUserFollowing();
   }, []);
+  useEffect(() => {
+    console.log('effect 2');
+    getUserFollowing();
+  }, [subs]);
   return statusCode == 200 ? userPage : pageNotFound;
 }
 
