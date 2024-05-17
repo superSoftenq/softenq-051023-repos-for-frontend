@@ -6,6 +6,7 @@ import { renderAvatar } from '../userPageIncludes.jsx';
 import style from './myProfile-v2.module.css';
 import FileUploadForm from '../../includes/fileUploadForm.jsx';
 import { renderRegularForm } from '../userPageIncludes.jsx';
+import PageWithNewsPosts from '../newPosts/pageWithNewsPosts.jsx';
 
 const MyProfileV2 = (props) => {
   const googleLink = 'https://drive.google.com/thumbnail?id=';

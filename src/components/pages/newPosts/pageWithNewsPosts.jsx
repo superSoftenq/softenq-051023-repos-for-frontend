@@ -224,7 +224,7 @@ const PageWithNewsPosts = (props) => {
   };
 
   return (
-    <div>
+    <div className="mainContener">
       {console.log('отрисовка верстки страницы')}
       <div>
         {
