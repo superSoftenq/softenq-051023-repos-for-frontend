@@ -1,7 +1,9 @@
 import style from './formAddNewComment.module.css';
 import React from 'react';
+import { driveIdToLink } from '../../includes/googleLinks';
 
 const FormAddNewComment = (props) => {
+  console.log('form new post PROPS = ', props.userAuthData.profilePicture);
   let textComment = React.createRef(); //шаг 1 сделали ссылку
   const addComment = () => {
     let tmpInfoForCreateComment = {
@@ -37,10 +39,7 @@ const FormAddNewComment = (props) => {
   return (
     <div className={style.MainContainer}>
       <div className={style.userAvatar}>
-        <img
-          className={style.userAvaImg}
-          src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/Icone-usuario-Png.png"
-        />
+        <img className={style.userAvaImg} src={driveIdToLink(props.userAuthData.profilePicture)} />
       </div>
 
       <div className={style.textAreaInput}>
