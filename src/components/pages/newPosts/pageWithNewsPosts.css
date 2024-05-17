@@ -1,10 +1,13 @@
-.myPosts{
-    display: flex;
-    justify-content: center;
-    
+.myPosts {
+  display: flex;
+  justify-content: center;
 }
 
-.formAddNewPost{
-    display: flex;
-    justify-content: center;
+.formAddNewPost {
+  display: flex;
+  justify-content: center;
+}
+
+.mainContener {
+  width: 100%;
 }

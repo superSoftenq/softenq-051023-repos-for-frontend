@@ -1,5 +1,6 @@
 import style from './commentItem.module.css';
 import { useEffect, useState } from 'react';
+import { driveIdToLink } from '../../includes/googleLinks';
 
 const CommentItem = (props) => {
   console.log('propc in comment = ', props);
@@ -52,14 +53,20 @@ const CommentItem = (props) => {
       });
   };
 
+  const goUser = (userId) => {
+    window.location.assign(`/user/${userId}`);
+  };
+
   return (
     <div className={style.mainContainerOfItem}>
       <div className={style.userAvatarContainer}>
-        <img src="https://avatars.mds.yandex.net/i?id=20978d9bcf9074e6f2f9f08b54cc45f489bce488-2816701-images-thumbs&n=13" />
+        <img onClick={() => goUser(userInfo.id)} src={driveIdToLink(userInfo.profilePicture)} />
       </div>
 
       <div className={style.userInfoContainer}>
-        <div className={style.userName}>{userInfo.username}</div>
+        <div onClick={() => goUser(userInfo.id)} className={style.userName}>
+          {userInfo.username}
+        </div>
 
         <div className={style.commentContent}>{props.text}</div>
 

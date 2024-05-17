@@ -13,7 +13,6 @@
   grid-area: 'UserAva';
 
   margin-right: 15px;
-  outline: solid;
 }
 .userAvatarContainer {
   width: 40px;
@@ -22,6 +21,7 @@
 
   margin-right: 15px;
   outline: solid;
+  border-radius: 15%;
 }
 
 .userInfoContainer {

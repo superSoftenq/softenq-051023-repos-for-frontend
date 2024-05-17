@@ -4,8 +4,15 @@ import './post.css';
 import DownBar from './downbar';
 import React, { useEffect, useState } from 'react';
 import { driveIdToLink } from '../../includes/googleLinks';
-import { renderCommentOfPost } from '../userPageIncludes';
+import { renderAllPost, renderCommentOfPost } from '../userPageIncludes';
 import FormAddNewComment from '../comment/formAddNewComment';
+import PageWithNewsPosts from './pageWithNewsPosts';
+let dataForGetPost = {
+  startingPoint: 0,
+  postsCount: 7,
+
+  flags: 0
+};
 
 const Post = (props) => {
   /*
@@ -22,10 +29,13 @@ const Post = (props) => {
   const [show_comments, setShowComments] = useState(true);
   const [commentsBar, setCommentsBar] = useState([]);
   const [deleteStatusPost, setDeleteStatusPost] = useState(false);
+  const [lengthPostArray, setLengthPostArray] = useState();
+  const [avtor, setAvtor] = useState([]);
 
   let tmpDate = props.publicationDate;
   let localDate = new Date(tmpDate);
   let normDate = String(localDate.toUTCString());
+
   console.log('props.photoId', props.photoId);
 
   const getCommentForThisPost = () => {
@@ -101,6 +111,10 @@ const Post = (props) => {
   }, []);
 
   useEffect(() => {
+    getDataAboutAvtorPosta(props.avtorPosta);
+  }, []);
+
+  useEffect(() => {
     setCommentsBar(renderCommentOfPost(commetsArray));
   }, [commetsArray]);
 
@@ -146,8 +160,23 @@ const Post = (props) => {
       })
       .then((data) => {
         console.log('data user-s photo', data); //это почему-то выполняется бесконечное число раз
-        setDeleteStatusPost(!deleteStatusPost);
-        //можно обновить страницу и проверить удален ли коммент
+      })
+      .catch((error) => {
+        console.error(error); // Обрабатываем ошибки
+      });
+  };
+  const getDataAboutAvtorPosta = (avtorPosta) => {
+    console.log(`link link link = /api/user/${avtorPosta}`);
+    fetch(`/api/user/${avtorPosta}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Ошибка сети или сервера');
+        }
+        return response.json(); // Парсим ответ сервера в формате JSON
+      })
+      .then((data) => {
+        console.log('avtor avtor avtor', data); //это почему-то выполняется бесконечное число раз
+        setAvtor(data);
       })
       .catch((error) => {
         console.error(error); // Обрабатываем ошибки
@@ -159,7 +188,12 @@ const Post = (props) => {
 
       <div className="Post">
         <div className="HeaderInPost">
-          <HeaderPost avtorPosta={props.avtorPosta} timeByPost={normDate} />
+          <HeaderPost
+            avtorId={props.avtorPosta}
+            avtorPosta={avtor.username}
+            timeByPost={normDate}
+            srccc={driveIdToLink(avtor.profilePicture)}
+          />
         </div>
 
         <div className="TextInPost">
