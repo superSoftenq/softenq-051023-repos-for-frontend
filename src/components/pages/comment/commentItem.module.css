@@ -8,14 +8,15 @@
 }
 
 .userAvatarContainer img {
-  width: 40px;
+  width: 50px;
 
   grid-area: 'UserAva';
 
   margin-right: 15px;
+  outline: solid;
 }
 .userAvatarContainer {
-  width: 40px;
+  width: 55px;
 
   padding: 8px;
 
@@ -36,11 +37,12 @@
   outline: solid;
 
   font-family: 'Courier New', Courier, monospace;
-  font-size: 10px;
+  font-size: 15px;
   padding: 8px;
 
   justify-content: left;
   align-items: left;
+  width: 200px;
 }
 
 .userName {
