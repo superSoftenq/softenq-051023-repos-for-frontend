@@ -34,6 +34,22 @@ const Post = (props) => {
 
   let tmpDate = props.publicationDate;
   let localDate = new Date(tmpDate);
+  function convertDate(str) {
+    const data = new Date(str);
+    return (
+      data.getDate() +
+      '-' +
+      (data.getMonth() + 1) +
+      '-' +
+      data.getFullYear() +
+      ' | ' +
+      data.getHours() +
+      ':' +
+      data.getMinutes()
+    );
+  }
+  let normalDate = convertDate(tmpDate);
+  console.log(`Normal date date = ${normalDate}`);
   let normDate = String(localDate.toUTCString());
 
   console.log('props.photoId', props.photoId);
@@ -191,7 +207,7 @@ const Post = (props) => {
           <HeaderPost
             avtorId={props.avtorPosta}
             avtorPosta={avtor.username}
-            timeByPost={normDate}
+            timeByPost={normalDate}
             srccc={driveIdToLink(avtor.profilePicture)}
           />
         </div>
