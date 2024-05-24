@@ -176,10 +176,11 @@ const SignUp_v2 = (props) => {
               />
             </div>
             <div className="containerForCaptcha">
-              <RECAPTCHA
+              ТУТ КАПЧА НО ИЗ-ЗА ENV НЕ РАБОТАЕТ, А НА ПРЯМУЮ КЛЮЧ МЫ В КОДЕ НЕ ПИШЕМ
+              {/* <RECAPTCHA
                 sitekey={import.meta.env.VITE_REACT_APP_CAPTCHA_KEY}
                 onChange={(val) => setValCap(val)}
-              />
+              /> */}
             </div>
             <div>
               <input disabled={!valCap} className="btnSignUp" type="submit" value="Sign Up" />
