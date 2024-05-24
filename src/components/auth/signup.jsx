@@ -174,15 +174,12 @@ export default class SignUp extends Component {
                 <input className="btnSignUp" type="submit" value="Sign Up" />
               </div>
               <form className="stylesignin" action="/signin">
-                <div
-                  class="g-recaptcha"
-                  data-sitekey="6LfVseYpAAAAACByYMt0Ykmeb8i5wx-J38aoEZ4T"
-                ></div>
+                <div class="g-recaptcha" data-sitekey={process.env.REACT_APP_CAPTCHA_KEY}></div>
                 <div>
                   <input className="btnSignUp" type="submit" value="Go to Login page" />
                 </div>
               </form>
-              <RECAPTCHA sitekey="6Lc0vOYpAAAAAExpQJar7bfONeuV_KZI8wTwqhb-" />
+              <RECAPTCHA sitekey={process.env.REACT_APP_CAPTCHA_KEY} />
             </form>
           </div>
         </div>
