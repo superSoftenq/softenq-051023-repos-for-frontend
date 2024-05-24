@@ -177,7 +177,7 @@ const SignUp_v2 = (props) => {
             </div>
             <div className="containerForCaptcha">
               <RECAPTCHA
-                sitekey="6Lc0vOYpAAAAAExpQJar7bfONeuV_KZI8wTwqhb-"
+                sitekey={import.meta.env.VITE_REACT_APP_CAPTCHA_KEY}
                 onChange={(val) => setValCap(val)}
               />
             </div>
