@@ -2,9 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, NavLink } from 'react
 import * as Cookie from '../includes/cookie';
 import SignupBtn from '../includes/signupbtn';
 import './signin.css';
-
-import { UniversalButton } from '../includes/universalButton/universalButton';
-import { UnBtn } from '../includes/unBtn/unBtn';
+import { UniversalHeader } from '../includes/universalHeader/universalHeader';
 
 let count = 0;
 const max_count = 3;
@@ -14,6 +12,7 @@ function SignIn() {
   return (
     <>
       <div className="container">
+        <UniversalHeader />
         <div className="modal">
           <form
             onSubmit={async (event) => {
@@ -69,11 +68,11 @@ function SignIn() {
               />
             </div>
             <div>
-            <input className="btnSignUp" type="submit" value="Login" />
+              <input className="btnSignUp" type="submit" value="Login" />
             </div>
           </form>
           <div>
-          <SignupBtn buttonText={'Go to Signup page'} />
+            <SignupBtn buttonText={'Go to Signup page'} />
           </div>
         </div>
         <div id="all"></div>

@@ -31,7 +31,7 @@ export const UniversalHeader = (props) => {
       </div>
 
       <div className={style.signIn}>
-        <UniversalButton toGoto="/signup" textInBtn="Авторизация" />
+        <UniversalButton toGoto="/signup" textInBtn="signUp (старый)" />
       </div>
 
       <div className={style.signUpV2}>
