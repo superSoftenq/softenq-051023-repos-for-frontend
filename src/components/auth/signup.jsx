@@ -58,7 +58,7 @@ export default class SignUp extends Component {
         <div className="container">
           <div className="modal">
             <div id="message" className="error"></div>
-            {<script src="https://www.google.com/recaptcha/api.js" async defer></script>}
+
             <form
               onSubmit={async (event) => {
                 event.preventDefault();
@@ -174,10 +174,10 @@ export default class SignUp extends Component {
                   class="g-recaptcha"
                   data-sitekey="6LfVseYpAAAAACByYMt0Ykmeb8i5wx-J38aoEZ4T"
                 ></div>
+                <div>
+                  <input className="btnSignUp" type="submit" value="Go to Login page" />
+                </div>
               </form>
-              <div>
-                <input className="btnSignUp" type="submit" value="Go to Login page" />
-              </div>
             </form>
           </div>
         </div>
