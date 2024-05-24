@@ -14,7 +14,7 @@ jobs:
       run: |
         echo "${{ secrets.ENV_CONTENTS }}" > ${{ github.workspace }}/.env
     - name: Build the Docker image
-      run: docker compose -f docker-compose.yml up -d --build
+      run: docker compose --env-file .env -f docker-compose.yml up -d --build
 
     - name: send telegram message on push
       uses: appleboy/telegram-action@master
