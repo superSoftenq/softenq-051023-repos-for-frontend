@@ -11,6 +11,7 @@
     "start": "--proxy-config vite.config.js"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "pg": "^8.11.3",
@@ -20,7 +21,9 @@
     "react-google-recaptcha": "^3.1.0",
     "react-router-dom": "^6.17.0",
     "sequelize": "^6.33.0",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

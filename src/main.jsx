@@ -18,6 +18,8 @@ import { UniversalHeader } from './components/includes/universalHeader/universal
 import NewsMainPage from './components/pages/news-v2/NewsMainPage.jsx';
 import ForgotPassword from './components/pages/forgotPassword/forgotPassword.jsx';
 import SignUp_v2 from './components/auth/signup-v2/signup-v2.jsx';
+// import dotenv from 'dotenv';
+// import 'dotenv/config';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <UniversalHeader />

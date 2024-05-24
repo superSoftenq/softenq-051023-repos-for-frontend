@@ -4,6 +4,8 @@ import RECAPTCHA from 'react-google-recaptcha';
 import { useState } from 'react';
 import { UniversalHeader } from '../../includes/universalHeader/universalHeader';
 
+// require('dotenv').config();
+
 const SignUp_v2 = (props) => {
   const [valCap, setValCap] = useState(null);
   const validatePassword = (password) => {
@@ -54,6 +56,10 @@ const SignUp_v2 = (props) => {
 
     return str;
   };
+  // const config = dotenv.parse(buf); // will return an object
+  // console.log(typeof config, config);
+  // console.log(process.env.REACT_APP_CAPTCHA_KEY);
+  console.log('AAAAA ', import.meta.env.VITE_REACT_APP_CAPTCHA_KEY);
   //
   return (
     <div>
@@ -179,10 +185,6 @@ const SignUp_v2 = (props) => {
               <input disabled={!valCap} className="btnSignUp" type="submit" value="Sign Up" />
             </div>
             <form className="stylesignin" action="/signin">
-              <div
-                class="g-recaptcha"
-                data-sitekey="6LfVseYpAAAAACByYMt0Ykmeb8i5wx-J38aoEZ4T"
-              ></div>
               <div>
                 <input className="btnSignUp" type="submit" value="Go to Login page" />
               </div>
