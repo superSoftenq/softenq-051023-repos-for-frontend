@@ -174,7 +174,6 @@ export default class SignUp extends Component {
                 <input className="btnSignUp" type="submit" value="Sign Up" />
               </div>
               <form className="stylesignin" action="/signin">
-                <div class="g-recaptcha" data-sitekey={process.env.REACT_APP_CAPTCHA_KEY}></div>
                 <div>
                   <input className="btnSignUp" type="submit" value="Go to Login page" />
                 </div>
