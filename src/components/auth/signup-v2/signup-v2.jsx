@@ -7,7 +7,7 @@ import { UniversalHeader } from '../../includes/universalHeader/universalHeader'
 // require('dotenv').config();
 
 const SignUp_v2 = (props) => {
-  const [valCap, setValCap] = useState(null);
+  //const [valCap, setValCap] = useState();
   const validatePassword = (password) => {
     const minlength = 8;
     if (!password) return 'Password is required';
@@ -183,7 +183,7 @@ const SignUp_v2 = (props) => {
               /> */}
             </div>
             <div>
-              <input disabled={!valCap} className="btnSignUp" type="submit" value="Sign Up" />
+              <input className="btnSignUp" type="submit" value="Sign Up" />
             </div>
             <form className="stylesignin" action="/signin">
               <div>
