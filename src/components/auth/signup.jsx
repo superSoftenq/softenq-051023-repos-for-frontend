@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './signup.css';
+import RECAPTCHA from 'react-google-recaptcha';
+import { useState } from 'react';
+
 export default class SignUp extends Component {
   constructor() {
     super();
@@ -52,6 +55,7 @@ export default class SignUp extends Component {
 
     return str;
   }
+
   render() {
     return (
       <>
@@ -178,6 +182,7 @@ export default class SignUp extends Component {
                   <input className="btnSignUp" type="submit" value="Go to Login page" />
                 </div>
               </form>
+              <RECAPTCHA sitekey="6Lc0vOYpAAAAAExpQJar7bfONeuV_KZI8wTwqhb-" />
             </form>
           </div>
         </div>
