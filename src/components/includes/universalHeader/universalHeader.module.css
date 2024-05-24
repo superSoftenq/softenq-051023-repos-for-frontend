@@ -1,52 +1,53 @@
-.mainContent{
+.mainContent {
+  display: grid;
 
-    display: grid;
-
-    grid-template-areas: 
-    "myPage newsPage searcgPage logOut SettingsBtn signUp signIn";
-    padding: 10px;
-    justify-content: left;
-    
-        
+  grid-template-areas: 'myPage newsPage searcgPage logOut SettingsBtn signUp signIn signUp-v2';
+  padding: 10px;
+  justify-content: left;
 }
 
-.butForMyPage{
-    grid-area: "myPage";
-    margin-right: 15px;
-    margin-left: 15px;
+.butForMyPage {
+  grid-area: 'myPage';
+  margin-right: 15px;
+  margin-left: 15px;
 }
-.butForNews{
-grid-area: "newsPage";
-margin-right: 15px;
-    margin-left: 15px;
+.butForNews {
+  grid-area: 'newsPage';
+  margin-right: 15px;
+  margin-left: 15px;
 }
-.butForSearch{
-grid-area: "searcgPage";
-margin-right: 15px;
-    margin-left: 15px;
-}
-
-.logOut{
-    grid-area: "logOut";
-    margin-right: 15px;
-    margin-left: 15px;  
-    
+.butForSearch {
+  grid-area: 'searcgPage';
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
-.SettingsBtn{
-    grid-area: "SettingsBtn";
-    margin-right: 15px;
-    margin-left: 15px;
+.logOut {
+  grid-area: 'logOut';
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
-.signUp{
-    grid-area: "signUp";
-    margin-right: 15px;
-    margin-left: 15px;
+.SettingsBtn {
+  grid-area: 'SettingsBtn';
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
-.signIn{
-    grid-area: "signIn";
-    margin-right: 15px;
-    margin-left: 15px;
+.signUp {
+  grid-area: 'signUp';
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.signIn {
+  grid-area: 'signIn';
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.signUpV2 {
+  grid-area: 'signUp-v2';
+  margin-right: 15px;
+  margin-left: 15px;
 }
