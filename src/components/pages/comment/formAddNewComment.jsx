@@ -34,6 +34,7 @@ const FormAddNewComment = (props) => {
       .catch((error) => {
         console.error(error); // Обрабатываем ошибки
       });
+      window.location.reload()
   };
 
   return (

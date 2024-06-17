@@ -8,6 +8,9 @@ import './userPageIncludes.css';
 import Post from './newPosts/post.jsx';
 import { ItemUser } from './searchUser/itemUser.jsx';
 import CommentItem from './comment/commentItem.jsx';
+import { useState } from 'react';
+
+
 export const renderAvatar = (link) => <img src={link} alt="" className="photo avatar" />;
 export const renderLogout = () => {
   return <Logout buttonText="Log out" />;
@@ -154,6 +157,34 @@ export const renderUserList = (userList) => {
 
   return <div>{userItems}</div>;
 };
+export const helperDeleterPost = (postId) => {
+  fetch(`/api/post/${postId}/delete`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json' // Устанавливаем заголовок Content-Type для указания типа данных
+    }
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Ошибка сети или сервера');
+      }
+      return response.json(); // Парсим ответ сервера в формате JSON
+    })
+    .then((data) => {
+      console.log('data user-s photo', data); //это почему-то выполняется бесконечное число раз
+    })
+    .catch((error) => {
+      console.error(error); // Обрабатываем ошибки
+    });
+    window.location.reload()
+    
+}
+
+export const helperGetDataAboutPostForEditPost = (postId) => {
+
+  
+
+}
 
 export const renderCommentOfPost = (commentsArray) => {
   console.log('arrive data of comment = ', commentsArray);
@@ -171,5 +202,9 @@ export const renderCommentOfPost = (commentsArray) => {
     </div>
   ));
 
+  
+
   return <div>{commentsList}</div>;
 };
+
+

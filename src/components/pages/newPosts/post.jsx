@@ -208,7 +208,9 @@ const Post = (props) => {
             avtorId={props.avtorPosta}
             avtorPosta={avtor.username}
             timeByPost={normalDate}
-            srccc={driveIdToLink(avtor.profilePicture)}
+            srccc={driveIdToLink(avtor.profilePicture)
+            }
+            postId = {props.postId}
           />
         </div>
 

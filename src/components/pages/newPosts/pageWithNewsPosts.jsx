@@ -256,7 +256,7 @@ const PageWithNewsPosts = (props) => {
         </div>
       </div>
       <Modal content={modalWindowContent} open={open} onClose={() => setOpen(false)} />
-      <div></div>
+      
     </div>
   );
 };

@@ -51,6 +51,7 @@ const CommentItem = (props) => {
       .catch((error) => {
         console.error(error); // Обрабатываем ошибки
       });
+      window.location.reload()
   };
 
   const goUser = (userId) => {
