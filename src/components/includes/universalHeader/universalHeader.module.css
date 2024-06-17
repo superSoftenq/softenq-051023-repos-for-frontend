@@ -27,6 +27,9 @@
   grid-area: 'logOut';
   margin-right: 15px;
   margin-left: 15px;
+  color: red;
+ font-size: 12px; 
+  
 }
 
 .SettingsBtn {
@@ -51,4 +54,5 @@
   grid-area: 'signUp-v2';
   margin-right: 15px;
   margin-left: 15px;
+  
 }

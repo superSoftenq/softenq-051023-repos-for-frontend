@@ -2,10 +2,12 @@ import style from './universalHeader.module.css';
 import { UniversalButton } from '../universalButton/universalButton';
 import { logOutFunc } from '../funcForLogOut/logout';
 import SettingsBtn from '../settingsBtn';
+import Logout from '../logout';
 
 export const UniversalHeader = (props) => {
   return (
-    <div className={style.mainContent}>
+    <div>
+      <div className={style.mainContent}>
       <div className={style.butForMyPage}>
         <UniversalButton toGoto="/myProfile-v2" textInBtn="Моя страница" />
       </div>
@@ -18,25 +20,28 @@ export const UniversalHeader = (props) => {
         <UniversalButton toGoto="/usersearch" textInBtn="Поиск пользователей" />
       </div>
 
-      <div className={style.logOut}>
+      { /*
+        <div className={style.logOut}>
         <UniversalButton textInBtn="logout" toGoto="/myProfile" func={logOutFunc} />
-      </div>
+      </div> */
+      }
 
       <div className={style.SettingsBtn}>
-        <UniversalButton toGoto="/settings" textInBtn="Настройки" />
-      </div>
-
-      <div className={style.signUp}>
-        <UniversalButton toGoto="/signup" textInBtn="Регистрация" />
-      </div>
-
-      <div className={style.signIn}>
-        <UniversalButton toGoto="/signup" textInBtn="signUp (старый)" />
+        <UniversalButton className= {style.logOutLink} toGoto="/settings" textInBtn="Настройки" />
       </div>
 
       <div className={style.signUpV2}>
         <UniversalButton toGoto="/signup-v2" textInBtn="signUp-v2" />
+        
       </div>
+      <div className={style.logOut}>
+        <Logout buttonText = 'Выйти'/>
+      </div>
+
+    </div>
+    
+      
+
     </div>
   );
 };
