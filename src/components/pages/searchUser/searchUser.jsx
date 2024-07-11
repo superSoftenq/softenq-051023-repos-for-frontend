@@ -42,9 +42,7 @@ const SearchUser = (props) => {
   };
 
   return (
-    <div>
-      <div></div>
-
+    <div className={style.searchUserPage}>
       <div className={style.mainContent}>
         <div className={style.textArea}>
           <textarea onChange={findUser} ref={textFindUser}></textarea>

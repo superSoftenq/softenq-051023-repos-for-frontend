@@ -1,5 +1,7 @@
 
-
+.searchUserPage{
+    width: 100vw;
+}
 .mainContent{
     display: grid;
 
