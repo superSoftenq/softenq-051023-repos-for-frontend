@@ -2,14 +2,29 @@
     padding: 0;
     margin: 0;
 }
+@media (min-width: 900px){
+    #signup{
+        margin-top: 200px;
+        
+    }
+}
+@media (min-width: 1200px){
+    #signup{
+        margin-top: 10px;
+        
+    }
+}
 .form{
     display: flex;
+    margin-top: 300px;
+    
     text-align: center;
     justify-content: center;
     width: 400px;
     height: 400px;
     background-color: rgb(154, 202, 169);
 }
+
 .stylesignin{
     
 }
@@ -43,6 +58,7 @@
     background: linear-gradient(45deg, #9890e3, #b1f4cf);;
 }
 .form-field{
+    
     width: 300px;
     height: 45px;
     font-size: 20px;
